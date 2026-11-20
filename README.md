@@ -63,3 +63,6 @@ All game rules, recipes and stage settings are in the CONFIG section near the to
 - Pauses during a stage
 - Goes back from the stage list to the outlets
 - Exits the app from the outlet screen
+
+## Credits
+Character skeleton, mannequin body and animations: KayKit Character Animations by Kay Lousberg (kaylousberg.com), CC0.
