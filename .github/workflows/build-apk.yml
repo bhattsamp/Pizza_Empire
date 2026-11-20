@@ -11,6 +11,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      KS: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+      KS_PW: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
     steps:
       - uses: actions/checkout@v5
 
@@ -32,6 +35,29 @@ jobs:
           M=android/app/src/main/AndroidManifest.xml
           sed -i 's/android:label="pizza_empire"/android:label="Pizza Empire"/' $M
           sed -i 's#<application#<uses-permission android:name="android.permission.VIBRATE"/>\n    <application#' $M
+
+      - name: Use the fixed release signing key (so updates install over old versions)
+        if: ${{ env.KS != '' }}
+        run: |
+          echo "$KS" | base64 -d > android/app/upload.jks
+          python3 - <<'PY'
+          p='android/app/build.gradle.kts'
+          s=open(p).read()
+          sign='''    signingConfigs {
+                  create("release") {
+                      storeFile = file("upload.jks")
+                      storePassword = System.getenv("KS_PW")
+                      keyAlias = "pizzaempire"
+                      keyPassword = System.getenv("KS_PW")
+                  }
+              }
+          '''
+          assert '    buildTypes {' in s
+          s=s.replace('    buildTypes {', sign+'    buildTypes {',1)
+          s=s.replace('signingConfig = signingConfigs.getByName("debug")','signingConfig = signingConfigs.getByName("release")')
+          open(p,'w').write(s)
+          print('release signing enabled')
+          PY
 
       - run: flutter pub get
       - run: dart run flutter_launcher_icons
