@@ -461,7 +461,7 @@ const STAGES=Array.from({length:100},(_,i)=>buildStage(i+1));
 /* =====================================================================
    SAVE SYSTEM
    ===================================================================== */
-const DEF={coins:500,stars:Array(100).fill(0),outlets:1,up:{},staff:{},stats:CHAPTERS.map(()=>({rev:0,exp:0,orders:0,sat:0,satN:0,last:0})),
+const DEF={coins:0,stars:Array(100).fill(0),outlets:1,up:{},staff:{},stats:CHAPTERS.map(()=>({rev:0,exp:0,orders:0,sat:0,satN:0,last:0})),
   totals:{orders:0,perfect:0,merges:0,earned:0,deliv:0},ach:{},daily:{last:'',streak:0},sound:true,lastOutlet:0};
 let P;
 function loadSave(){try{const s=JSON.parse(localStorage.getItem('pizzaEmpire.v1')||'null');P=Object.assign(JSON.parse(JSON.stringify(DEF)),s||{});}catch(e){P=JSON.parse(JSON.stringify(DEF));}
@@ -1012,7 +1012,7 @@ function openShop(){
     if(window.PizzaBilling&&window.PizzaBilling.postMessage){window.PizzaBilling.postMessage(b.dataset.pk);return;}
     toast('💳 Payments are coming soon. Coins will be available to buy in the next update!');});
 }
-window.grantCoins=function(id){const p=COIN_PACKS.find(x=>x.id===id);if(!p)return;P.coins+=p.coins;if(TY)TY.addCoins(p.coins);save();setCoins();toast(`🎉 +${fmt(p.coins)} coins added!`);};
+window.grantCoins=function(id){const p=COIN_PACKS.find(x=>x.id===id);if(!p)return;P.coins+=p.coins;if(TY)TY.addCoins(0);save();setCoins();toast(`🎉 +${fmt(p.coins)} coins added!`);};
 const maxStageDone=()=>{let m=0;P.stars.forEach((s,i)=>{if(s)m=i+1;});return m;};
 function openRecipes(){
   const m=maxStageDone()+1;
@@ -1095,7 +1095,17 @@ function openSettings(){
 }
 document.querySelector('#home .navbar').addEventListener('click',e=>{const b=e.target.closest('button[data-m]');if(!b)return;audio();
   ({shop:openShop,recipes:openRecipes,upgrades:()=>openUpgrades(false),staff:openStaff,business:openBusiness,daily:openDaily,awards:openAwards,settings:openSettings})[b.dataset.m]();});
-$('playBtn').onclick=()=>{audio();SFX.win();renderHome();show('home');if(P.daily.last!==today())setTimeout(openDaily,350);};
+function welcomeBonus(after){
+  modalLock(true);
+  openModal(`<div class="rain">${coinRain(34)}</div><h2>🎁 Welcome Bonus!</h2><div class="hq">🪙</div>
+    <p class="center"><b>Welcome to Pizza Empire!</b><br>Here are <b>500 coins</b> to start your pizza business.</p>
+    <button class="btn gold" style="width:100%;font-size:20px" id="wbClaim">Claim 500 🪙</button>`);
+  $('wbClaim').onclick=()=>{P.coins+=500;P.welcomed=1;P.totals.earned+=0;save();SFX.win();flyCoins($('wbClaim'),14,500);
+    setTimeout(()=>{modalLock(false);closeModal();renderHome();if(after)after();},700);};
+}
+$('playBtn').onclick=()=>{audio();SFX.win();renderHome();show('home');
+  const daily=()=>{if(P.daily.last!==today())setTimeout(openDaily,350);};
+  if(!P.welcomed)setTimeout(()=>welcomeBonus(daily),300);else daily();};
 </script>
 <script>
 /* =====================================================================
@@ -1522,7 +1532,7 @@ const TY=(function(){
   const PAD_TOTAL=PADS.length;const PAD_IDS=PADS.map(p=>p.id);
 
   /* ---------- save ---------- */
-  function SV(){if(!P.ty)P.ty={lvl:0,done:[],coins:20};if(!P.ty.timers)P.ty.timers={};return P.ty;}
+  function SV(){if(!P.ty)P.ty={lvl:0,done:[],coins:0};if(!P.ty.timers)P.ty.timers={};if(P.ty.coins>0){P.coins+=P.ty.coins;P.ty.coins=0;}return P.ty;}
   const doneCount=()=>SV().done.filter(id=>PAD_IDS.includes(id)).length;
   const boostCost=b=>Math.round(BOOSTS[b].cost*mult()/5)*5;
   const mult=()=>1+SV().lvl*0.9;
@@ -1701,7 +1711,7 @@ const TY=(function(){
   }
 
   /* ---------- coins on player's back ---------- */
-  function updateCoinTower(){const c=SV().coins;W.player.coinPile.n=Math.min(30,Math.ceil(c/Math.max(2,4*mult())));W.player.coinPile.sync();$('tyCoins').textContent=fmt(c);}
+  function updateCoinTower(){const c=P.coins;setCoins();W.player.coinPile.n=Math.min(30,Math.ceil(c/Math.max(2,4*mult())));W.player.coinPile.sync();$('tyCoins').textContent=fmt(c);}
 
   /* ---------- movement + collisions ---------- */
   function collide(pos,r){const b=W.bounds;pos.x=Math.max(b.x0+.4,Math.min(b.x1-.4,pos.x));
@@ -1733,7 +1743,7 @@ const TY=(function(){
     a.cd=did?.11:0;
   }
   function collectCash(){const c=W.stations.cash;const v=c.coins;c.coins=0;c.piles.forEach(p=>{p.n=0;p.sync();});
-    SV().coins+=v;flyHud(c.g.position,Math.min(12,4+v/10));SFX.coin();updateCoinTower();saveSoon();sparkle3(c.g.position.x,.6,c.g.position.z);}
+    P.coins+=v;flyHud(c.g.position,Math.min(12,4+v/10));SFX.coin();updateCoinTower();saveSoon();sparkle3(c.g.position.x,.6,c.g.position.z);}
   function addCash(v){const c=W.stations.cash;c.coins+=v;let left=Math.min(56,Math.ceil(c.coins/Math.max(2,3*mult())));c.piles.forEach(p=>{p.n=Math.min(14,left);left-=p.n;p.sync();});}
   function flyHud(pos,n){const v=pos.clone();v.y=1;v.project(cam);const r=canvas.getBoundingClientRect();
     const fake={getBoundingClientRect:()=>({left:r.left+(v.x+1)/2*r.width-10,top:r.top+(1-v.y)/2*r.height-10,width:20,height:20})};flyCoins(fake,Math.round(n));}
@@ -1794,12 +1804,12 @@ const TY=(function(){
   function mmss(s){s=Math.ceil(s);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0');}
   function openBooth(id){const TM=SV().timers;const list=Object.keys(BOOSTS).filter(k=>BOOSTS[k].booth===id);
     openModal(`<button class="close" id="bx">✕</button><h2>${id==='staff'?'🧑‍🍳 Staff Room':'⚙️ Machine Shop'}</h2>
-      <p class="center" style="margin:0 0 6px">🪙 ${fmt(SV().coins)} · ${id==='staff'?'Hire helpers for 3 minutes':'Run machines for a short time'}</p><div class="body">${list.map(k=>{const b=BOOSTS[k],c=boostCost(k),on=(TM[k]||0)>0;
+      <p class="center" style="margin:0 0 6px">🪙 ${fmt(P.coins)} · ${id==='staff'?'Hire helpers for 3 minutes':'Run machines for a short time'}</p><div class="body">${list.map(k=>{const b=BOOSTS[k],c=boostCost(k),on=(TM[k]||0)>0;
       return `<div class="row"><div class="ic">${b.ic}</div><div class="tx"><b>${b.n}</b><small>${b.d}</small><small>⏱ ${mmss(b.dur)}${on?` · <b style="color:var(--basil)">active ${mmss(TM[k])}</b>`:''}</small></div>
-      <button class="btn sm" data-bk="${k}" ${SV().coins<c?'disabled':''}>${on?'+'+mmss(b.dur):'Hire'} ${fmt(c)}🪙</button></div>`;}).join('')}</div>`);
+      <button class="btn sm" data-bk="${k}" ${P.coins<c?'disabled':''}>${on?'+'+mmss(b.dur):'Hire'} ${fmt(c)}🪙</button></div>`;}).join('')}</div>`);
     $('bx').onclick=closeModal;
-    $('modal').querySelectorAll('[data-bk]').forEach(btn=>btn.onclick=()=>{const k=btn.dataset.bk,c=boostCost(k);if(SV().coins<c)return toast('Not enough coins');
-      SV().coins-=c;TM[k]=(TM[k]||0)+BOOSTS[k].dur;updateCoinTower();save();SFX.unlock();syncHelpers(false);closeModal();
+    $('modal').querySelectorAll('[data-bk]').forEach(btn=>btn.onclick=()=>{const k=btn.dataset.bk,c=boostCost(k);if(P.coins<c)return toast('Not enough coins');
+      P.coins-=c;TM[k]=(TM[k]||0)+BOOSTS[k].dur;updateCoinTower();save();SFX.unlock();syncHelpers(false);closeModal();
       banner(`${BOOSTS[k].ic} ${BOOSTS[k].n} working for ${mmss(TM[k])}!`);});}
   function timersTick(dt){const TM=SV().timers;let changed=false;
     for(const k in TM){if(TM[k]>0){TM[k]-=dt;if(TM[k]<=0){TM[k]=0;changed=true;toast(`${BOOSTS[k].ic} ${BOOSTS[k].n} finished. Rehire at the ${BOOSTS[k].booth==='staff'?'Staff Room':'Machine Shop'}`);}}}
@@ -1855,7 +1865,7 @@ const TY=(function(){
     for(const id in W.pads){const pd=W.pads[id],p=pd.p,cost=padCost(p);const s=p.big?1.1:.85;
       const on=Math.abs(W.player.p.position.x-p.x)<s&&Math.abs(W.player.p.position.z-p.z)<s;
       pd.m.position.y=.03+(on?.02:0);const pu=1+Math.sin(performance.now()/260)*.08;pd.ring.scale.set(pu,pu,1);pd.ring.material.opacity=.5+Math.sin(performance.now()/260)*.3;
-      if(on&&SV().coins>0&&W.padT<=0){const step=Math.min(SV().coins,cost-pd.paid,Math.max(1,Math.ceil(cost/35)));pd.paid+=step;SV().coins-=step;W.padT=.045;
+      if(on&&P.coins>0&&W.padT<=0){const step=Math.min(P.coins,cost-pd.paid,Math.max(1,Math.ceil(cost/35)));pd.paid+=step;P.coins-=step;W.padT=.045;
         coinToPad(p);updateCoinTower();pd.dirty=1;
         if(pd.paid>=cost){complete(id);return;}}
       if(pd.dirty&&(pd.t=(pd.t||0)+dt)>.08){pd.t=0;pd.dirty=0;pd.m.material.map=padTex(p,pd.paid);pd.m.material.needsUpdate=true;}}}
@@ -1934,7 +1944,7 @@ const TY=(function(){
 
   function start(){show('tycoon');setCoins();if(!W)build();else{refreshPads();updateCoinTower();syncHelpers(true);}running=true;last=performance.now();requestAnimationFrame(loop);}
   function stop(){running=false;save();}
-  return{start,stop,info:()=>{const s=SV();return{lvl:s.lvl,stage:Math.min(doneCount()+1,PAD_TOTAL),total:PAD_TOTAL,name:THEMES[s.lvl%THEMES.length].n};},debug:()=>W,addCoins:v=>{SV().coins+=v;if(W)updateCoinTower();save();}};
+  return{start,stop,info:()=>{const s=SV();return{lvl:s.lvl,stage:Math.min(doneCount()+1,PAD_TOTAL),total:PAD_TOTAL,name:THEMES[s.lvl%THEMES.length].n};},debug:()=>W,addCoins:v=>{P.coins+=v;if(W)updateCoinTower();save();}};
 })();
 
 if(TY)$('tyShop').onclick=()=>openShop();
