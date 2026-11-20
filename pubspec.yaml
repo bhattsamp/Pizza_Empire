@@ -22,9 +22,12 @@ flutter:
   uses-material-design: true
   assets:
     - assets/game/
+    - assets/splash/
 
 flutter_launcher_icons:
   android: true
   ios: true
   image_path: "assets/icon/icon.png"
   remove_alpha_ios: true
+  adaptive_icon_background: "#F4B400"
+  adaptive_icon_foreground: "assets/icon/icon_fg.png"

@@ -36,11 +36,16 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
   late final WebViewController _controller;
   bool _loading = true;
+  bool _minTimeDone = false;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    // Show the loading art for at least 2.5 s so the bar can fill.
+    Future.delayed(const Duration(milliseconds: 2500), () {
+      if (mounted) setState(() => _minTimeDone = true);
+    });
 
     _controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
@@ -102,32 +107,103 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
           child: Stack(
             children: [
               WebViewWidget(controller: _controller),
-              if (_loading)
-                Container(
-                  color: const Color(0xFFD7263D),
-                  alignment: Alignment.center,
-                  child: const Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text('🍕', style: TextStyle(fontSize: 96)),
-                      SizedBox(height: 12),
-                      Text(
-                        'PIZZA EMPIRE',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 32,
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: 1,
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      CircularProgressIndicator(color: Colors.white),
-                    ],
-                  ),
-                ),
+              if (_loading || !_minTimeDone) const LoadingScreen(),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// Loading screen: chef artwork with an animated progress bar.
+class LoadingScreen extends StatelessWidget {
+  const LoadingScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: const Color(0xFF2B1A10),
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          Image.asset('assets/splash/loading.jpg',
+              fit: BoxFit.cover, alignment: Alignment.topCenter),
+          const DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [0.6, 1.0],
+                colors: [Colors.transparent, Color(0xCC000000)],
+              ),
+            ),
+          ),
+          Align(
+            alignment: const Alignment(0, 0.86),
+            child: TweenAnimationBuilder<double>(
+              tween: Tween(begin: 0, end: 1),
+              duration: const Duration(milliseconds: 2400),
+              curve: Curves.easeInOut,
+              builder: (context, v, _) => Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 40),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text(
+                      'Loading...',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 26,
+                        fontWeight: FontWeight.w900,
+                        shadows: [Shadow(color: Colors.black54, blurRadius: 6, offset: Offset(0, 2))],
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Container(
+                      height: 30,
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF5D3A1A),
+                        borderRadius: BorderRadius.circular(18),
+                        border: Border.all(color: Colors.white, width: 3),
+                      ),
+                      child: Stack(
+                        children: [
+                          FractionallySizedBox(
+                            widthFactor: v.clamp(0.02, 1.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(14),
+                                gradient: const LinearGradient(
+                                  colors: [Color(0xFFFFE066), Color(0xFFFFB300)],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 10),
+                              child: Text(
+                                '${(v * 100).round()}%',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
