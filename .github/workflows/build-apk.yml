@@ -39,7 +39,11 @@ jobs:
       - name: Use the fixed release signing key (so updates install over old versions)
         if: ${{ env.KS != '' }}
         run: |
-          echo "$KS" | base64 -d > android/app/upload.jks
+          printf %s "$KS" | tr -d ' \r\n\t' | base64 -d > android/app/upload.jks
+          PW_CLEAN=$(printf %s "$KS_PW" | tr -d ' \r\n\t')
+          echo "KS_PW=$PW_CLEAN" >> "$GITHUB_ENV"
+          echo "Keystore fingerprint: $(sha256sum android/app/upload.jks | cut -c1-12)  (expected f0425847ecc0)"
+          if keytool -list -keystore android/app/upload.jks -storepass "$PW_CLEAN" -alias pizzaempire >/dev/null 2>&1; then echo "Keystore password OK"; else echo "::error::Keystore password does not match the key in ANDROID_KEYSTORE_BASE64"; exit 1; fi
           python3 - <<'PY'
           p='android/app/build.gradle.kts'
           s=open(p).read()
