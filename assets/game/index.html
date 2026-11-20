@@ -1865,6 +1865,10 @@ const TY=(function(){
     W.stations[id]={g,type:'table',seats,x,z};W.obst.push({x0:x-.65,x1:x+.65,z0:z-.5,z1:z+.5});if(anim)popIn(g);}
   /* ---------- timed helpers ---------- */
   const ROLE={waiter:{shirt:'#1e88e5',role:'runner'},baker:{shirt:'#8e24aa',role:'baker'},cashier:{shirt:'#00897b',role:'cashier'}};
+  function fadePerson(p,v){p.traverse(m=>{if(!m.isMesh)return;
+      if(!m.userData.ownMat){m.material=Array.isArray(m.material)?m.material.map(x=>x.clone()):m.material.clone();m.userData.ownMat=1;}
+      for(const mt of(Array.isArray(m.material)?m.material:[m.material])){mt.transparent=true;mt.opacity=v;mt.depthWrite=v>.95;}
+      m.castShadow=v>.3;});p.scale.setScalar(.85+.15*v);}
   function syncHelpers(instant){const T_=SV().timers;
     for(const k of['waiter','baker','cashier']){const on=(T_[k]||0)>0,h=W.helpers[k];
       if(on&&!h){const p=S3.makePerson({shirt:ROLE[k].shirt,skin:['#e0ac69','#c68642','#f1c27d'][k.length%3],hat:k==='cashier'?'bow':'chef',pants:'#37474f',hair:'#3e2723'});
@@ -1972,9 +1976,17 @@ const TY=(function(){
   /* ---------- helper AI ---------- */
   function helperAI(h,dt){
     const S=W.stations;
-    if(h.leaving){h.waveT-=dt;if(h.waveT>0){S3.animPerson(h.p,dt,'wave');h.p.rotation.y=0;return;}
-      const done=goTo(h,V(0,7.5),dt);if(done||h.p.position.z>6.6&&Math.abs(h.p.position.x)<1){h.p.position.z+=dt*3;}
-      if(h.p.position.z>7.2){W.root.remove(h.p);delete W.helpers[h.id];}return;}
+    if(h.leaving){
+      if(!h.byeDone){h.byeDone=1;floatEmoji('👋',h.p.position,2);
+        // hand over anything still being carried
+        if(h.stack.n>0){const pl=S.counter.piles[h.stack.type];if(pl){const k=Math.min(h.stack.n,pl.max-pl.n);pl.add(k);}h.stack.n=0;h.stack.sync();h.stack.type=null;}}
+      h.waveT-=dt;if(h.waveT>0){S3.animPerson(h.p,dt,'wave');h.p.rotation.y=0;return;}
+      // slowly fade away while strolling towards the door
+      h.fade=(h.fade===undefined?1:h.fade)-dt/2.2;
+      const d=V(0-h.p.position.x,6.5-h.p.position.z);if(d.length()>.1){h.p.position.addScaledVector(d.normalize(),dt*1.1);h.p.rotation.y=Math.atan2(d.x,d.z);}
+      S3.animPerson(h.p,dt,'walk');fadePerson(h.p,Math.max(0,h.fade));
+      if(Math.random()<dt*10)sparkle3(h.p.position.x,.6+Math.random()*1.2,h.p.position.z);
+      if(h.fade<=0){W.root.remove(h.p);delete W.helpers[h.id];}return;}
     if(h.role==='cashier'){goTo(h,V(3.6,1.0),dt);h.p.rotation.y=-Math.PI/2;
       W.autoT.cashier-=dt;if(W.autoT.cashier<=0&&S.cash.coins>0){W.autoT.cashier=1.2;collectCash();S3.animPerson(h.p,0,'happy');}return;}
     const outs=Object.keys(S).filter(k=>(S[k].type==='oven'&&S[k].out.n>0)||(S[k].type==='src'&&S[k].item!=='dough'&&S[k].pile.n>0));
