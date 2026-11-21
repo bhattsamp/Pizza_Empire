@@ -229,6 +229,25 @@ background:linear-gradient(135deg,var(--tomato),var(--tomatoD));border:4px solid
 .tyProg i{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#8bc34a,#2e7d32);transition:width .4s}
 .tyProg span{position:relative;font-size:11px;font-weight:900;display:block;text-align:center;line-height:16px}
 #tycoon .chip{font-size:16px;padding:7px 12px}
+#tyNew{position:absolute;left:50%;top:22%;transform:translate(-50%,-30px) scale(.6);opacity:0;pointer-events:none;background:linear-gradient(160deg,#fffdf5,#ffe9b0);border:4px solid #ffb300;border-radius:24px;padding:14px 18px 12px;text-align:center;box-shadow:0 12px 30px #0006;min-width:220px;max-width:86%;z-index:6}
+#tyNew.on{animation:newCard 3.2s ease forwards}
+#tyNew .nw{position:absolute;top:-14px;left:50%;transform:translateX(-50%) rotate(-4deg);background:#e53935;color:#fff;font-weight:900;font-size:13px;letter-spacing:2px;padding:3px 12px;border-radius:10px;box-shadow:0 3px 0 #9a1b1b}
+#tyNew .ni{font-size:46px;line-height:1.1;margin-top:4px;animation:niBounce .9s ease infinite alternate}
+#tyNew b{display:block;font-size:18px;color:#4e342e;margin-top:2px}#tyNew small{display:block;font-size:12.5px;color:#6d4c41;font-weight:700;margin-top:4px;line-height:1.3}
+@keyframes newCard{0%{opacity:0;transform:translate(-50%,-30px) scale(.6)}10%{opacity:1;transform:translate(-50%,0) scale(1.08)}16%{transform:translate(-50%,0) scale(1)}85%{opacity:1;transform:translate(-50%,0) scale(1)}100%{opacity:0;transform:translate(-50%,-20px) scale(.9)}}
+@keyframes niBounce{from{transform:translateY(0) scale(1)}to{transform:translateY(-6px) scale(1.12)}}
+.rcard{display:flex;align-items:center;gap:12px;background:#fff;border-radius:20px;padding:12px;margin:10px 12px;box-shadow:0 4px 0 #e8d3b5}
+.rcard .rn{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:26px;font-weight:900;color:#fff;flex:none}
+.rcard h3{margin:0;font-size:16px}.rcard small{display:block;color:#7a5c48;font-weight:700;font-size:12px;margin-top:2px}
+.rcard .em{font-size:20px;letter-spacing:2px;margin-top:3px}
+.rcard.lock{opacity:.55;filter:grayscale(.6)}.rcard.done .rn{background:#43a047!important}
+.rcard.cur{box-shadow:0 0 0 3px #ffb300,0 6px 0 #e8a200;animation:pulseC 1.6s ease infinite}
+@keyframes pulseC{50%{transform:scale(1.015)}}
+.rcard .go{background:linear-gradient(#ffca28,#ff9800);color:#4e2600;font-weight:900;border-radius:14px;padding:10px 14px;font-size:15px;box-shadow:0 3px 0 #c66900}
+.empHead{margin:12px;border-radius:24px;padding:16px;background:linear-gradient(135deg,#d7263d,#ff7043);color:#fff;box-shadow:0 6px 0 #9a1b1b;display:flex;align-items:center;gap:12px;cursor:pointer}
+.empHead .big{font-size:44px}.empHead b{font-size:20px;display:block}.empHead small{display:block;font-weight:700;opacity:.95}
+.empHead .play{margin-left:auto;background:#fff;color:#d7263d;font-weight:900;border-radius:16px;padding:12px 16px;font-size:18px;box-shadow:0 4px 0 #f3c1c1}
+.empBar{height:10px;background:#ffffff55;border-radius:6px;margin-top:6px;overflow:hidden}.empBar i{display:block;height:100%;background:#ffeb3b}
 #tyHint{position:absolute;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translateX(-50%);background:#000a;color:#fff;font-weight:800;font-size:14px;padding:9px 14px;border-radius:14px;white-space:nowrap;pointer-events:none;max-width:94%;overflow:hidden;text-overflow:ellipsis}
 #tyBanner{position:absolute;left:50%;top:84px;transform:translateX(-50%) scale(0);background:linear-gradient(#ffd54f,#ffb300);color:#3b2414;font-weight:900;font-size:18px;padding:10px 18px;border-radius:16px;border:3px solid #fff;box-shadow:0 4px 10px #0004;white-space:nowrap;pointer-events:none}
 #tyBanner.on{animation:bannerPop 2.2s forwards}
@@ -289,16 +308,12 @@ background:linear-gradient(135deg,var(--tomato),var(--tomatoD));border:4px solid
   </section>
 
   <section id="home" class="screen">
-    <div class="topbar"><h1>👑 Pizza Empire</h1><span class="chip">⭐ <span id="homeStars">0</span></span><span class="chip coinChipH">🪙 <span class="coinsTxt">0</span></span></div>
+    <div class="topbar"><h1>👑 Pizza Empire</h1><span class="chip">🏁 <span id="homeStars">0</span></span><span class="chip coinChipH">🪙 <span class="coinsTxt">0</span></span></div>
     <div class="scroll" id="outletList"></div>
     <div class="navbar">
-      <button data-m="recipes">📖<span>Recipes</span></button>
-      <button data-m="upgrades">🔧<span>Upgrades</span></button>
-      <button data-m="staff">👨‍🍳<span>Staff</span></button>
-      <button data-m="business">📊<span>Business</span></button>
+      <button data-m="menu">📖<span>Menus</span></button>
       <button data-m="shop">🛒<span>Shop</span></button>
       <button data-m="daily">🎁<span>Daily</span><i class="dot" id="dailyDot" style="display:none"></i></button>
-      <button data-m="awards">🏆<span>Awards</span></button>
       <button data-m="settings">⚙️<span>Settings</span></button>
     </div>
   </section>
@@ -314,6 +329,7 @@ background:linear-gradient(135deg,var(--tomato),var(--tomatoD));border:4px solid
     <div id="tyTimers"></div>
     <div id="tyBanner"></div>
     <div id="tyHint"></div>
+    <div id="tyNew"></div>
     <div id="joyBase"><div id="joyKnob"></div></div>
   </section>
 
@@ -755,24 +771,28 @@ function outletProgress(ch){let c=0;for(let k=0;k<10;k++)if(P.stars[ch*10+k]>0)c
 function renderHome(){
   setCoins();$('homeStars').textContent=P.stars.reduce((a,b)=>a+b,0);
   $('dailyDot').style.display=P.daily.last!==today()?'block':'none';
-  const ti=TY?TY.info():null;
-  $('outletList').innerHTML=(ti?`<div class="rushBanner" id="rushBtn"><div class="ic">🏃</div><div><b>PIZZA RUSH</b><small>${ti.name} · Stage ${ti.stage}/${ti.total}</small><small>Run your restaurant, build &amp; expand!</small></div><div class="go">PLAY</div></div>`:'')+CHAPTERS.map((C,ch)=>{
-    const open=ch<P.outlets,prog=outletProgress(ch),reqStage=ch*10,canStage=ch===0||P.stars[reqStage-1]>0;
-    const cur=open&&(ch===P.outlets-1);
-    let sub=open?`${C.loc} · ${C.kind}`:`🔒 Needs Stage ${reqStage} + ${fmt(C.cost)} 🪙`;
-    let btn='';
-    if(!open&&ch===P.outlets)btn=`<button class="btn sm gold" data-unlock="${ch}" ${canStage&&P.coins>=C.cost?'':'disabled'}>Unlock ${fmt(C.cost)}🪙</button>`;
-    return `<div class="outlet ${open?'':'locked'} ${cur?'cur':''}" data-ch="${ch}"><div class="bld">${open?C.e:'🏗️'}</div>
-      <div style="flex:1;min-width:0"><h3>${ch+1}. ${C.n}</h3><small>${sub}</small>${open?`<small>Stages ${ch*10+1}–${ch*10+10} · ⭐ ${P.stars.slice(ch*10,ch*10+10).reduce((a,b)=>a+b,0)}/30</small><div class="pbar"><i style="width:${prog*10}%"></i></div>`:''}${btn?'<div style="margin-top:6px">'+btn+'</div>':''}</div></div>`;
-  }).join('');
+  const ti=TY?TY.info():null;if(!ti){$('outletList').innerHTML='';return;}
+  $('homeStars').textContent=ti.stage+'/'+ti.total;
+  const R=TY.restos(),cols=['#d7263d','#00897b','#ff9800','#43a047','#3949ab','#6d4c41','#d84315','#ff4081','#ffb300','#7b1fa2'];
+  const cur=ti.lvl%R.length,loop=Math.floor(ti.lvl/R.length);
+  $('outletList').innerHTML=`<div class="empHead" id="rushBtn"><div class="big">🍕</div><div><b>${ti.name}</b><small>Stage ${ti.stage} of ${ti.total}${loop?' · ★'+loop:''}</small><div class="empBar"><i style="width:${(ti.stage-1)/ti.total*100}%"></i></div></div><div class="play">PLAY ▶</div></div>`+
+   R.map((x,i)=>{const done=i<cur||loop>0&&i!==cur,isCur=i===cur,lock=!done&&!isCur;
+    return `<div class="rcard ${done?'done':''} ${isCur?'cur':''} ${lock?'lock':''}" data-r="${i}"><div class="rn" style="background:${cols[i]}">${done?'✓':lock?'🔒':i+1}</div>
+      <div style="flex:1;min-width:0"><h3>${x.n}</h3><small>Stages ${i*10+1}–${i*10+10} · ${x.r.dc[1]} ${x.r.dc[0]} · ${x.ev.ic} ${x.ev.n}</small><div class="em">${x.r.m.map(m=>m[1]).join('')}${x.r.dr[1]}${x.r.sd.map(m=>m[1]).join('')}</div></div>
+      ${isCur?'<div class="go">PLAY</div>':''}</div>`;}).join('');
 }
 $('outletList').addEventListener('click',e=>{
-  if(e.target.closest('#rushBtn')){audio();TY.start();return;}
+  if(e.target.closest('#rushBtn')||e.target.closest('.rcard.cur')){audio();TY.start();return;}
+  const rc=e.target.closest('.rcard');if(rc){toast(rc.classList.contains('done')?'✅ Already built! Keep growing your current restaurant':'🔒 Finish the restaurant before it first');return;}
   const u=e.target.closest('[data-unlock]');
   if(u){e.stopPropagation();unlockOutlet(+u.dataset.unlock);return;}
   const o=e.target.closest('.outlet');if(!o)return;const ch=+o.dataset.ch;
   if(ch<P.outlets)openStages(ch);else{const C=CHAPTERS[ch];toast(ch>P.outlets?'Unlock the previous outlet first':`Complete Stage ${ch*10} and save ${fmt(C.cost)} coins`);}
 });
+function openMenus(){const R=TY.restos(),ti=TY.info();
+  openModal(`<h2>📖 Restaurant Menus</h2><p class="center"><small>100% vegetarian 🌱</small></p><div style="max-height:60vh;overflow:auto">`+R.map((x,i)=>{const lock=i>ti.lvl%R.length&&ti.lvl<R.length;
+    return `<div style="background:#fff8ec;border-radius:16px;padding:10px 12px;margin:8px 0;${lock?'opacity:.5':''}"><b>${i+1}. ${x.n}</b> ${lock?'🔒':''}<div style="font-size:13px;font-weight:700;line-height:1.6;margin-top:4px">`+
+    [...x.r.m,x.r.dr,...x.r.sd].map(m=>`${m[1]} ${m[0]}`).join(' · ')+`<br>${x.r.dc[1]} ${x.r.dc[0]} · ${x.ev.ic} ${x.ev.n}</div></div>`;}).join('')+`</div><button class="btn" style="width:100%;margin-top:8px" onclick="closeModal()">Close</button>`);}
 function unlockOutlet(ch){
   const C=CHAPTERS[ch];
   if(ch!==P.outlets)return toast('Unlock outlets in order');
@@ -1330,7 +1350,7 @@ function openSettings(){
     $('yes').onclick=()=>{try{localStorage.removeItem('pizzaEmpire.v1');}catch(e){}loadSave();closeModal();renderHome();};$('no').onclick=openSettings;};
 }
 document.querySelector('#home .navbar').addEventListener('click',e=>{const b=e.target.closest('button[data-m]');if(!b)return;audio();
-  ({shop:openShop,recipes:openRecipes,upgrades:()=>openUpgrades(false),staff:openStaff,business:openBusiness,daily:openDaily,awards:openAwards,settings:openSettings})[b.dataset.m]();});
+  ({shop:openShop,menu:openMenus,recipes:openRecipes,upgrades:()=>openUpgrades(false),staff:openStaff,business:openBusiness,daily:openDaily,awards:openAwards,settings:openSettings})[b.dataset.m]();});
 function welcomeBonus(after){
   modalLock(true);
   openModal(`<div class="rain">${coinRain(34)}</div><h2>🎁 Welcome Bonus!</h2><div class="hq">🪙</div>
@@ -1700,18 +1720,65 @@ const TY=(function(){
   function pizzaBox(type,emo,col){return{h:.1,icon:emo,make(){const g=new T.Group();mesh(G_.pz,M('#d7a86e'),0,0,0,g);mesh(G_.lid,new T.MeshStandardMaterial({map:lidTex(type,emo,col)}),0,.047,0,g);return g;}};}
   const ITEM={
     dough:{h:.2,icon:'⚪',make(){const m=mesh(G_.dough,M('#f3dfb5'));m.scale.y=.7;return m;}},
-    pizza:pizzaBox('pizza','🍕','#d7263d'),
-    paneerPz:pizzaBox('paneerPz','🧀','#ff9800'),
-    vegPz:pizzaBox('vegPz','🥦','#2e7d32'),
-    drink:{h:.29,icon:'🥤',make(){const g=new T.Group();mesh(G_.cup,M('#e53935'),0,0,0,g);mesh(G_.cupLid,M('#fff'),0,.14,0,g);mesh(G_.straw,M('#ffeb3b'),.04,.24,0,g);return g;}},
-    bread:{h:.15,icon:'🥖',make(){const m=mesh(G_.bread,M('#e0a040'));m.rotation.z=Math.PI/2;return m;}},
-    fries:{h:.3,icon:'🍟',make(){const g=new T.Group();const c=mesh(G_.fryCup,M('#e53935'),0,0,0,g);c.rotation.y=Math.PI/4;for(let k=0;k<7;k++){const f=mesh(G_.fry,M('#ffd54f'),(k%4-1.5)*.045,.14,(Math.floor(k/4)-.5)*.05,g);f.rotation.z=(k%3-1)*.15;}return g;}},
-    lassi:{h:.32,icon:'🥭',make(){const g=new T.Group();mesh(G_.glass,M('#ffca28',{roughness:.3}),0,0,0,g);mesh(G_.cupLid,M('#fff8e1'),0,.16,0,g);mesh(G_.straw,M('#43a047'),.03,.26,0,g);return g;}},
-    ice:{h:.33,icon:'🍦',make(){const g=new T.Group();const c=mesh(G_.cone,M('#d7a86e'),0,-.03,0,g);c.rotation.x=Math.PI;mesh(G_.scoop,M('#f48fb1',{roughness:.4}),0,.12,0,g);return g;}},
   };
-  const MENU_NAME={pizza:'Margherita',paneerPz:'Paneer Pizza',vegPz:'Veggie Pizza',drink:'Cold Drink',bread:'Garlic Bread',fries:'French Fries',lassi:'Mango Lassi',ice:'Ice Cream'};
-  const PRICE={pizza:10,paneerPz:14,vegPz:16,drink:5,bread:8,fries:6,lassi:7,ice:9};
-  const MAINS=['pizza','paneerPz','vegPz'],SIDES=['drink','bread','fries','lassi','ice'],SELL=[...MAINS,...SIDES];
+  const MENU_NAME={},PRICE={};
+  /* ---------- 10 restaurants: every one has its own veg menu, machines, decor & fun event ---------- */
+  const RESTOS=[
+    {m:[['Margherita Pizza','🍕','#d7263d'],['Paneer Pizza','🧀','#ff9800'],['Veggie Pizza','🥦','#2e7d32']],dr:['Cold Drink','🥤','cup','#e53935'],sd:[['French Fries','🍟','fries','#e53935'],['Garlic Bread','🥖','bread','#e0a040']],
+     dc:['Flower Garden','🌷','flowers'],ev:'coinrain'},
+    {m:[['Sweet Corn Pizza','🌽','#fbc02d'],['Pasta Alfredo','🍝','#ff7043'],['Veg Burger','🍔','#8d6e63']],dr:['Coconut Water','🥥','coco','#6d4c41'],sd:[['Fresh Lemonade','🍋','glass','#fff176'],['Onion Rings','🧅','donut','#e0a040']],
+     dc:['Beach Umbrellas','⛱️','umbrellas'],ev:'vip'},
+    {m:[['Mushroom Pizza','🍄','#8d6e63'],['Veg Sandwich','🥪','#43a047'],['Veg Tacos','🌮','#ffa000']],dr:['Cold Coffee','☕','mug','#6d4c41'],sd:[['Popcorn','🍿','fries','#d32f2f'],['Choco Shake','🍫','glass','#5d4037']],
+     dc:['Jukebox & Neon','🎵','jukebox'],ev:'birthday'},
+    {m:[['Pesto Pizza','🌿','#388e3c'],['Garden Salad','🥗','#7cb342'],['Veg Wrap','🌯','#c0a060']],dr:['Mint Mojito','🍹','glass','#a5d6a7'],sd:[['Fruit Bowl','🍉','glass','#ef5350'],['Mango Lassi','🥭','glass','#ffca28']],
+     dc:['Garden Fountain','⛲','fountain'],ev:'happy'},
+    {m:[['Pineapple Pizza','🍍','#fbc02d'],['Veg Momos','🥟','#bdbdbd'],['Hakka Noodles','🍜','#ff8f00']],dr:['Blue Mocktail','🍹','glass','#29b6f6'],sd:[['Ice Cream','🍦','cone','#f48fb1'],['Corn Cup','🌽','cup','#fdd835']],
+     dc:['Lanterns & Bonfire','🏮','lanterns'],ev:'coinrain'},
+    {m:[['Cheese Burst Pizza','🧀','#ffb300'],['Tomato Soup','🍲','#e53935'],['Aloo Paratha','🥔','#c8a165']],dr:['Hot Chocolate','☕','mug','#4e342e'],sd:[['Pretzel','🥨','bread','#a1662f'],['Choco Donut','🍩','donut','#6d4c41']],
+     dc:['Fireplace & Snowman','☃️','fireplace'],ev:'vip'},
+    {m:[['Paneer Tikka Pizza','🌶️','#e65100'],['Veg Biryani','🍛','#ffa000'],['Veg Kebab Wrap','🥙','#a1887f']],dr:['Rose Sharbat','🌹','glass','#f06292'],sd:[['Kulfi','🍨','cone','#fff3e0'],['Masala Fries','🍟','fries','#ff7043']],
+     dc:['Oasis Palms','🌴','palms'],ev:'birthday'},
+    {m:[['Tandoori Pizza','🔥','#d84315'],['Veg Hot Dog','🌭','#ff7043'],['Deluxe Burger','🍔','#6d4c41']],dr:['Neon Soda','🥤','cup','#ff4081'],sd:[['Caramel Popcorn','🍿','fries','#7b1fa2'],['Cupcake','🧁','cone','#ba68c8']],
+     dc:['Neon Stage','🎤','jukebox'],ev:'happy'},
+    {m:[['Shahi Paneer Pizza','👑','#ffb300'],['Veg Pulao','🍚','#fff8e1'],['Paneer Masala','🍛','#ff7043']],dr:['Kesar Badam Milk','🥛','glass','#ffe082'],sd:[['Gulab Jamun','🍯','donut','#8d3b1a'],['Rasmalai','🍮','glass','#fffde7']],
+     dc:['Royal Fountain','⛲','fountain'],ev:'vip'},
+    {m:[['Supreme Veg Pizza','⭐','#d7263d'],['Jalapeno Pizza','🌶️','#2e7d32'],['Veg Lasagna','🍝','#ff7043']],dr:['Strawberry Shake','🍓','glass','#f8bbd0'],sd:[['Ice Cream Sundae','🍨','cone','#ffffff'],['Choco Brownie','🍫','bread','#4e342e']],
+     dc:['Golden Pizza Statue','🏆','statue'],ev:'coinrain'},
+  ];
+  const EVENTS={coinrain:{n:'Coin Rain',ic:'🌧️🪙',d:'Coins fall from the sky – run and grab them!'},vip:{n:'VIP Guests',ic:'👑',d:'VIP customers pay 3× coins'},
+    birthday:{n:'Birthday Party',ic:'🎂',d:'Party groups pay 2× coins'},happy:{n:'Happy Hour',ic:'🎉',d:'All bills +50% for 30 seconds'}};
+  function sideItem(kind,emo,col){
+    const mk={
+      cup:()=>{const g=new T.Group();mesh(G_.cup,M(col),0,0,0,g);mesh(G_.cupLid,M('#fff'),0,.14,0,g);mesh(G_.straw,M('#ffeb3b'),.04,.24,0,g);return g;},
+      glass:()=>{const g=new T.Group();mesh(G_.glass,M(col,{roughness:.3}),0,0,0,g);mesh(G_.cupLid,M('#fff8e1'),0,.16,0,g);mesh(G_.straw,M('#43a047'),.03,.26,0,g);return g;},
+      mug:()=>{const g=new T.Group();mesh(cyl(.11,.1,.22,14),M('#ffffff'),0,0,0,g);mesh(cyl(.1,.1,.02,14),M(col),0,.11,0,g);const h=mesh(new T.TorusGeometry(.06,.018,6,12),M('#ffffff'),.12,0,0,g);return g;},
+      coco:()=>{const g=new T.Group();const c=mesh(new T.SphereGeometry(.14,12,10),M('#7cb342'),0,0,0,g);c.scale.y=.9;mesh(G_.straw,M('#f06292'),.03,.15,0,g);return g;},
+      cone:()=>{const g=new T.Group();const c=mesh(G_.cone,M('#d7a86e'),0,-.03,0,g);c.rotation.x=Math.PI;mesh(G_.scoop,M(col,{roughness:.4}),0,.12,0,g);return g;},
+      fries:()=>{const g=new T.Group();const c=mesh(G_.fryCup,M(col),0,0,0,g);c.rotation.y=Math.PI/4;for(let k=0;k<7;k++){const f=mesh(G_.fry,M(emo==='🍿'?'#fff8e1':'#ffd54f'),(k%4-1.5)*.045,.14,(Math.floor(k/4)-.5)*.05,g);f.rotation.z=(k%3-1)*.15;}return g;},
+      bread:()=>{const m=mesh(G_.bread,M(col));m.rotation.z=Math.PI/2;return m;},
+      donut:()=>{const m=mesh(new T.TorusGeometry(.1,.05,8,16),M(col,{roughness:.5}));m.rotation.x=Math.PI/2;return m;},
+    };
+    const h={cup:.29,glass:.32,mug:.24,coco:.26,cone:.33,fries:.3,bread:.15,donut:.1}[kind];
+    return{h,icon:emo,make:mk[kind]};}
+  let MENU=null;
+  function setMenu(lvl){const R=RESTOS[lvl%RESTOS.length];MENU=R;
+    R.m.forEach((m,i)=>{ITEM['m'+i]=pizzaBox('m'+i+'_'+(lvl%RESTOS.length),m[1],m[2]);MENU_NAME['m'+i]=m[0];PRICE['m'+i]=10+i*3+Math.floor((lvl%10)/2);});
+    ITEM.dr=sideItem(R.dr[2],R.dr[1],R.dr[3]);MENU_NAME.dr=R.dr[0];PRICE.dr=5;
+    R.sd.forEach((d,i)=>{ITEM['s'+i]=sideItem(d[2],d[1],d[3]);MENU_NAME['s'+i]=d[0];PRICE['s'+i]=6+i*2;});
+    const ev=EVENTS[R.ev];
+    PADS.length=0;PADS.push(
+      {id:'oven1',n:R.m[0][0]+' Oven',ic:R.m[0][1],cost:15,x:-.6,z:-2.3,d:'New dish on the menu! Bake it from dough.'},
+      {id:'drink',n:R.dr[0]+' Machine',ic:R.dr[1],cost:50,x:-3.35,z:-1.2,d:'Customers love a drink with their meal.'},
+      {id:'table1',n:'Dining Tables',ic:'🪑',cost:70,x:3.4,z:3.3,d:'Dine-in guests pay 1.5× – plus a bigger tray (carry 7).'},
+      {id:'paneer',n:R.m[1][0]+' Oven',ic:R.m[1][1],cost:110,x:1.8,z:-2.3,d:'Second signature dish – more coins per order.'},
+      {id:'staff',n:'Staff Gate',ic:'🧑‍🍳',cost:140,x:-3.1,z:5.35,d:'Hire a waiter, baker & cashier with coins.'},
+      {id:'fries',n:R.sd[0][0]+' Station',ic:R.sd[0][1],cost:180,x:-3.35,z:.7,d:'A tasty new side for every order.'},
+      {id:'decor',n:R.dc[0],ic:R.dc[1],cost:220,x:-3.6,z:3.5,d:'Ambience: +10% on every bill. New event: '+ev.ic+' '+ev.n+'!'},
+      {id:'expand',n:'Expand + Machines',ic:'🏗️',cost:260,x:4.2,z:.4,d:'Bigger restaurant, huge tray (carry 10) & machine gate.'},
+      {id:'veggie',n:'Food Court',ic:R.m[2][1]+R.sd[1][1],cost:360,x:8.6,z:-2.3,d:R.m[2][0]+' oven, '+R.sd[1][0]+' bar & patio seating.'},
+      {id:'next',n:'Open Next Restaurant',ic:'🏪',cost:700,x:10.2,z:5.6,big:1,d:''});
+  }
+  const MAINS=['m0','m1','m2'],SIDES=['dr','s0','s1'],SELL=[...MAINS,...SIDES];
   const ease=t=>{const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(t-1,3)+c1*Math.pow(t-1,2);};
   class Pile{constructor(type,max,parent,x,y,z,cols=1){this.type=type;this.n=0;this.max=max;this.meshes=[];this.a=new T.Group();this.a.position.set(x,y,z);parent.add(this.a);this.cols=cols;}
     sync(){const it=this.type&&ITEM[this.type];
@@ -1724,36 +1791,18 @@ const TY=(function(){
   /* ---------- themes (10 restaurants, then they loop harder) ---------- */
   const THEMES=[
     {n:'Tomato Town Pizzeria',floor:'#e2cfbd',wall:'#ffffff',stripe:'#e53935',ground:'#7cc644',bg:'#9fd8ff'},
-    {n:'Seaside Slice Shack',floor:'#e9f4f7',wall:'#fffdf5',stripe:'#00897b',ground:'#f0d9a0',bg:'#7fd3ff',palms:1},
-    {n:'Downtown Pizza Diner',floor:'#f3ece6',wall:'#fafafa',stripe:'#ff9800',ground:'#9e9e9e',bg:'#b3c7d6'},
-    {n:'Garden Pizza Patio',floor:'#f1f8e9',wall:'#ffffff',stripe:'#43a047',ground:'#5fb84a',bg:'#a5e3ff',trees:1},
-    {n:'Moonlight Beach Pizza',floor:'#e8eaf6',wall:'#fff8e1',stripe:'#3949ab',ground:'#d8c48c',bg:'#1a237e',night:1,palms:1},
-    {n:'Snowy Mountain Lodge',floor:'#efebe9',wall:'#fffaf0',stripe:'#6d4c41',ground:'#eef3f7',bg:'#cfe3f1',trees:1},
-    {n:'Desert Oasis Ovens',floor:'#fff3e0',wall:'#fffdf7',stripe:'#d84315',ground:'#e6c27a',bg:'#ffd59e',palms:1},
-    {n:'Neon City Pizza Bar',floor:'#ede7f6',wall:'#f3e5f5',stripe:'#ff4081',ground:'#424242',bg:'#120a2a',night:1},
-    {n:'Royal Palace Pizzeria',floor:'#fff8e1',wall:'#ffffff',stripe:'#ffb300',ground:'#7cb342',bg:'#a7d8ff',trees:1},
-    {n:'Pizza Empire HQ',floor:'#fbe9e7',wall:'#ffffff',stripe:'#d7263d',ground:'#689f38',bg:'#8fd0ff',trees:1},
+    {n:'Seaside Slice Shack',floor:'#cfe3e8',wall:'#fffdf5',stripe:'#00897b',ground:'#f0d9a0',bg:'#7fd3ff',palms:1},
+    {n:'Downtown Pizza Diner',floor:'#e3d5c8',wall:'#fafafa',stripe:'#ff9800',ground:'#9e9e9e',bg:'#b3c7d6'},
+    {n:'Garden Pizza Patio',floor:'#dcebc8',wall:'#ffffff',stripe:'#43a047',ground:'#5fb84a',bg:'#a5e3ff',trees:1},
+    {n:'Moonlight Beach Pizza',floor:'#d3d6ee',wall:'#fff8e1',stripe:'#3949ab',ground:'#d8c48c',bg:'#1a237e',night:1,palms:1},
+    {n:'Snowy Mountain Lodge',floor:'#ddd3cf',wall:'#fffaf0',stripe:'#6d4c41',ground:'#eef3f7',bg:'#cfe3f1',trees:1},
+    {n:'Desert Oasis Ovens',floor:'#f0dcbc',wall:'#fffdf7',stripe:'#d84315',ground:'#e6c27a',bg:'#ffd59e',palms:1},
+    {n:'Neon City Pizza Bar',floor:'#d9cdee',wall:'#f3e5f5',stripe:'#ff4081',ground:'#424242',bg:'#120a2a',night:1},
+    {n:'Royal Palace Pizzeria',floor:'#efe0b0',wall:'#ffffff',stripe:'#ffb300',ground:'#7cb342',bg:'#a7d8ff',trees:1},
+    {n:'Pizza Empire HQ',floor:'#efd2cc',wall:'#ffffff',stripe:'#d7263d',ground:'#689f38',bg:'#8fd0ff',trees:1},
   ];
   /* ---------- pads = stages ---------- */
-  const PADS=[
-    {id:'oven1',n:'Pizza Oven',ic:'🍕',cost:15,x:-.6,z:-2.3},
-    {id:'cap1',n:'Bigger Tray',ic:'📦',cost:40,x:-3.4,z:3.6},
-    {id:'drink',n:'Cold Drinks',ic:'🥤',cost:60,x:-3.35,z:-1.2},
-    {id:'table1',n:'Dining Table',ic:'🪑',cost:60,x:3.4,z:3.3},
-    {id:'paneer',n:'Paneer Pizza Oven',ic:'🧀',cost:110,x:1.8,z:-2.3},
-    {id:'staff',n:'Staff Gate',ic:'🧑‍🍳',cost:130,x:-3.1,z:5.35},
-    {id:'table2',n:'Dining Table',ic:'🪑',cost:140,x:3.4,z:4.25},
-    {id:'fries',n:'Fries Fryer',ic:'🍟',cost:180,x:-3.35,z:.7},
-    {id:'expand',n:'Expand Restaurant',ic:'🏗️',cost:260,x:4.2,z:.4},
-    {id:'bread',n:'Garlic Bread Oven',ic:'🥖',cost:300,x:6.2,z:-2.3},
-    {id:'machines',n:'Machine Gate',ic:'⚙️',cost:320,x:3.1,z:5.35},
-    {id:'tables2',n:'Patio Tables',ic:'🪑',cost:300,x:8.8,z:3.6},
-    {id:'veggie',n:'Veggie Pizza Oven',ic:'🥦',cost:400,x:8.6,z:-2.3},
-    {id:'lassi',n:'Mango Lassi Bar',ic:'🥭',cost:380,x:10.05,z:-.9},
-    {id:'cap2',n:'Huge Tray',ic:'📦',cost:420,x:6.6,z:3.2},
-    {id:'ice',n:'Ice Cream Machine',ic:'🍦',cost:480,x:10.05,z:1.4},
-    {id:'next',n:'Open Next Restaurant',ic:'🏪',cost:800,x:10.2,z:5.6,big:1},
-  ];
+  const PADS=[];
   /* timed staff & machines bought with coins */
   const BOOSTS={
     waiter:{n:'Waiter',ic:'🧑‍🍳',d:'Carries food from ovens & machines to the counter',dur:180,cost:60,booth:'staff'},
@@ -1764,7 +1813,7 @@ const TY=(function(){
     turbo:{n:'Turbo Kitchen',ic:'🔥',d:'Ovens & machines work 2× faster',dur:120,cost:100,booth:'machines'},
     rush:{n:'Rush Hour',ic:'📣',d:'More customers and +25% on every bill',dur:60,cost:90,booth:'machines'},
   };
-  const PAD_TOTAL=PADS.length;const PAD_IDS=PADS.map(p=>p.id);
+  const PAD_TOTAL=10;const PAD_IDS=['oven1','drink','table1','paneer','staff','fries','decor','expand','veggie','next'];
 
   /* ---------- save ---------- */
   function SV(){if(!P.ty)P.ty={lvl:0,done:[],coins:0};if(!P.ty.timers)P.ty.timers={};if(P.ty.coins>0){P.coins+=P.ty.coins;P.ty.coins=0;}return P.ty;}
@@ -1779,7 +1828,7 @@ const TY=(function(){
   function build(){
     // clear
     while(scene.children.length>3)scene.remove(scene.children[3]);
-    const lvl=SV().lvl,th=THEMES[lvl%THEMES.length];
+    const lvl=SV().lvl,th=THEMES[lvl%THEMES.length];setMenu(lvl);
     scene.background=new T.Color(th.bg);
     hemi.intensity=th.night?.45:.58;sun.intensity=th.night?.35:.72;
     W={th,root:new T.Group(),stations:{},actors:[],helpers:{},customers:[],pads:{},flies:[],fx:[],obst:[],booths:{},hire:{},hireLatch:null,belts:{},autoT:{feeder:0,conveyor:0,cashier:0},boothLatch:null,timerUI:0,
@@ -1804,7 +1853,7 @@ const TY=(function(){
     W.player.coinPile.type='coin';
     // apply unlocks already bought
     for(const id of SV().done)unlock(id,true);
-    W.player.cap=has('cap2')?10:has('cap1')?7:4;W.player.stack.max=W.player.cap;
+    W.player.cap=has('expand')?10:has('table1')?7:4;W.player.stack.max=W.player.cap;
     syncHelpers(true);
     refreshPads();updateCoinTower();
   }
@@ -1813,7 +1862,7 @@ const TY=(function(){
   function buildRoom(){
     const th=W.th,b=W.bounds;W.roomG.clear();W.obst=W.obst.filter(o=>!o.wall);
     const w=b.x1-b.x0,d=b.z1-b.z0,cx=(b.x0+b.x1)/2,cz=(b.z0+b.z1)/2;
-    const tex=canvasTex(128,128,(x)=>{x.fillStyle=th.floor;x.fillRect(0,0,128,128);x.fillStyle='rgba(0,0,0,.05)';x.fillRect(0,0,64,64);x.fillRect(64,64,64,64);});
+    const tex=canvasTex(128,128,(x)=>{x.fillStyle=th.floor;x.fillRect(0,0,128,128);x.fillStyle='rgba(0,0,0,.07)';x.fillRect(0,0,64,64);x.fillRect(64,64,64,64);});
     tex.wrapS=tex.wrapT=T.RepeatWrapping;tex.repeat.set(w/2,d/2);
     const f=mesh(new T.PlaneGeometry(w,d),new T.MeshStandardMaterial({map:tex,roughness:.9}),cx,.01,cz,W.roomG);f.rotation.x=-Math.PI/2;f.castShadow=false;
     const seg=(x0,z0,x1,z1)=>{const hz=Math.abs(z1-z0)<.01,l=hz?Math.abs(x1-x0):Math.abs(z1-z0);if(l<=0)return;
@@ -1884,18 +1933,18 @@ const TY=(function(){
     W.booths[id]={g,npc,x,z,col};if(anim)popIn(g);}
   function addOven(id,x,out,anim){const g=new T.Group();g.position.set(x,0,-3.6);W.root.add(g);
     mesh(box(1.4,.8,1.2),M('#8d6e63'),0,.4,0,g);
-    const dome=mesh(new T.SphereGeometry(.68,18,10,0,Math.PI*2,0,Math.PI/2),M({pizza:'#c0603c',paneerPz:'#d88a3c',vegPz:'#6d9f4a',bread:'#a1887f'}[out],{roughness:.95}),0,.8,0,g);
+    const dome=mesh(new T.SphereGeometry(.68,18,10,0,Math.PI*2,0,Math.PI/2),M(new T.Color(MENU.m[+out[1]][2]).lerp(new T.Color('#8d6e63'),.45),{roughness:.95}),0,.8,0,g);
     mesh(cyl(.09,.11,.6,8),M('#5d4037'),0,1.6,-.2,g);
     const mouth=mesh(box(.6,.4,.1),M('#1a0f0a'),0,.95,.6,g);
     const glow=new T.PointLight(0xff7a1a,0,3);glow.position.set(0,1,.9);g.add(glow);
     const fire=mesh(new T.ConeGeometry(.12,.25,8),M('#ffb300',{emissive:'#ff6d00',emissiveIntensity:1.5}),0,.95,.45,g);fire.visible=false;
     const inP=new Pile('dough',6,g,-.5,.8,.75),outP=new Pile(out,8,g,.5,.8,.75,1);
     mesh(box(1.5,.06,.5),M('#bdbdbd',{metalness:.4}),0,.78,.75,g);
-    W.stations[id]={g,type:'oven',in:inP,out:outP,t:0,bake:{pizza:2.0,paneerPz:2.4,vegPz:2.8,bread:2.6}[out],glow,fire,dome,spot:V(x,-2.45)};
+    W.stations[id]={g,type:'oven',in:inP,out:outP,t:0,bake:{m0:2.0,m1:2.4,m2:2.8}[out],glow,fire,dome,spot:V(x,-2.45)};
     W.obst.push({x0:x-.75,x1:x+.75,z0:-4.25,z1:-2.95});if(anim)popIn(g);}
   function addCounter(){const g=new T.Group();g.position.set(0,0,1.6);W.root.add(g);
     mesh(box(3.4,.95,.7),M(W.th.stripe),0,.47,0,g);mesh(box(3.5,.08,.8),M('#fafafa'),0,.98,0,g);
-    const piles={};SELL.forEach((k,i)=>{piles[k]=new Pile(k,8,g,-1.3+(i%4)*.85,1.02,i<4?-.17:.2,1);});
+    const piles={};SELL.forEach((k,i)=>{piles[k]=new Pile(k,8,g,-1.1+(i%3)*1.1,1.02,i<3?-.17:.2,1);});
     W.stations.counter={g,type:'counter',piles,spot:V(0,.75),cust:V(0,2.6)};W.obst.push({x0:-1.75,x1:1.75,z0:1.2,z1:2.0});}
   function addCashMat(){const g=new T.Group();g.position.set(2.6,0,1.0);W.root.add(g);
     const mat=mesh(box(1.1,.03,1.1),M('#4e342e'),0,.02,0,g);mat.castShadow=false;
@@ -1909,6 +1958,46 @@ const TY=(function(){
     for(const lx of[-.5,.5])for(const lz of[-.35,.35])mesh(box(.07,.7,.07),M('#6d4c41'),lx,.35,lz,g);
     const seats=[];for(const sx of[-1,1]){mesh(box(.42,.06,.42),M(W.th.stripe),sx*.95,.45,0,g);mesh(box(.06,.5,.42),M(W.th.stripe),sx*1.15,.7,0,g);seats.push({pos:V(x+sx*.95,z),face:-sx,occ:null});}
     W.stations[id]={g,type:'table',seats,x,z};W.obst.push({x0:x-.65,x1:x+.65,z0:z-.5,z1:z+.5});if(anim)popIn(g);}
+  /* ---------- decor: every restaurant gets its own signature look ---------- */
+  function addDecor(kind,anim){const g=new T.Group();g.position.set(-3.9,0,3.7);W.root.add(g);const add=(o)=>{g.add(o);return o;};
+    const pot=(x,z,c)=>{mesh(cyl(.16,.12,.28,10),M('#a1662f'),x,.14,z,g);const f=mesh(new T.SphereGeometry(.2,10,8),M('#43a047'),x,.42,z,g);for(let k=0;k<4;k++)mesh(new T.SphereGeometry(.07,8,6),M(c),x+Math.cos(k*1.6)*.13,.52,z+Math.sin(k*1.6)*.13,g);};
+    if(kind==='flowers'){pot(-.4,-.3,'#f06292');pot(.35,-.35,'#ffeb3b');pot(-.4,.45,'#ba68c8');pot(.35,.4,'#ff7043');mesh(box(1.4,.06,1.4),M('#7cb342'),0,.03,0,g);}
+    else if(kind==='umbrellas'){for(const[x,z,c]of[[-.3,-.2,'#e53935'],[.45,.35,'#1e88e5']]){mesh(cyl(.03,.03,1.6,6),M('#eeeeee'),x,.8,z,g);const u=mesh(new T.ConeGeometry(.7,.35,10),M(c),x,1.65,z,g);
+      mesh(new T.SphereGeometry(.12,8,6),M('#ffeb3b'),x+.3,.12,z+.2,g);}}
+    else if(kind==='jukebox'){mesh(box(.7,1.2,.45),M('#7b1fa2',{emissive:'#4a148c',emissiveIntensity:.4}),0,.6,0,g);const t=mesh(new T.CylinderGeometry(.35,.35,.45,16,1,false,0,Math.PI),M('#ff4081',{emissive:'#ff4081',emissiveIntensity:.6}),0,1.2,0,g);t.rotation.z=Math.PI/2;t.rotation.y=Math.PI/2;
+      for(let k=0;k<3;k++)mesh(box(.5,.05,.02),M(['#00e5ff','#ffeb3b','#76ff03'][k],{emissive:['#00e5ff','#ffeb3b','#76ff03'][k],emissiveIntensity:1}),0,.45+k*.2,.24,g);W.decorSpin=t;}
+    else if(kind==='fountain'){mesh(cyl(.75,.8,.3,20),M('#b0bec5'),0,.15,0,g);mesh(cyl(.65,.65,.05,20),M('#4fc3f7',{roughness:.1,emissive:'#0288d1',emissiveIntensity:.2}),0,.29,0,g);mesh(cyl(.08,.1,.8,10),M('#cfd8dc'),0,.6,0,g);
+      mesh(cyl(.3,.2,.1,14),M('#b0bec5'),0,1.0,0,g);W.decorSpin=mesh(new T.SphereGeometry(.12,10,8),M('#81d4fa',{transparent:true,opacity:.8}),0,1.15,0,g);}
+    else if(kind==='lanterns'){for(let k=0;k<3;k++){const l=mesh(new T.SphereGeometry(.18,10,8),M(['#ff5252','#ffab40','#ffd740'][k],{emissive:['#ff5252','#ffab40','#ffd740'][k],emissiveIntensity:.8}),-.5+k*.5,1.5-k*.1,-.3+k*.2,g);l.scale.y=1.3;mesh(cyl(.01,.01,.6,4),M('#5d4037'),-.5+k*.5,2.1,-.3+k*.2,g);}
+      for(let k=0;k<5;k++){const lg=mesh(cyl(.05,.05,.6,6),M('#6d4c41'),0,.08,.3,g);lg.rotation.z=Math.PI/2;lg.rotation.y=k*1.25;}W.decorSpin=mesh(new T.ConeGeometry(.2,.45,8),M('#ff9100',{emissive:'#ff6d00',emissiveIntensity:1.3}),0,.35,.3,g);}
+    else if(kind==='fireplace'){mesh(box(1.1,1.1,.5),M('#8d6e63'),0,.55,-.2,g);mesh(box(.6,.5,.1),M('#1a0f0a'),0,.4,.06,g);W.decorSpin=mesh(new T.ConeGeometry(.15,.35,8),M('#ff9100',{emissive:'#ff6d00',emissiveIntensity:1.4}),0,.35,.0,g);
+      mesh(new T.SphereGeometry(.3,12,10),M('#ffffff'),.5,.3,.45,g);mesh(new T.SphereGeometry(.22,12,10),M('#ffffff'),.5,.72,.45,g);mesh(new T.ConeGeometry(.04,.15,6),M('#ff7043'),.5,.72,.7,g).rotation.x=Math.PI/2;}
+    else if(kind==='palms'){for(const[x,z]of[[-.35,-.2],[.4,.3]]){mesh(cyl(.08,.12,1.5,6),M('#8d6e63'),x,.75,z,g);for(let j=0;j<5;j++){const l=mesh(box(.9,.04,.25),M('#2e7d32'),x,1.5,z,g);l.rotation.y=j*1.25;l.rotation.z=-.35;l.translateX(.35);}}
+      mesh(new T.SphereGeometry(.25,10,8),M('#f0d9a0'),0,.05,0,g).scale.y=.3;}
+    else if(kind==='statue'){mesh(cyl(.45,.5,.5,16),M('#eceff1'),0,.25,0,g);const pz=mesh(new T.ConeGeometry(.45,.9,3),M('#ffc107',{metalness:.6,roughness:.25,emissive:'#7a5200',emissiveIntensity:.3}),0,1.0,0,g);pz.rotation.x=Math.PI;W.decorSpin=pz;}
+    // flower pots along the walls for everyone
+    for(const[x,z]of[[-4.5,-2.2],[4.5,-2.0],[-4.5,1.6]]){const q=new T.Group();q.position.set(x,0,z);W.root.add(q);mesh(cyl(.14,.11,.25,10),M('#a1662f'),0,.12,0,q);mesh(new T.SphereGeometry(.18,10,8),M('#43a047'),0,.36,0,q);mesh(new T.SphereGeometry(.07,8,6),M('#ff4081'),0,.5,0,q);}
+    W.obst.push({x0:-4.6,x1:-3.2,z0:3.0,z1:4.4});W.decor=g;if(anim){popIn(g);sparkle3(-3.9,1.2,3.7);}}
+  /* ---------- fun events ---------- */
+  function eventsOn(){const lvl=SV().lvl,out=[];for(let r=0;r<=Math.min(lvl,RESTOS.length-1);r++){if(r<lvl||has('decor'))out.push(RESTOS[r].ev);}return [...new Set(out)];}
+  function eventsTick(dt){if(W.decorSpin)W.decorSpin.rotation.y+=dt*1.5;
+    if(W.happy>0){W.happy-=dt;if(W.happy<=0)banner('🎉 Happy Hour is over');}
+    // coin drops
+    for(const d of [...(W.drops||[])]){d.v-=9.8*dt;d.m.position.y=Math.max(.06,d.m.position.y+d.v*dt);d.m.rotation.y+=dt*4;
+      if(Math.hypot(W.player.p.position.x-d.m.position.x,W.player.p.position.z-d.m.position.z)<.6&&d.m.position.y<.5){W.root.remove(d.m);W.drops.splice(W.drops.indexOf(d),1);P.coins+=d.val;updateCoinTower();SFX.coin();floatEmoji('🪙',d.m.position);}
+      else if((d.life-=dt)<0){W.root.remove(d.m);W.drops.splice(W.drops.indexOf(d),1);}}
+    const evs=eventsOn();if(!evs.length||!has('oven1'))return;
+    W.evT=(W.evT===undefined?40:W.evT)-dt;if(W.evT>0)return;W.evT=70+Math.random()*40;
+    startEvent(evs[Math.floor(Math.random()*evs.length)]);}
+  function startEvent(k){const E=EVENTS[k];showNew(E.ic,'EVENT: '+E.n,E.d);SFX.win();
+    if(k==='coinrain'){W.drops=W.drops||[];const b=W.bounds;for(let i=0;i<14;i++){const m=ITEM.coin.make();m.scale.setScalar(1.6);
+        const x=b.x0+1+Math.random()*(Math.min(b.x1,9)-b.x0-2),z=-2+Math.random()*7;m.position.set(x,6+Math.random()*3,z);m.rotation.x=Math.PI/2;W.root.add(m);
+        W.drops.push({m,v:0,val:Math.max(2,Math.round(3*mult())),life:14});}}
+    else if(k==='vip'){spawnCustomer({vip:1});setTimeout(()=>W&&spawnCustomer({vip:1}),2500);}
+    else if(k==='birthday'){for(let i=0;i<3;i++)setTimeout(()=>W&&spawnCustomer({party:1}),i*900);confetti(0,1.5,4);}
+    else if(k==='happy'){W.happy=30;}}
+  function showNew(ic,title,desc){const el=$('tyNew');el.innerHTML=`<div class="nw">NEW!</div><div class="ni">${ic}</div><b>${title}</b>${desc?`<small>${desc}</small>`:''}`;
+    el.classList.remove('on');void el.offsetWidth;el.classList.add('on');clearTimeout(showNew.t);showNew.t=setTimeout(()=>el.classList.remove('on'),3200);}
   /* ---------- timed helpers ---------- */
   const ROLE={waiter:{shirt:'#1e88e5',role:'runner'},baker:{shirt:'#8e24aa',role:'baker'},cashier:{shirt:'#00897b',role:'cashier'}};
   function fadePerson(p,v){p.traverse(m=>{if(!m.isMesh)return;
@@ -1927,22 +2016,15 @@ const TY=(function(){
   function unlock(id,silent){
     const a=!silent;
     switch(id){
-      case 'oven1':addOven('oven1',-.6,'pizza',a);break;
-      case 'paneer':addOven('paneer',1.8,'paneerPz',a);break;
-      case 'bread':addOven('bread',6.2,'bread',a);break;
-      case 'veggie':addOven('veggie',8.6,'vegPz',a);break;
-      case 'drink':addSource('drink','drink',-4.35,-1.2,1,'#e53935','COLD DRINK',.9,a);break;
-      case 'fries':addSource('fries','fries',-4.35,.7,1,'#ffb300','FRIES',1.1,a);break;
-      case 'lassi':addSource('lassi','lassi',11.05,-.9,-1,'#fb8c00','LASSI',1.2,a);break;
-      case 'ice':addSource('ice','ice',11.05,1.4,-1,'#ec407a','ICE CREAM',1.3,a);break;
-      case 'table1':addTable('table1',3.4,3.3,a);break;
-      case 'table2':addTable('table2',3.4,4.25,a);break;
-      case 'tables2':addTable('tables2a',8.6,2.6,a);addTable('tables2b',8.6,4.7,a);break;
+      case 'oven1':addOven('oven1',-.6,'m0',a);break;
+      case 'paneer':addOven('paneer',1.8,'m1',a);break;
+      case 'drink':addSource('drink','dr',-4.35,-1.2,1,MENU.dr[3],MENU.dr[0].toUpperCase(),.9,a);break;
+      case 'fries':addSource('fries','s0',-4.35,.7,1,MENU.sd[0][3],MENU.sd[0][0].toUpperCase(),1.1,a);break;
+      case 'table1':addTable('table1',3.4,3.3,a);addTable('table2',3.4,4.45,a);W.player.cap=Math.max(W.player.cap,7);W.player.stack.max=W.player.cap;break;
       case 'staff':addGate('staff',a);break;
-      case 'machines':addGate('machines',a);break;
-      case 'cap1':W.player.cap=7;W.player.stack.max=7;break;
-      case 'cap2':W.player.cap=10;W.player.stack.max=10;break;
-      case 'expand':W.bounds.x1=11.5;buildRoom();if(a){W.shake=.5;for(let k=0;k<14;k++)W.fx.push(glowPillar(5,-4+k*.75));}break;
+      case 'decor':addDecor(MENU.dc[2],a);break;
+      case 'expand':W.bounds.x1=11.5;buildRoom();addGate('machines',a);W.player.cap=10;W.player.stack.max=10;if(a){W.shake=.5;for(let k=0;k<14;k++)W.fx.push(glowPillar(5,-4+k*.75));}break;
+      case 'veggie':addOven('veggie',8.6,'m2',a);addSource('court','s1',11.05,-.9,-1,MENU.sd[1][3]==='#ffffff'?'#90caf9':MENU.sd[1][3],MENU.sd[1][0].toUpperCase(),1.2,a);addTable('tables2a',8.6,2.6,a);addTable('tables2b',8.6,4.7,a);break;
     }
   }
   function sparkle3(x,y,z){for(let k=0;k<12;k++){const m=new T.Mesh(new T.OctahedronGeometry(.06),new T.MeshBasicMaterial({color:k%2?'#ffd54f':'#fff59d'}));m.position.set(x,y,z);W.root.add(m);
@@ -1967,18 +2049,18 @@ const TY=(function(){
     x.globalAlpha=.25;rr(x,14,14,w-28,h-28,30);x.stroke();x.globalAlpha=1;
     x.save();x.beginPath();x.rect(0,h*(1-fr),w,h*fr);x.clip();rr(x,14,14,w-28,h-28,30);x.stroke();x.restore();
     x.textAlign='center';x.fillStyle='#fff';x.font='70px sans-serif';x.fillText(p.ic,w/2,95);
-    x.font='bold 26px sans-serif';x.fillText(p.n.toUpperCase(),w/2,140);
+    {const t=p.n.toUpperCase();let f=26;x.font='bold '+f+'px sans-serif';while(x.measureText(t).width>w-34&&f>14){f--;x.font='bold '+f+'px sans-serif';}x.fillText(t,w/2,140);}
     x.fillStyle='#ffc233';x.font='bold 46px sans-serif';x.fillText('🪙 '+fmt(cost-paid),w/2,205);});}
   function refreshPads(){
     for(const id in W.pads){W.root.remove(W.pads[id].m);W.root.remove(W.pads[id].ring);}W.pads={};
     const done=SV().done;let shown=0;
     for(const p of PADS){if(done.includes(p.id))continue;if(shown>=2)break;
-      if((p.x>5||p.id==='machines')&&!done.includes('expand'))continue;
+      if(p.x>5&&!done.includes('expand'))continue;
       shown++;const s=p.big?2.2:1.7;
       const m=mesh(box(s,.04,s),new T.MeshStandardMaterial({map:padTex(p,0),roughness:.6}),p.x,.03,p.z,W.root);m.castShadow=false;
       const ring=mesh(new T.TorusGeometry(s*.62,.035,6,32),new T.MeshBasicMaterial({color:'#ffe082',transparent:true,opacity:.8}),p.x,.07,p.z,W.root);ring.rotation.x=-Math.PI/2;ring.castShadow=false;
       W.pads[p.id]={p,m,ring,paid:0,dirty:0};}
-    const n=doneCount();$('tyStage').textContent=`Stage ${Math.min(n+1,PAD_TOTAL)}/${PAD_TOTAL}`;$('tyBar').style.width=(n/PAD_TOTAL*100)+'%';
+    const n=doneCount();$('tyStage').textContent=`Stage ${globalStage()}/${PAD_TOTAL*RESTOS.length}`;$('tyBar').style.width=(n/PAD_TOTAL*100)+'%';
     $('tyName').textContent=W.th.n+(SV().lvl>=10?' ★'+Math.floor(SV().lvl/10):'');
   }
 
@@ -2107,14 +2189,14 @@ const TY=(function(){
     x.font='bold '+(Object.keys(c.need).length>2?34:44)+'px sans-serif';x.textAlign='center';x.fillStyle='#3b2414';
     const parts=[];for(const k in c.need)if(c.need[k]>0)parts.push(ITEM[k].icon+c.need[k]);
     x.fillText(c.state==='eat'?'😋':c.state==='leave'?(c.angry?'😠':'😍'):(c.angry?'😠 ':'')+parts.join(' '),w/2,72);});}
-  function spawnCustomer(){
+  function spawnCustomer(o={}){
     const lvl=SV().lvl,menu=menuItems(),mains=menu.filter(k=>MAINS.includes(k)),sides=menu.filter(k=>SIDES.includes(k));const need={};
     const nm=1+(Math.random()<.45?1:0)+(lvl>2&&Math.random()<.2?1:0);
     for(let i=0;i<nm;i++){const k=Math.random()<.55?mains[mains.length-1]:mains[Math.floor(Math.random()*mains.length)];need[k]=(need[k]||0)+1;}
     const ns=Math.min(sides.length,Math.random()<.6?1+(Math.random()<.3?1:0):0);const sh=[...sides].sort(()=>Math.random()-.5);for(let i=0;i<ns;i++)need[sh[i]]=1;
-    const p=S3.makePerson({shirt:FACES2[Math.floor(Math.random()*10)],skin:['#f1c27d','#e0ac69','#c68642','#8d5524','#ffdbac'][Math.floor(Math.random()*5)],hair:['#3e2723','#212121','#795548','#ffca28'][Math.floor(Math.random()*4)]});
+    const p=S3.makePerson({shirt:FACES2[Math.floor(Math.random()*10)],skin:['#f1c27d','#e0ac69','#c68642','#8d5524','#ffdbac'][Math.floor(Math.random()*5)],hair:['#3e2723','#212121','#795548','#ffca28'][Math.floor(Math.random()*4)],hat:o.vip?'crown':undefined});
     p.position.set(0,0,9);W.root.add(p);
-    const c={p,need,state:'queue',wait:0,angry:false,sprite:null,sig:'',pay:0,cd:0,mainItem:Object.keys(need).find(k=>MAINS.includes(k))||'pizza'};
+    const c={p,need,state:'queue',wait:0,angry:false,sprite:null,sig:'',pay:0,cd:0,mainItem:Object.keys(need).find(k=>MAINS.includes(k))||'m0',vip:!!o.vip,party:!!o.party};
     const sp=new T.Sprite(new T.SpriteMaterial({map:bubbleTex(c),depthTest:false}));sp.scale.set(1.3,.65,1);sp.position.y=2.15;p.add(sp);c.sprite=sp;
     W.customers.push(c);
   }
@@ -2125,13 +2207,13 @@ const TY=(function(){
       else{c.p.rotation.y=Math.PI;S3.animPerson(c.p,dt,c.angry?'angry':'idle');c.wait+=dt;if(c.wait>60&&!c.angry){c.angry=true;floatEmoji('💢',c.p.position,2);}if(c.angry&&Math.random()<dt*.6)floatEmoji('💢',c.p.position);
         if(i===0){c.cd-=dt;if(c.cd<=0){for(const k in c.need){if(c.need[k]>0&&S.counter.piles[k].n>0){S.counter.piles[k].take();c.need[k]--;c.pay+=PRICE[k];c.cd=.28;SFX.pop();break;}}}
           if(Object.values(c.need).every(v=>v<=0)){const seat=freeSeat();
-            const amount=Math.round(c.pay*mult()*(c.angry?.8:1)*((SV().timers.rush||0)>0?1.25:1));
+            const amount=Math.round(c.pay*mult()*(c.angry?.8:1)*((SV().timers.rush||0)>0?1.25:1)*(has('decor')?1.1:1)*(c.vip?3:1)*(c.party?2:1)*(W.happy>0?1.5:1));if(c.vip||c.party)floatEmoji(c.vip?'👑':'🎂',c.p.position,3);
             if(seat){seat.occ=c;c.seat=seat;c.state='toSeat';c.amount=Math.round(amount*1.5);}else{addCash(amount);coinArc(c.p.position,4);c.state='leave';SFX.coin();}
             floatEmoji(c.angry?'😐':'❤️',c.p.position,c.angry?1:3);}}}});
     for(const c of [...W.customers]){
       if(c.state==='toSeat'){const t=c.seat.pos;const d=V(t.x-c.p.position.x,t.z-c.p.position.z);const L=d.length();
         if(L>.08){c.p.position.addScaledVector(d.normalize(),Math.min(L,2.6*dt));c.p.rotation.y=Math.atan2(d.x,d.z);S3.animPerson(c.p,dt,'walk');}
-        else{c.state='eat';c.eat=3.5;c.p.rotation.y=c.seat.face>0?Math.PI/2:-Math.PI/2;c.food=ITEM[c.mainItem||'pizza'].make();c.food.position.set(t.x+c.seat.face*.45,.82,t.z);W.root.add(c.food);}}
+        else{c.state='eat';c.eat=3.5;c.p.rotation.y=c.seat.face>0?Math.PI/2:-Math.PI/2;c.food=ITEM[c.mainItem||'m0'].make();c.food.position.set(t.x+c.seat.face*.45,.82,t.z);W.root.add(c.food);}}
       else if(c.state==='eat'){c.eat-=dt;S3.animPerson(c.p,dt,'eat');c.p.position.y=-.02;if(c.eat<=0){W.root.remove(c.food);c.seat.occ=null;
           // dine-in pays at the table: coins pile up on the cash mat
           addCash(c.amount);coinArc(c.p.position,6);floatEmoji('😋',c.p.position,2);SFX.coin();c.state='leave';}}
@@ -2159,15 +2241,15 @@ const TY=(function(){
     const p=PADS.find(x=>x.id===id);confetti(p.x,.5,p.z);
     if(id==='next'){save();levelDone();return;}
     unlock(id,false);refreshPads();save();
-    const newItem={oven1:'pizza',paneer:'paneerPz',veggie:'vegPz',drink:'drink',bread:'bread',fries:'fries',lassi:'lassi',ice:'ice'}[id];
-    banner(newItem?`🆕 ${MENU_NAME[newItem]} added to the menu!`:`${p.ic} ${p.n} unlocked!`);}
+    showNew(p.ic,p.n,p.d);banner(`Stage ${globalStage()} of ${PAD_TOTAL*RESTOS.length}`);}
+  function globalStage(){return Math.min(SV().lvl*PAD_TOTAL+doneCount()+1,PAD_TOTAL*RESTOS.length);}
   function banner(t){const b=$('tyBanner');b.textContent=t;b.classList.remove('on');void b.offsetWidth;b.classList.add('on');}
   function levelDone(){
-    running=false;const th=W.th;const nxt=THEMES[(SV().lvl+1)%THEMES.length];
+    running=false;const th=W.th;const nxt=THEMES[(SV().lvl+1)%THEMES.length];const nm=RESTOS[(SV().lvl+1)%RESTOS.length];
     openModal(`<div class="rain">${coinRain(36)}</div><h2>Restaurant Complete!</h2><div class="hq">🏆</div>
-      <p class="center"><b>${th.n}</b> is fully built.<br>Next up: <b>${nxt.n}</b> 🍕</p>
+      <p class="center"><b>${th.n}</b> is fully built.<br>Next up: <b>${nxt.n}</b><br><span style="font-size:26px">${nm.m.map(x=>x[1]).join(' ')} ${nm.dr[1]} ${nm.sd.map(x=>x[1]).join(' ')}</span><br><small>New menu · new machines · ${nm.dc[1]} ${nm.dc[0]} · ${EVENTS[nm.ev].ic} ${EVENTS[nm.ev].n}</small></p>
       <button class="btn gold" style="width:100%" id="tyNext">Open ${nxt.n} ▶</button>`);modalLock(true);
-    $('tyNext').onclick=()=>{modalLock(false);closeModal();SV().lvl++;SV().done=[];SV().timers={};save();build();running=true;last=performance.now();loop(last);};
+    $('tyNext').onclick=()=>{modalLock(false);closeModal();SV().lvl++;SV().done=[];SV().timers={};save();build();const th2=THEMES[SV().lvl%THEMES.length];stageIntroAnim('🏪 '+th2.n,'Restaurant '+(SV().lvl+1)+' · Stage '+globalStage()+' of 100','New menu: '+MENU.m.map(x=>x[1]).join(' '),false);running=true;last=performance.now();loop(last);};
   }
 
   /* ---------- input: joystick + keyboard ---------- */
@@ -2220,7 +2302,7 @@ const TY=(function(){
     // customers
     W.spawnT-=dt;const maxQ=has('expand')?6:4;
     if(W.spawnT<=0&&W.customers.filter(c=>c.state==='queue').length<maxQ&&has('oven1')){spawnCustomer();W.spawnT=Math.max(2.5,7-doneCount()*.25)*((SV().timers.rush||0)>0?.45:1);}
-    customersAI(dt);padTick(dt);MUSIC.chatter(dt,W.customers.filter(c=>c.state==='eat'||c.state==='toSeat').length*1.5+W.customers.filter(c=>c.state==='queue').length*.3);
+    customersAI(dt);padTick(dt);eventsTick(dt);MUSIC.chatter(dt,W.customers.filter(c=>c.state==='eat'||c.state==='toSeat').length*1.5+W.customers.filter(c=>c.state==='queue').length*.3);
     for(const f of [...W.fx]){f.t+=dt;if(f.f(f.t,dt))W.fx.splice(W.fx.indexOf(f),1);}
     // camera follow
     const pp=W.player.p.position;const aspect=cam.aspect;const back=aspect<.8?14:12.5,up=aspect<.8?16.5:14.5;
@@ -2236,10 +2318,10 @@ const TY=(function(){
   let cw=0,ch=0;function resize(){const r=canvas.getBoundingClientRect();if(r.width!==cw||r.height!==ch){cw=r.width;ch=r.height;renderer.setSize(cw,ch,false);cam.aspect=cw/ch;cam.updateProjectionMatrix();}}
 
   function start(){if(!P.gender){chooseChef(()=>start());return;}show('tycoon');setCoins();if(!W)build();else{refreshPads();updateCoinTower();syncHelpers(true);}
-    const inf={name:THEMES[SV().lvl%THEMES.length].n,stage:Math.min(doneCount()+1,PAD_TOTAL)};stageIntroAnim('🏃 PIZZA RUSH',inf.name,`Stage ${inf.stage} of ${PAD_TOTAL}`,false);running=true;last=performance.now();requestAnimationFrame(loop);}
+    const inf={name:THEMES[SV().lvl%THEMES.length].n};stageIntroAnim('🍕 '+inf.name,'Restaurant '+(SV().lvl%RESTOS.length+1)+' of 10',`Stage ${globalStage()} of ${PAD_TOTAL*RESTOS.length}`,false);running=true;last=performance.now();requestAnimationFrame(loop);}
   function stop(){running=false;save();}
   function reset(){W=null;}
-  return{start,stop,info:()=>{const s=SV();return{lvl:s.lvl,stage:Math.min(doneCount()+1,PAD_TOTAL),total:PAD_TOTAL,name:THEMES[s.lvl%THEMES.length].n};},debug:()=>W,reset,addCoins:v=>{P.coins+=v;if(W)updateCoinTower();save();}};
+  return{start,stop,info:()=>{const s=SV();return{lvl:s.lvl,stage:globalStage(),local:Math.min(doneCount()+1,PAD_TOTAL),total:PAD_TOTAL*RESTOS.length,name:THEMES[s.lvl%THEMES.length].n};},restos:()=>RESTOS.map((r,i)=>({n:THEMES[i].n,r,ev:EVENTS[r.ev]})),debug:()=>W,reset,addCoins:v=>{P.coins+=v;if(W)updateCoinTower();save();}};
 })();
 
 if(TY)$('tyShop').onclick=()=>openShop();
