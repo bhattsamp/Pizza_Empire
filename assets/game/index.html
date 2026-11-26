@@ -435,13 +435,71 @@ background:linear-gradient(135deg,var(--tomato),var(--tomatoD));border:4px solid
 .fact.ok{border-left:8px solid #43a047}.fact.no{border-left:8px solid #e53935}
 .fact b{font-size:15px}.fact p{margin:8px 0 12px;font-size:14.5px;line-height:1.45;font-weight:700;color:#4a3a6a}
 @keyframes factIn{from{opacity:0;transform:translateY(12px)}}
+
+/* ===== Bold FE brand: font, splash, smooth transitions ===== */
+@font-face{font-family:FEB;src:url(data:font/woff2;base64,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) format("woff2");font-weight:800}
+#splash.fe{background:linear-gradient(160deg,#ff4081 0%,#ff6d00 100%)!important}
+#splash.fe .feRays{background:none;inset:0;animation:none}
+#splash.fe .feRays::before,#splash.fe .feRays::after{content:"★";position:absolute;color:#ffffff22;font-size:300px;line-height:1}
+#splash.fe .feRays::before{left:-70px;top:-60px}#splash.fe .feRays::after{right:-60px;bottom:40px;font-size:340px}
+.feMark{position:relative;display:inline-block;font-family:FEB,system-ui;font-weight:800;color:#fff;line-height:.8;-webkit-text-stroke:0;text-shadow:0 0 0 #2a1b5e,4px 0 0 #2a1b5e,-4px 0 0 #2a1b5e,0 4px 0 #2a1b5e,0 -4px 0 #2a1b5e,4px 4px 0 #2a1b5e,-4px 4px 0 #2a1b5e,4px -4px 0 #2a1b5e,-4px -4px 0 #2a1b5e,8px 10px 0 #2a1b5e55}
+.feMark svg{position:absolute;width:.62em;right:-.28em;top:-.42em;transform:rotate(14deg);filter:drop-shadow(0 3px 0 #0003)}
+#splash.fe .feMark{font-size:150px;animation:fePop .8s cubic-bezier(.2,1.5,.4,1) both}
+#splash.fe .feLogo h1{font-family:FEB,system-ui;font-size:44px;transform:none;text-shadow:0 5px 0 #8a1240;margin-top:22px;letter-spacing:2px}
+#splash.fe .feLogo p{color:#fff3e0;font-size:17px}
+#splash.fe #playBtn{background:#fff;color:#d81b60;box-shadow:0 6px 0 #8a1240;font-family:FEB,system-ui}
+@keyframes fePop{0%{transform:scale(.3) rotate(-12deg);opacity:0}100%{transform:scale(1) rotate(0);opacity:1}}
+#hub .hubTop h1,.feHead h2{font-family:FEB,system-ui}
+/* smooth page transitions */
+.screen.enter{animation:scrIn .38s cubic-bezier(.2,.8,.3,1) both}
+@keyframes scrIn{from{opacity:0;transform:translateY(16px) scale(.99)}to{opacity:1;transform:none}}
+.screen.leaving{display:flex;z-index:40;pointer-events:none;animation:scrOut .26s ease forwards}
+.screen.leaving.slow{animation:scrOut .12s .2s ease forwards}
+@keyframes scrOut{to{opacity:0;transform:scale(.985)}}
+#wipe{position:fixed;inset:0;z-index:95;pointer-events:none;display:none;background:linear-gradient(160deg,#ff4081,#ff6d00);flex-direction:column;align-items:center;justify-content:center;gap:22px;clip-path:none}
+#wipe::before,#wipe::after{display:none;content:none}
+#wipe.on{display:flex;animation:feLoad .95s ease forwards}
+#wipe .feMark{font-size:96px;animation:fePop .45s cubic-bezier(.2,1.5,.4,1) both}
+#wipe .bar{width:150px;height:10px;border-radius:6px;background:#ffffff45;overflow:hidden}#wipe .bar i{display:block;height:100%;width:0;background:#fff;border-radius:6px;animation:barFill .55s .08s ease-out forwards}
+@keyframes feLoad{0%{opacity:0}18%{opacity:1}62%{opacity:1}100%{opacity:0}}
+@keyframes barFill{to{width:100%}}
+/* quiz: next button always visible */
+#qpFoot{display:none;padding:10px 14px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(180deg,#1a237e00,#1a237e 30%)}
+#qpFoot.on{display:block;animation:footUp .25s ease}
+#qpFoot .btn{width:100%;font-size:19px;padding:15px}
+#qpFoot .btn.ok{background:#43a047;color:#fff;box-shadow:0 5px 0 #1b5e20}
+@keyframes footUp{from{transform:translateY(30px);opacity:0}}
+.mnode .info{margin:0;background:none;border:0;border-radius:0;padding:0;display:block;min-height:0;flex:1;min-width:0}
+.mnode .info b{font-size:16px;color:#fff}.mnode .info span{opacity:1}.mnode .info small{display:block}
+.stNo{display:block;font-size:12px;font-weight:800;color:#ffeb3b;letter-spacing:.3px}
+/* winding stage path */
+#qmList,#mindList,#snMapList{display:flex;justify-content:center;overflow-x:hidden}
+.pmWrap{position:relative;margin:0 auto;flex:none}
+.pmRoad{position:absolute;left:0;top:0;pointer-events:none}
+.pmNode{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;cursor:pointer;margin:0;gap:0;width:180px}
+.pmBub{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;font-family:FEB,system-ui;font-size:30px;font-weight:800;color:#fff;
+  background:radial-gradient(circle at 35% 30%,#7c4dff,#5e35b1 70%);box-shadow:0 7px 0 #311b92,0 12px 18px #0005,inset 0 -6px 0 #0002;border:4px solid #fff;text-shadow:0 2px 0 #0004}
+.pmNode.done .pmBub{background:radial-gradient(circle at 35% 30%,#69f0ae,#2e9d55 70%);box-shadow:0 7px 0 #1b5e20,0 12px 18px #0005}
+.pmNode.cur .pmBub{background:radial-gradient(circle at 35% 30%,#fff59d,#ffb300 70%);color:#7a3d00;box-shadow:0 7px 0 #c66900,0 0 0 8px #ffeb3b55,0 12px 18px #0005;animation:pmPulse 1.2s ease-in-out infinite}
+.pmNode.lock .pmBub{background:radial-gradient(circle at 35% 30%,#b0a8c8,#7e7598 70%);box-shadow:0 7px 0 #4a4360,0 10px 14px #0004;font-size:26px}
+.pmNode.boss .pmBub{width:90px;height:90px}
+.pmNode.boss:not(.lock):not(.done) .pmBub{background:radial-gradient(circle at 35% 30%,#ff8a80,#e53935 70%);box-shadow:0 7px 0 #8e1b1b,0 12px 18px #0005}
+@keyframes pmPulse{50%{transform:scale(1.09)}}
+.pmStars{display:flex;gap:1px;margin-top:-10px;position:relative}
+.pmStars i{font-style:normal;font-size:17px;color:#ffffff55;text-shadow:0 2px 0 #0004}.pmStars i.on{color:#ffd54f}
+.pmName{margin-top:2px;background:#fff;border-radius:12px;padding:3px 10px 4px;text-align:center;box-shadow:0 3px 0 #0003;max-width:180px;white-space:nowrap}
+.pmName b{display:block;font-size:13px;line-height:1.15;color:#311b92;font-weight:900}
+.pmName small{display:block;font-size:10.5px;color:#7e57c2;font-weight:800;line-height:1.2}
+.pmNode.lock .pmName{background:#ffffffc0}.pmNode.lock .pmName b{color:#5d556f}
+.pmChap{position:absolute;left:50%;transform:translateX(-50%);z-index:1}
+.pmChap span{display:inline-block;background:linear-gradient(90deg,#ff4081,#ff9100);color:#fff;font-family:FEB,system-ui;font-weight:800;font-size:15px;padding:6px 18px;border-radius:20px;box-shadow:0 4px 0 #8a1240;white-space:nowrap}
 </style>
 </head>
 <body>
 <div id="app">
   <section id="splash" class="screen on fe">
     <div class="feRays"></div>
-    <div class="feLogo"><div class="crown">👑</div><h1>FUN<span>EMPIRE</span></h1><p>Pizza Rush · Ludo · Saap Seedi · Mind Empire</p></div>
+    <div class="feLogo"><div class="feMark">FE<svg viewBox="0 0 100 90" aria-hidden="true"><path d="M4,70 L12,18 L34,46 L50,8 L66,46 L88,18 L96,70 Z" fill="#ffc531" stroke="#e08a00" stroke-width="4" stroke-linejoin="round"/><rect x="4" y="68" width="92" height="20" rx="6" fill="#ffc531" stroke="#e08a00" stroke-width="4"/><circle cx="50" cy="8" r="8" fill="#e53935"/><circle cx="12" cy="18" r="7" fill="#1e88e5"/><circle cx="88" cy="18" r="7" fill="#43a047"/><circle cx="30" cy="78" r="5" fill="#e53935"/><circle cx="50" cy="78" r="5" fill="#1e88e5"/><circle cx="70" cy="78" r="5" fill="#43a047"/></svg></div><h1>FUN EMPIRE</h1><p>Play · Learn · Win</p></div>
     <div class="orbit"><i style="left:0;top:30px">🍕</i><i style="left:72px;top:0;animation-delay:.3s">🎲</i><i style="left:150px;top:4px;animation-delay:.6s">🐍</i><i style="left:226px;top:30px;animation-delay:.9s">🧠</i></div>
     <button class="btn gold" id="playBtn" style="font-size:20px;padding:14px 40px">▶ PLAY</button>
   </section>
@@ -457,9 +515,14 @@ background:linear-gradient(135deg,var(--tomato),var(--tomatoD));border:4px solid
     <div class="turnBar"><div class="who" id="ludoWho"></div><div class="dice" id="ludoDice"></div></div>
   </section>
   <section id="snake" class="screen feScreen" style="background:linear-gradient(180deg,#004d40,#1b5e20)">
-    <div class="feHead"><button class="back" id="snakeBack">←</button><h2>🐍 Saap Seedi 🪜</h2><span class="chip">🪙 <span class="coinsTxt">0</span></span></div>
+    <div class="feHead"><button class="back" id="snakeBack">←</button><h2 id="snakeTitle">🐍 Saap Seedi 🪜</h2><span class="chip">🪙 <span class="coinsTxt">0</span></span></div>
     <div class="boardWrap"><canvas id="snakeCv"></canvas></div>
     <div class="turnBar"><div class="who" id="snakeWho"></div><div class="dice" id="snakeDice"></div></div>
+  </section>
+  <section id="snakeMap" class="screen feScreen" style="background:linear-gradient(180deg,#00695c,#1b5e20)">
+    <div class="feHead"><button class="back" id="snMapBack">←</button><h2>🐍 Saap Seedi 🪜</h2><span class="chip">⭐ <span id="snStars">0</span></span></div>
+    <div style="padding:0 14px 6px"><button class="btn gold" id="snFree" style="width:100%">🎲 Free Play · 2–4 players</button></div>
+    <div id="snMapList" style="flex:1;overflow:auto"></div>
   </section>
   <section id="mind" class="screen feScreen">
     <div class="feHead"><button class="back" id="mindBack">←</button><h2>🧠 Mind Empire</h2><span class="chip">⭐ <span id="mindStars">0</span></span></div>
@@ -475,7 +538,7 @@ background:linear-gradient(135deg,var(--tomato),var(--tomatoD));border:4px solid
   </section>
   <section id="quizPlay" class="screen feScreen">
     <div class="feHead"><button class="back" id="qpBack">←</button><h2 id="qpTitle" style="font-size:16px"></h2><span class="chip">🪙 <span class="coinsTxt">0</span></span></div>
-    <div id="qpDots"></div><div id="qpScore"></div><div id="qpBody"></div>
+    <div id="qpDots"></div><div id="qpScore"></div><div id="qpBody"></div><div id="qpFoot"><button class="btn gold" id="qpNext">Next ▶</button></div>
   </section>
   <section id="mindPlay" class="screen feScreen">
     <div class="feHead"><button class="back" id="mpBack">←</button><h2 id="mpTitle" style="font-size:16px"></h2><span class="chip">🪙 <span class="coinsTxt">0</span></span></div>
@@ -529,7 +592,7 @@ background:linear-gradient(135deg,var(--tomato),var(--tomatoD));border:4px solid
     <div class="info" id="info"></div>
   </section>
 </div>
-<div id="wipe"><span>🍕</span></div>
+<div id="wipe"><div class="feMark">FE<svg viewBox="0 0 100 90" aria-hidden="true"><path d="M4,70 L12,18 L34,46 L50,8 L66,46 L88,18 L96,70 Z" fill="#ffc531" stroke="#e08a00" stroke-width="4" stroke-linejoin="round"/><rect x="4" y="68" width="92" height="20" rx="6" fill="#ffc531" stroke="#e08a00" stroke-width="4"/><circle cx="50" cy="8" r="8" fill="#e53935"/><circle cx="12" cy="18" r="7" fill="#1e88e5"/><circle cx="88" cy="18" r="7" fill="#43a047"/><circle cx="30" cy="78" r="5" fill="#e53935"/><circle cx="50" cy="78" r="5" fill="#1e88e5"/><circle cx="70" cy="78" r="5" fill="#43a047"/></svg></div><div class="bar"><i></i></div></div>
 <div id="stageIntro"></div>
 <div class="toast" id="toast"></div>
 <div class="modalBg" id="modalBg"><div class="modal" id="modal"></div></div>
@@ -899,12 +962,15 @@ let toastT;function toast(m){const t=$('toast');t.textContent=m;t.classList.add(
 function itemHTML(id,size,lv){const d=ITEMS[id];return `<div class="it ${d.coin?'coin':''}" style="--s:${size}px;width:${size}px;height:${size}px"><span class="e">${d.e}</span>${d.b?`<span class="bd">${d.b}</span>`:''}${lv&&!d.coin&&d.lv>1?`<span class="lv">${d.lv}</span>`:''}</div>`;}
 function setCoins(){document.querySelectorAll('.coinsTxt').forEach(e=>e.textContent=fmt(P.coins));}
 let curScreen='splash';
+const HEAVY_SCREENS=['hub','home','tycoon','ludo','snake','snakeMap','mindPlay','quizPlay','quiz','mind'];
 function show(id){
-  const changed=id!==curScreen;curScreen=id;
-  document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id));
+  const prev=curScreen,changed=id!==curScreen;curScreen=id;
+  const heavy=changed&&HEAVY_SCREENS.includes(id);
+  document.querySelectorAll('.screen').forEach(s=>{const on=s.id===id;s.classList.toggle('on',on);
+    if(changed&&!on&&s.id===prev){s.classList.remove('leaving','slow');void s.offsetWidth;s.classList.add('leaving');s.classList.toggle('slow',heavy);clearTimeout(s._lt);s._lt=setTimeout(()=>s.classList.remove('leaving','slow'),heavy?420:300);}});
   if(!changed)return;
-  const w=document.getElementById('wipe');if(w){w.classList.remove('on');void w.offsetWidth;w.classList.add('on');setTimeout(()=>w.classList.remove('on'),1280);}
-  const sc=document.getElementById(id);if(sc){sc.classList.remove('enter');void sc.offsetWidth;sc.classList.add('enter');setTimeout(()=>sc.classList.remove('enter'),900);}
+  const w=document.getElementById('wipe');if(w&&heavy){w.classList.remove('on');void w.offsetWidth;w.classList.add('on');clearTimeout(w._t);w._t=setTimeout(()=>w.classList.remove('on'),980);}
+  const sc=document.getElementById(id);if(sc){sc.classList.remove('enter');void sc.offsetWidth;sc.classList.add('enter');setTimeout(()=>sc.classList.remove('enter'),700);}
   try{SFX.pop();MUSIC.setTempo(id==='tycoon'?126:id==='game'?118:108);}catch(e){}
 }
 function stageIntroAnim(big,sub,ribbon,countdown,done){
@@ -2513,6 +2579,49 @@ const QZ=(function(){
     ["Code Breaking","🔐","#212121"],["Shape & Colour Matching","🟣","#7b1fa2"],["Word Search & Crossword","🔎","#00796b"],["Building & Construction Puzzles","🏗️","#ef8f00"],
     ["Mythology","🪔","#e65100"]];
   const N_STAGE=100,N_Q=21,PASS=14;
+  const ADJ=['Rookie','Bright','Clever','Swift','Bold','Brave','Mighty','Grand','Royal','Legendary'];
+  const NOUN=[['Thinker','Spark','Logician','Puzzler','Strategist','Sage','Mastermind','Wizard','Oracle','Genius'],
+    ['Counter','Adder','Divider','Calculator','Fraction Fan','Equation Ace','Geometer','Algebraist','Number Ninja','Mathlete'],
+    ['Learner','Explorer','Reader','Scholar','Globetrotter','Quiz Whiz','Encyclopedia','Professor','Sage','Brainbox'],
+    ['Shopkeeper','Saver','Trader','Banker','Investor','Merchant','Tycoon','Mogul','Magnate','Baron'],
+    ['Snoop','Sleuth','Tracker','Investigator','Inspector','Agent','Profiler','Codebreaker','Private Eye','Detective'],
+    ['Tinkerer','Experimenter','Inventor','Engineer','Scientist','Innovator','Researcher','Technologist','Pioneer','Visionary'],
+    ['Wanderer','Navigator','Explorer','Mapmaker','Voyager','Trekker','Cartographer','Pathfinder','Globetrotter','Adventurer'],
+    ['Storyteller','Chronicler','Historian','Time Traveller','Archivist','Scribe','Archaeologist','Keeper','Emperor','Legend'],
+    ['Speller','Wordsmith','Poet','Writer','Linguist','Grammarian','Lexicon','Bard','Orator','Laureate'],
+    ['Builder','Mechanic','Fixer','Machinist','Engineer','Designer','Constructor','Architect','Innovator','Maestro'],
+    ['Watcher','Observer','Spotter','Lookout','Eagle Eye','Recall Ace','Snapshot','Memory Keeper','Hawk','Photo Mind'],
+    ['Coder','Debugger','Scripter','Hacker','Developer','Programmer','Architect','Algorithmist','Compiler','Code Ninja'],
+    ['Sketcher','Drafter','Planner','Designer','Builder','Stylist','Visionary','Architect','Master Planner','Creator'],
+    ['Taster','Kitchen Helper','Cook','Baker','Chef','Spice Master','Sous Chef','Head Chef','Gourmet','Masterchef'],
+    ['Seedling','Sprout','Gardener','Grower','Farmer','Harvester','Rancher','Agronomist','Land Keeper','Kisan'],
+    ['Stargazer','Skywatcher','Rocketeer','Astronaut','Moonwalker','Comet','Star Pilot','Astronomer','Galaxy Rider','Cosmonaut'],
+    ['Planter','Recycler','Nature Friend','Green Guard','Eco Ranger','Earth Keeper','Conservationist','Forest Guardian','Climate Hero','Planet Protector'],
+    ['Bargainer','Dealer','Haggler','Negotiator','Broker','Diplomat','Deal Maker','Mediator','Closer','Ambassador'],
+    ['Walker','Cyclist','Learner Driver','Driver','Navigator','Parker','Road Captain','Traffic Pro','Highway Hero','Road Master'],
+    ['Seeker','Lockpicker','Clue Hunter','Escapist','Key Finder','Puzzle Breaker','Vault Cracker','Room Master','Great Escaper','Houdini'],
+    ['Spotter','Matcher','Sequencer','Pattern Seeker','Decoder','Analyst','Visionary','Pattern Pro','Prism','Oracle'],
+    ['Puzzler','Riddler','Trickster','Teaser','Twister','Solver','Brainiac','Mind Bender','Enigma','Sphinx'],
+    ['Mover','Lever','Pendulum','Magnet','Spark','Wave','Force','Quantum','Particle','Relativist'],
+    ['Mixer','Bubbler','Atom','Molecule','Catalyst','Reactor','Alchemist','Chemist','Element','Nobelist'],
+    ['Cell','Sprout','Heartbeat','Naturalist','Biologist','Healer','Medic','Surgeon','Geneticist','Life Scientist'],
+    ['Clicker','Typist','User','Techie','Power User','Admin','Network Ninja','Cyber Guard','Tech Guru','Cyber Master'],
+    ['Doodler','Sketcher','Painter','Colourist','Sculptor','Illustrator','Designer','Artist','Visionary','Maestro'],
+    ['Fan','Player','Sprinter','Striker','All-rounder','Captain','Coach','Champion','Olympian','Superstar'],
+    ['Hummer','Drummer','Singer','Strummer','Flautist','Composer','Conductor','Ustad','Virtuoso','Maestro'],
+    ['Cub','Explorer','Birdwatcher','Tracker','Ranger','Zookeeper','Naturalist','Safari Guide','Wildlife Hero','Jungle King'],
+    ['Tinkerer','Dreamer','Builder','Inventor','Patent Holder','Innovator','Pioneer','Visionary','Genius','Trailblazer'],
+    ['Saver','Budgeter','Planner','Investor','Earner','Wealth Builder','Money Manager','Treasurer','Financier','Crorepati'],
+    ['Promoter','Seller','Pitcher','Marketer','Brand Builder','Influencer','Sales Star','Strategist','Brand Guru','Rainmaker'],
+    ['Tenant','Renter','Homeowner','Agent','Broker','Builder','Developer','Landlord','Property Pro','Realty Tycoon'],
+    ['Helper','Listener','Greeter','Support Star','Problem Solver','Care Pro','Team Lead','Service Hero','Happiness Expert','Customer Champion'],
+    ['Pawn','Knight','Bishop','Rook','Tactician','Planner','General','Strategist','Grandmaster','King'],
+    ['Cipher','Decoder','Codebreaker','Cryptic','Enigma','Spy','Agent','Cryptographer','Codemaster','Spymaster'],
+    ['Circle','Square','Triangle','Rainbow','Prism','Hexagon','Spectrum','Mosaic','Kaleidoscope','Colour Master'],
+    ['Finder','Seeker','Spotter','Word Hunter','Crossworder','Grid Master','Lexicon','Puzzle Pro','Word Wizard','Crossword King'],
+    ['Brick','Mason','Carpenter','Builder','Foreman','Site Engineer','Contractor','Architect','Skyscraper','Master Builder'],
+    ['Seeker','Listener','Storyteller','Pilgrim','Rishi','Sage','Guru','Maharishi','Scholar','Mahaguru']];
+  const stageName=(id,l)=>ADJ[Math.floor((l-1)/10)]+' '+NOUN[id-1][(l-1)%10];
   const DATA={};let cur=0,run=null;
   const st=()=>{if(!P.fe)P.fe={};if(!P.fe.quiz)P.fe.quiz={};return P.fe.quiz;};
   const prog=id=>st()[id]||[];
@@ -2529,36 +2638,33 @@ const QZ=(function(){
         <small>${a.length?`Stage ${Math.min(done+1,N_STAGE)} / ${N_STAGE}`:'Coming soon'}</small><div class="pb"><i style="width:${done}%"></i></div></div>`;}).join('');}
   /* ---------- stage map ---------- */
   function openSubject(id){cur=id;const[n,ic]=SUBJ[id-1];$('qmTitle').textContent=ic+' '+n;renderMap();show('quizMap');}
-  function renderMap(){const id=cur,a=new Set(avail(id)),p=prog(id);let html='';
-    for(let l=1;l<=N_STAGE;l++){const s=p[l-1]||0,unlocked=l===1||p[l-2]>0,has=a.has(l),open=unlocked&&has;
-      const tier=l<=10?'Very easy':l<=30?'Easy':l<=60?'Medium':l<=85?'Hard':'Expert';
-      html+=`<div class="mnode ${l%2?'':'r'} ${open?'':'lock'} ${open&&!s?'cur':''} ${l%10===0?'boss':''}" data-l="${l}">
-        <div class="bub">${open||s?(l%10===0?'👑':l):(has?'🔒':'⏳')}<em>${l}</em></div>
-        <div class="info"><b>Stage ${l}${l%10===0?' · Boss':''}</b><small>${has?tier+' · 21 questions':'Coming soon'}</small><div class="st">${[0,1,2].map(k=>`<span class="${k<s?'on':''}">★</span>`).join('')}</div></div></div>`;}
-    $('qmList').innerHTML=html;const c=$('qmList').querySelector('.cur');if(c)setTimeout(()=>c.scrollIntoView({block:'center'}),60);}
+  function renderMap(){const id=cur,a=new Set(avail(id)),p=prog(id),items=[];
+    for(let l=1;l<=N_STAGE;l++){const s=p[l-1]||0,unlocked=l===1||p[l-2]>0,has=a.has(l);
+      items.push({key:l,label:l,name:stageName(id,l),sub:'Stage '+l,stars:s,boss:l%10===0,state:!has?'soon':!unlocked?'lock':s?'done':'cur'});}
+    stagePath($('qmList'),items,'data-l',i=>{const c=i/10;return ['🌱 Rookie Road','💡 Bright Bridge','🧠 Clever Canyon','⚡ Swift Street','🔥 Bold Bay','🛡️ Brave Peak','💪 Mighty Mountain','🏰 Grand Castle','👑 Royal Palace','🌟 Legendary Summit'][c]+' · '+(c*10+1)+'–'+(c*10+10);});}
   /* ---------- play ---------- */
   async function play(id,l){const d=await load(id);if(!d||!d[l])return toast('These questions are coming soon');
-    run={id,l,qs:d[l],i:0,good:0,ans:[]};const[n,ic]=SUBJ[id-1];$('qpTitle').textContent=`${ic} Stage ${l}`;show('quizPlay');
-    stageIntroAnim(ic+' '+n,'Stage '+l+' of '+N_STAGE,'21 questions · get 14 right to pass',false,()=>{if(run)ask();});}
+    run={id,l,qs:d[l],i:0,good:0,ans:[]};const[n,ic]=SUBJ[id-1];$('qpTitle').textContent=`${ic} ${stageName(id,l)}`;show('quizPlay');
+    stageIntroAnim(ic+' '+stageName(id,l),n+' · Stage '+l+' of '+N_STAGE,'21 questions · get 14 right to pass',false,()=>{if(run)ask();});}
   function ask(){const r=run,q=r.qs[r.i];
     $('qpDots').innerHTML=r.qs.map((_,k)=>`<i class="${k<r.i?(r.ans[k]?'g':'b'):k===r.i?'c':''}"></i>`).join('');
     $('qpScore').textContent=`✅ ${r.good}  ·  ${r.i+1}/${N_Q}`;
     $('qpBody').innerHTML=`<div class="qCard"><div class="qn">QUESTION ${r.i+1} OF ${N_Q}</div><h3>${esc(q[0])}</h3></div>
       <div class="qOpts one">${[1,2,3,4].map(k=>`<button data-k="${k-1}"><span class="lt">${'ABCD'[k-1]}</span>${esc(q[k])}</button>`).join('')}</div><div id="qpFact"></div>`;
-    $('qpBody').scrollTop=0;
+    $('qpBody').scrollTop=0;$('qpFoot').classList.remove('on');
     $('qpBody').querySelectorAll('.qOpts button').forEach(b=>b.onclick=()=>answer(+b.dataset.k));}
   function answer(k){const r=run,q=r.qs[r.i];if(r.ans.length>r.i)return;const ok=k===q[5];r.ans.push(ok);if(ok)r.good++;
     const bs=$('qpBody').querySelectorAll('.qOpts button');bs.forEach((b,j)=>{b.disabled=true;if(j===q[5])b.classList.add('good');else if(j===k)b.classList.add('bad');});
     try{ok?SFX.ding():(SFX.bad(),vib(40));}catch(e){}
-    $('qpFact').innerHTML=`<div class="fact ${ok?'ok':'no'}"><b>${ok?'🎉 Correct!':'❌ Not quite – answer: '+esc(q[q[5]+1])}</b><p>💡 <b>Did you know?</b> ${esc(q[6])}</p>
-      <button class="btn gold" id="qpNext" style="width:100%">${r.i+1<N_Q?'Next question ▶':'See result 🏁'}</button></div>`;
+    $('qpFact').innerHTML=`<div class="fact ${ok?'ok':'no'}"><b>${ok?'🎉 Correct!':'❌ Not quite – answer: '+esc(q[q[5]+1])}</b><p>💡 <b>Did you know?</b> ${esc(q[6])}</p></div>`;
+    const nb=$('qpNext');nb.textContent=r.i+1<N_Q?(ok?'✅ Correct! Next question ▶':'Next question ▶'):'See result 🏁';nb.classList.toggle('ok',ok);$('qpFoot').classList.add('on');
     $('qpScore').textContent=`✅ ${r.good}  ·  ${r.i+1}/${N_Q}`;
-    $('qpNext').onclick=()=>{r.i++;if(r.i<N_Q)ask();else finish();};setTimeout(()=>{const f=$('qpFact');if(f)f.scrollIntoView({behavior:'smooth',block:'nearest'});},50);}
-  function finish(){const r=run,p=st()[r.id]||(st()[r.id]=[]),prev=p[r.l-1]||0;const stars=r.good>=N_Q?3:r.good>=18?2:r.good>=PASS?1:0;
+    $('qpNext').onclick=()=>{if(r.ans.length<=r.i)return;r.i++;if(r.i<N_Q)ask();else finish();};setTimeout(()=>{const f=$('qpFact');if(f)f.scrollIntoView({behavior:'smooth',block:'nearest'});},50);}
+  function finish(){$('qpFoot').classList.remove('on');const r=run,p=st()[r.id]||(st()[r.id]=[]),prev=p[r.l-1]||0;const stars=r.good>=N_Q?3:r.good>=18?2:r.good>=PASS?1:0;
     if(stars>prev)p[r.l-1]=stars;const first=!prev&&stars>0;const coins=stars?Math.round((first?1:.2)*(10+stars*10+Math.floor(r.l/10)*5)):0;
     if(coins)P.coins+=coins;save();setCoins();try{stars?SFX.unlock():SFX.bad();}catch(e){}
     const nextOk=stars>0&&avail(r.id).includes(r.l+1);
-    openModal(`${stars?`<div class="rain">${coinRain(22)}</div>`:''}<h2>${stars?'🎉 Stage Cleared!':'📚 Keep Learning!'}</h2>
+    openModal(`${stars?`<div class="rain">${coinRain(22)}</div>`:''}<h2>${stars?'🎉 Stage Cleared!':'📚 Keep Learning!'}</h2><p class="center" style="margin:0"><b>${stageName(r.id,r.l)}</b></p>
       <div class="resStars">${[0,1,2].map(k=>`<span class="${k<stars?'on':''}">★</span>`).join('')}</div>
       <p class="center"><b>${r.good} / ${N_Q} correct</b>${stars?'':`<br>You need ${PASS} to pass – try again!`}${coins?`<br>+${coins} 🪙`:''}</p>
       ${nextOk?`<button class="btn gold" style="width:100%" id="qzN">Next Stage ▶</button>`:''}
@@ -2580,12 +2686,32 @@ const QZ=(function(){
   return{reg,init,renderSubjects,back,summary,_play:play,_ans:answer};
 })();
 
+/* ---------- winding stage path (shared by Quiz Empire & Mind Empire) ---------- */
+function stagePath(el,items,attr,chapterName){
+  const W=Math.min(el.clientWidth||380,520),GAP=142,TOP=70;let y=TOP;const pts=[];let html='';
+  items.forEach((it,i)=>{
+    if(i%10===0){const ch=chapterName?chapterName(i):'';html+=`<div class="pmChap" style="top:${y-46}px"><span>${ch}</span></div>`;y+=58;}
+    const x=W/2+Math.sin(i*0.95)*W*0.3;pts.push([x,y]);
+    const cls=['pmNode','mnode',it.state==='lock'||it.state==='soon'?'lock':'',it.state==='cur'?'cur':'',it.state==='done'?'done':'',it.boss?'boss':''].join(' ');
+    const stars=[0,1,2].map(k=>`<i class="${k<(it.stars||0)?'on':''}">★</i>`).join('');
+    html+=`<div class="${cls}" ${attr}="${it.key}" style="left:${x}px;top:${y}px">
+      <div class="pmBub">${it.state==='lock'?'🔒':it.state==='soon'?'⏳':it.boss&&it.state!=='done'?'👑':it.label}</div>
+      <div class="pmStars">${stars}</div>
+      <div class="pmName"><b>${it.name}</b><small>${it.sub}</small></div></div>`;
+    y+=GAP;});
+  let d='';pts.forEach((p,i)=>{if(!i){d+=`M${p[0]},${p[1]}`;return;}const q=pts[i-1],my=(q[1]+p[1])/2;d+=` C${q[0]},${my} ${p[0]},${my} ${p[0]},${p[1]}`;});
+  const H=y+40;
+  el.innerHTML=`<div class="pmWrap" style="height:${H}px;width:${W}px"><svg class="pmRoad" width="${W}" height="${H}" aria-hidden="true">
+    <path d="${d}" stroke="#00000030" stroke-width="30" fill="none" stroke-linecap="round" transform="translate(0 5)"/>
+    <path d="${d}" stroke="#ffe0b2" stroke-width="26" fill="none" stroke-linecap="round"/>
+    <path d="${d}" stroke="#ffffff" stroke-width="4" stroke-dasharray="2 14" fill="none" stroke-linecap="round"/></svg>${html}</div>`;
+  const c=el.querySelector('.pmNode.cur');if(c)setTimeout(()=>c.scrollIntoView({block:'center'}),60);}
 /* =====================================================================
    FUN EMPIRE – game hub: Pizza Rush · Ludo · Saap Seedi · Mind Empire
    All boards, art and questions are original (drawn in code).
    ===================================================================== */
 const FE=(function(){
-  const S=()=>{if(!P.fe)P.fe={mind:[],ludo:{w:0,p:0},snake:{w:0,p:0}};if(!P.fe.mind)P.fe.mind=[];return P.fe;};
+  const S=()=>{const f=P.fe||(P.fe={});if(!Array.isArray(f.mind))f.mind=[];if(!f.ludo)f.ludo={w:0,p:0};if(!f.snake)f.snake={w:0,p:0};return f;};
   const rnd=n=>Math.floor(Math.random()*n);
   const sleep=ms=>new Promise(r=>setTimeout(r,ms));
   const COLORS=[{n:'Red',c:'#e53935',d:'#9a1b1b',l:'#ffcdd2'},{n:'Green',c:'#43a047',d:'#1b5e20',l:'#c8e6c9'},{n:'Yellow',c:'#fbc02d',d:'#c17900',l:'#fff9c4'},{n:'Blue',c:'#1e88e5',d:'#0d47a1',l:'#bbdefb'}];
@@ -2599,7 +2725,7 @@ const FE=(function(){
     $('hubGrid').innerHTML=`
       <div class="gcard g-pizza" data-g="pizza"><span class="tag">3D</span><div class="art">🍕</div><h3>Pizza Rush</h3><small>${ti?'Stage '+ti.stage+' / '+ti.total:'Build your pizza empire'}</small></div>
       <div class="gcard g-ludo" data-g="ludo"><span class="tag">2–4P</span><div class="art">🎲</div><h3>Ludo</h3><small>🏆 ${f.ludo.w} wins · vs computer or friends</small></div>
-      <div class="gcard g-snake" data-g="snake"><span class="tag">2–4P</span><div class="art">🐍🪜</div><h3>Saap Seedi</h3><small>🏆 ${f.snake.w} wins · climb to 100!</small></div>
+      <div class="gcard g-snake" data-g="snake"><span class="tag">2–4P</span><div class="art">🐍🪜</div><h3>Saap Seedi</h3><small>${(f.snakeSt||[]).filter(x=>x>0).length}/21 stages · 🏆 ${f.snake.w} wins</small></div>
       <div class="gcard g-mind" data-g="mind"><span class="tag">NEW</span><div class="art">🧠</div><h3>Mind Empire</h3><small>Level ${Math.min(mdone+1,MIND_N)} / ${MIND_N} · puzzles & quiz</small></div>
       <div class="gcard g-quiz" data-g="quiz"><span class="tag">41 SUBJECTS</span><div class="art">🎓</div><div><h3>Quiz Empire</h3><small>${(()=>{const q=QZ.summary();return q.cleared?q.cleared+' stages cleared · ':'';})()}Learn something new in every question!</small></div></div>`;
     const tips=['Spot the difference to sharpen your eyes 👀','Roll a 6 to bring a Ludo token out 🎲','Ladders lift you up – snakes slide you down 🐍','Earn coins in every game – spend them in Pizza Rush 🍕'];
@@ -2607,7 +2733,7 @@ const FE=(function(){
   function openGame(g){audio();
     if(g==='pizza'){renderHome();show('home');}
     else if(g==='ludo')setupBoardGame('ludo');
-    else if(g==='snake')setupBoardGame('snake');
+    else if(g==='snake')SNAKE.openMap();
     else if(g==='mind'){renderMind();show('mind');}
     else if(g==='quiz'){QZ.renderSubjects();show('quiz');}}
   function goHub(){renderHub();show('hub');}
@@ -2770,10 +2896,25 @@ const FE=(function(){
     const BOARDS=[{sn:{99:41,95:72,87:57,74:46,62:18,49:11,36:6,28:3},ld:{2:23,8:34,20:77,32:68,41:79,57:83,72:92,80:98}},
                   {sn:{97:63,92:51,84:44,69:33,58:37,46:25,31:9,17:4},ld:{3:22,11:49,19:38,27:56,43:64,52:73,66:86,78:96}}];
     let G=null,cv,ctx,size,raf=0,B=BOARDS[0];
+    const SN_STAGES=['Garden Path','Mango Grove','Village Well','Temple Steps','River Bank','Bamboo Forest','Tea Garden','Desert Dunes','Monsoon Marsh','Jungle Trail',
+      'Ancient Ruins','Hidden Caves','Waterfall Cliff','Spice Market','Fort Walls','Misty Hills','Volcano Ridge','Thunder Valley','Serpent Swamp','Cobra Canyon',"Naga Raja's Throne"];
+    const SN_N=SN_STAGES.length;
+    function stageCfg(s){return{cpus:s<=7?1:s<=14?2:3,exact:s>=8,par:s<=7?30:s<=14?34:38,diff:s<=5?'Easy':s<=10?'Medium':s<=15?'Hard':s<=19?'Very Hard':'Expert'};}
+    function genBoard(s){let seed=s*7919+17;const R=()=>(seed=seed*16807%2147483647)/2147483647;const ri=(a,b)=>a+Math.floor(R()*(b-a+1));
+      const num=(r,c)=>r*10+(r%2?10-c:c+1),colOf=n=>{const r=Math.floor((n-1)/10),i=(n-1)%10;return r%2?9-i:i;};const used=new Set([1,100]),sn={},ld={};const nS=Math.min(13,3+Math.floor(s*0.5)),nL=Math.max(3,8-Math.floor(s*0.25));
+      for(let i=0,t=0;i<nS&&t<500;t++){const top=s>=10&&i<Math.floor(s/6)?ri(88,99):ri(18,97);const tr=Math.floor((top-1)/10),tc=colOf(top);const tail=num(Math.max(0,tr-ri(1,2+Math.floor(s/5))),Math.min(9,Math.max(0,tc+ri(-1,1))));
+        if(used.has(top)||used.has(tail)||top===tail||Math.floor((top-1)/10)===Math.floor((tail-1)/10))continue;sn[top]=tail;used.add(top);used.add(tail);i++;}
+      for(let i=0,t=0;i<nL&&t<500;t++){const bot=ri(2,80);const br=Math.floor((bot-1)/10),bc=colOf(bot);const top=Math.min(99,num(Math.min(9,br+ri(1,s<=7?3:2)),Math.min(9,Math.max(0,bc+ri(-1,1)))));
+        if(used.has(bot)||used.has(top)||Math.floor((top-1)/10)===Math.floor((bot-1)/10))continue;ld[bot]=top;used.add(bot);used.add(top);i++;}
+      return{sn,ld};}
     function cellCenter(n){const c=size/10;if(n<=0)return[-c*.3,size-c*.5];const i=n-1,row=Math.floor(i/10),col=row%2?9-i%10:i%10;return[(col+.5)*c,size-(row+.5)*c];}
-    function start(){const cn=[...CPU_NAMES].sort(()=>Math.random()-.5);B=BOARDS[rnd(BOARDS.length)];
+    function start(stage){const cn=[...CPU_NAMES].sort(()=>Math.random()-.5);
+      if(stage){const c=stageCfg(stage);B=genBoard(stage);
+        G={stage,hr:0,pl:[{col:COLORS[0],cpu:false,name:'You',pos:0,anim:null},...[...Array(c.cpus)].map((_,i)=>({col:COLORS[i+1],cpu:true,name:cn.pop(),pos:0,anim:null}))],turn:0,phase:'roll',exact:c.exact,over:false};}
+      else{B=BOARDS[rnd(BOARDS.length)];
       G={pl:[...Array(setup.n)].map((_,i)=>({col:COLORS[i],cpu:setup.cpu[i],name:setup.cpu[i]?cn.pop():(setup.cpu.slice(0,setup.n).filter(x=>!x).length>1?'Player '+(i+1):'You'),pos:0,anim:null})),
-         turn:0,phase:'roll',exact:setup.exact,over:false};
+         turn:0,phase:'roll',exact:setup.exact,over:false};}
+      diceFace($('snakeDice'),6);$('snakeTitle').textContent=stage?'🐍 '+SN_STAGES[stage-1]:'🐍 Saap Seedi 🪜';
       show('snake');layout();ui();loop();}
     function layout(){cv=$('snakeCv');const r=$('snake').querySelector('.boardWrap').getBoundingClientRect();({x:ctx,s:size}=fitCanvas(cv,Math.min(r.width-8,560),Math.max(240,r.height-8)));}
     function loop(){cancelAnimationFrame(raf);const f=()=>{if(!$('snake').classList.contains('on'))return;draw();raf=requestAnimationFrame(f);};f();}
@@ -2817,7 +2958,7 @@ const FE=(function(){
     async function slide(p,to,snake){const from=p.pos,a=cellCenter(from),b=cellCenter(to);
       const pts=snake?snakePts(...a,...b,Object.keys(B.sn).indexOf(String(from))):null;const N=snake?40:24;
       for(let k=0;k<=N;k++){const t=k/N;p.anim=snake?pts[k]:[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t];await sleep(snake?22:24);}p.pos=to;p.anim=null;}
-    async function roll(){if(!G||G.phase!=='roll'||G.over)return;G.phase='anim';const p=cur();const d=await rollDice($('snakeDice'));ui();
+    async function roll(){if(!G||G.phase!=='roll'||G.over)return;G.phase='anim';const p=cur();if(!p.cpu&&G.stage)G.hr++;const d=await rollDice($('snakeDice'));ui();
       let target=p.pos+d;if(target>100){if(G.exact){toast(`Need exactly ${100-p.pos} to win!`);await sleep(600);return next(false);}target=100;}
       for(let n=p.pos+1;n<=target;n++)await hopTo(p,n);
       if(B.ld[p.pos]){toast('🪜 Ladder! Climb up!');try{SFX.unlock();}catch(e){}await slide(p,B.ld[p.pos],false);}
@@ -2825,16 +2966,36 @@ const FE=(function(){
       if(p.pos>=100)return win(p);
       next(d===6);}
     function next(again){if(!again)G.turn=(G.turn+1)%G.pl.length;else toast('🎲 Rolled 6 – roll again!');G.phase='roll';ui();}
-    function win(p){G.over=true;const f=S();f.snake.p++;const vsCpu=G.pl.some(q=>q.cpu);let coins=0;
+    function win(p){if(G.stage)return stageWin(p);G.over=true;const f=S();f.snake.p++;const vsCpu=G.pl.some(q=>q.cpu);let coins=0;
       if(!p.cpu&&vsCpu){f.snake.w++;coins=30+G.pl.length*20;P.coins+=coins;}save();setCoins();try{SFX.unlock();}catch(e){}
       openModal(`<div class="rain">${coinRain(p.cpu?8:30)}</div><h2>${p.cpu?'🤖 '+p.name+' wins!':'🎉 '+p.name+' win'+(p.name==='You'?'':'s')+'!'}</h2><div class="hq">🏆</div>
         ${coins?`<p class="center"><b>+${coins} 🪙</b></p>`:''}
         <button class="btn gold" style="width:100%" id="feAgain">🔁 Play Again</button><button class="btn" style="width:100%;margin-top:8px" id="feHubB">🏠 Fun Empire</button>`);
       $('feAgain').onclick=()=>{closeModal();start();};$('feHubB').onclick=()=>{closeModal();goHub();};}
+    function stageWin(p){G.over=true;const s=G.stage,c=stageCfg(s),f=S();if(!Array.isArray(f.snakeSt))f.snakeSt=[];
+      const youWon=!p.cpu,stars=youWon?(G.hr<=c.par?3:G.hr<=c.par+10?2:1):0,prev=f.snakeSt[s-1]||0;if(stars>prev)f.snakeSt[s-1]=stars;
+      const coins=stars?Math.round((prev?.25:1)*(20+s*5+stars*10)):0;if(coins)P.coins+=coins;save();setCoins();try{stars?SFX.unlock():SFX.bad();}catch(e){}
+      const next=youWon&&s<SN_N;
+      openModal(`${stars?`<div class="rain">${coinRain(26)}</div>`:''}<h2>${youWon?'🎉 Stage Cleared!':'🐍 '+p.name+' won!'}</h2><p class="center" style="margin:0"><b>${SN_STAGES[s-1]}</b></p>
+        <div class="resStars">${[0,1,2].map(k=>`<span class="${k<stars?'on':''}">★</span>`).join('')}</div>
+        <p class="center">${youWon?`You reached 100 in ${G.hr} rolls${stars<3?` · 3★ needs ${c.par} or fewer`:''}`:'Try again – the dice may smile on you next time!'}${coins?`<br><b>+${coins} 🪙</b>`:''}</p>
+        ${next?`<button class="btn gold" style="width:100%" id="snN">Next Stage ▶</button>`:''}
+        <button class="btn ${next?'':'gold'}" style="width:100%;margin-top:8px" id="snR">🔁 ${youWon?'Play Again':'Try Again'}</button>
+        <button class="btn" style="width:100%;margin-top:8px;background:#00897b;box-shadow:0 4px 0 #004d40" id="snM">🗺️ All Stages</button>`);
+      if(next)$('snN').onclick=()=>{closeModal();playStage(s+1);};$('snR').onclick=()=>{closeModal();playStage(s);};$('snM').onclick=()=>{closeModal();G=null;openMap();};}
+    function playStage(s){const c=stageCfg(s);start(s);
+      stageIntroAnim('🐍 '+SN_STAGES[s-1],'Stage '+s+' of '+SN_N+' · '+c.diff,`${c.cpus} opponent${c.cpus>1?'s':''}${c.exact?' · exact roll to 100':''}`,false);}
+    function openMap(){const f=S(),st=Array.isArray(f.snakeSt)?f.snakeSt:[];const items=[];
+      for(let s=1;s<=SN_N;s++){const done=st[s-1]||0,open=s===1||st[s-2]>0,c=stageCfg(s);
+        items.push({key:s,label:s,name:SN_STAGES[s-1],sub:'Stage '+s+' · '+c.diff,stars:done,boss:s%7===0,state:!open?'lock':done?'done':'cur'});}
+      $('snStars').textContent=st.reduce((a,b)=>a+(b||0),0)+'/'+SN_N*3;
+      stagePath($('snMapList'),items,'data-s',i=>['🌱 Village Trail · 1–7','🌴 Jungle Journey · 8–14','🔥 Serpent Kingdom · 15–21'][Math.floor(i/7)]||'');
+      show('snakeMap');}
     function confirmQuit(){openModal(`<h2>Leave game?</h2><p class="center">Your Saap Seedi game will end.</p><button class="btn red" style="width:100%" id="feQ">Leave</button><button class="btn" style="width:100%;margin-top:8px" onclick="closeModal()">Keep playing</button>`);
-      $('feQ').onclick=()=>{closeModal();G=null;goHub();};}
-    function init(){$('snakeDice').onclick=()=>{if(G&&!cur().cpu)roll();};$('snakeBack').onclick=confirmQuit;addEventListener('resize',()=>{if($('snake').classList.contains('on'))layout();});}
-    return{start,init,confirmQuit};
+      $('feQ').onclick=()=>{const st=G&&G.stage;closeModal();G=null;st?openMap():goHub();};}
+    function init(){$('snakeDice').onclick=()=>{if(G&&!cur().cpu)roll();};$('snakeBack').onclick=confirmQuit;$('snMapBack').onclick=goHub;$('snFree').onclick=()=>setupBoardGame('snake');
+      $('snMapList').addEventListener('click',e=>{const n=e.target.closest('.pmNode');if(!n)return;if(n.classList.contains('lock'))return toast('🔒 Clear the previous stage first');playStage(+n.dataset.s);});addEventListener('resize',()=>{if($('snake').classList.contains('on'))layout();});}
+    return{start,init,confirmQuit,openMap,_win:p=>win(p),_g:()=>G,_gen:genBoard};
   })();
 
   /* =====================================================================
@@ -2843,6 +3004,9 @@ const FE=(function(){
   const MIND_N=60;
   const TYPES=[{k:'diff',n:'Spot the Difference',ic:'🔍'},{k:'puz',n:'Picture Puzzle',ic:'🧩'},{k:'quiz',n:'Brain Quiz',ic:'💡'}];
   const lvType=i=>TYPES[i%3];
+  const M_ADJ=['Rookie','Bright','Clever','Swift','Bold','Brave','Mighty','Grand','Royal','Legendary'];
+  const M_NOUN=[['Eagle Eye','Sharp Spotter'],['Tile Twister','Jigsaw Joiner'],['Brainbox','Quiz Whiz']];
+  const mindName=i=>M_ADJ[Math.floor(i/6)]+' '+M_NOUN[i%3][Math.floor(i/3)%2];
   function seeded(seed){let s=seed%2147483647;if(s<=0)s+=2147483646;return()=>(s=s*16807%2147483647)/2147483647;}
   const THEMES=[
     {n:'Sunny Park',sky:['#81d4fa','#e1f5fe'],ground:'#8bc34a',obj:['🌳','🌸','🌼','🐶','🐱','⚽','🎈','🦋','🏠','🚲','🐦','🍎','🌻','🐿️','🪁']},
@@ -2869,15 +3033,14 @@ const FE=(function(){
 
   let MP=null;// current level play state
   function renderMind(){setCoins();const st=S().mind;let first=st.findIndex((v,i)=>!(v>0));if(first<0)first=Math.min(st.length,MIND_N-1);
-    const html=[];for(let i=0;i<MIND_N;i++){const t=lvType(i),done=st[i]||0,open=i===0||st[i-1]>0,boss=(i+1)%10===0;
-      html.push(`<div class="mnode ${i%2?'r':''} ${open?'':'lock'} ${open&&!done?'cur':''} ${boss?'boss':''}" data-i="${i}"><div class="bub">${open?(boss?'👑':t.ic):'🔒'}<em>${i+1}</em></div>
-        <div class="info"><b>${boss?'⭐ Boss · ':''}${t.n}</b><small>${diffName(i)}</small><div class="st">${[0,1,2].map(k=>`<span class="${k<done?'on':''}">★</span>`).join('')}</div></div></div>`);}
-    $('mindList').innerHTML=html.join('');const c=$('mindList').querySelector('.cur');if(c)setTimeout(()=>c.scrollIntoView({block:'center'}),60);
+    const items=[];for(let i=0;i<MIND_N;i++){const t=lvType(i),done=st[i]||0,open=i===0||st[i-1]>0,boss=(i+1)%10===0;
+      items.push({key:i,label:i+1,name:mindName(i),sub:t.ic+' '+t.n,stars:done,boss,state:!open?'lock':done?'done':'cur'});}
+    stagePath($('mindList'),items,'data-i',k=>['🌱 Easy Start','🌱 Easy Start','🌿 Getting Smarter','🌿 Getting Smarter','🔥 Tricky Zone','🔥 Tricky Zone'][k/10]||'');
     $('mindStars').textContent=st.reduce((a,b)=>a+(b||0),0)+'/'+MIND_N*3;}
   const diffName=i=>['Easy','Easy','Medium','Medium','Tricky','Tricky','Hard','Hard','Expert','Genius'][Math.floor(i/6)];
   function playLevel(i){stopTimer();const t=lvType(i);const boss=(i+1)%10===0;MP={i,t:t.k,d:Math.floor(i/3),boss,mist:0,time:0,timer:null,hints:0};
-    $('mpTitle').textContent=`Level ${i+1} · ${t.n}`;show('mindPlay');
-    stageIntroAnim(t.ic+' '+t.n,'Level '+(i+1)+' of '+MIND_N+(boss?' · BOSS':''),diffName(i),false,()=>{if(!MP)return;
+    $('mpTitle').textContent=`${t.ic} ${mindName(i)}`;show('mindPlay');
+    stageIntroAnim(t.ic+' '+mindName(i),t.n+' · Level '+(i+1)+' of '+MIND_N+(boss?' · BOSS':''),diffName(i),false,()=>{if(!MP)return;
       if(t.k==='diff')startDiff();else if(t.k==='puz')startPuzzle();else startQuiz();});}
   function stopTimer(){if(MP&&MP.timer){clearInterval(MP.timer);MP.timer=null;}}
   function bar(html){$('mpBar').innerHTML=html;}
@@ -2885,7 +3048,7 @@ const FE=(function(){
     if(stars>0){st[i]=Math.max(prev,stars);}const first=prev===0&&stars>0;const coins=stars?Math.round((first?1:.25)*(15+stars*8+MP.d*3)*(MP.boss?2:1)):0;
     if(coins){P.coins+=coins;}save();setCoins();try{stars?SFX.unlock():SFX.bad();}catch(e){}
     const nextOpen=stars>0&&i+1<MIND_N;
-    openModal(`${stars?`<div class="rain">${coinRain(20)}</div>`:''}<h2>${stars?'🎉 Level Complete!':'😅 Try Again'}</h2>
+    openModal(`${stars?`<div class="rain">${coinRain(20)}</div>`:''}<h2>${stars?'🎉 Level Complete!':'😅 Try Again'}</h2><p class="center" style="margin:0"><b>${mindName(i)}</b></p>
       <div class="resStars">${[0,1,2].map(k=>`<span class="${k<stars?'on':''}">★</span>`).join('')}</div><p class="center"><b>${msg}</b>${coins?`<br>+${coins} 🪙`:''}</p>
       ${nextOpen?`<button class="btn gold" style="width:100%" id="mNext">Next Level ▶</button>`:''}
       <button class="btn ${nextOpen?'':'gold'}" style="width:100%;margin-top:8px" id="mRe">🔁 Replay</button>
@@ -3047,6 +3210,7 @@ const FE=(function(){
     if($('home').classList.contains('on')){goHub();return'stay';}
     if($('ludo').classList.contains('on')){LUDO.confirmQuit();return'stay';}
     if($('snake').classList.contains('on')){SNAKE.confirmQuit();return'stay';}
+    if($('snakeMap').classList.contains('on')){goHub();return'stay';}
     if($('mindPlay').classList.contains('on')){stopTimer();MP=null;renderMind();show('mind');return'stay';}
     if($('mind').classList.contains('on')){goHub();return'stay';}
     return null;}

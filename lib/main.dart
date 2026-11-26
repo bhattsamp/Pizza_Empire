@@ -102,12 +102,20 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
         if (!didPop) _handleBack();
       },
       child: Scaffold(
-        backgroundColor: const Color(0xFF2B1A10),
+        backgroundColor: const Color(0xFFFF5A5F),
         body: SafeArea(
           child: Stack(
             children: [
               WebViewWidget(controller: _controller),
-              if (_loading || !_minTimeDone) const LoadingScreen(),
+              IgnorePointer(
+                ignoring: !(_loading || !_minTimeDone),
+                child: AnimatedOpacity(
+                  opacity: (_loading || !_minTimeDone) ? 1 : 0,
+                  duration: const Duration(milliseconds: 450),
+                  curve: Curves.easeOut,
+                  child: const LoadingScreen(),
+                ),
+              ),
             ],
           ),
         ),
@@ -116,31 +124,21 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
   }
 }
 
-/// Loading screen: chef artwork with an animated progress bar.
+/// Loading screen: Bold FE artwork with an animated progress bar.
 class LoadingScreen extends StatelessWidget {
   const LoadingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xFF2B1A10),
+      color: const Color(0xFFFF5A5F),
       child: Stack(
         fit: StackFit.expand,
         children: [
           Image.asset('assets/splash/loading.jpg',
               fit: BoxFit.cover, alignment: Alignment.topCenter),
-          const DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: [0.6, 1.0],
-                colors: [Colors.transparent, Color(0xCC000000)],
-              ),
-            ),
-          ),
           Align(
-            alignment: const Alignment(0, 0.86),
+            alignment: const Alignment(0, 0.82),
             child: TweenAnimationBuilder<double>(
               tween: Tween(begin: 0, end: 1),
               duration: const Duration(milliseconds: 2400),
@@ -164,7 +162,7 @@ class LoadingScreen extends StatelessWidget {
                       height: 30,
                       padding: const EdgeInsets.all(4),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF5D3A1A),
+                        color: const Color(0x668A1240),
                         borderRadius: BorderRadius.circular(18),
                         border: Border.all(color: Colors.white, width: 3),
                       ),
@@ -176,7 +174,7 @@ class LoadingScreen extends StatelessWidget {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(14),
                                 gradient: const LinearGradient(
-                                  colors: [Color(0xFFFFE066), Color(0xFFFFB300)],
+                                  colors: [Color(0xFFFFFFFF), Color(0xFFFFE0B2)],
                                 ),
                               ),
                             ),
@@ -188,7 +186,7 @@ class LoadingScreen extends StatelessWidget {
                               child: Text(
                                 '${(v * 100).round()}%',
                                 style: const TextStyle(
-                                  color: Colors.white,
+                                  color: Color(0xFF8A1240),
                                   fontWeight: FontWeight.w900,
                                   fontSize: 15,
                                 ),
