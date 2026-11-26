@@ -493,6 +493,34 @@ background:linear-gradient(135deg,var(--tomato),var(--tomatoD));border:4px solid
 .pmNode.lock .pmName{background:#ffffffc0}.pmNode.lock .pmName b{color:#5d556f}
 .pmChap{position:absolute;left:50%;transform:translateX(-50%);z-index:1}
 .pmChap span{display:inline-block;background:linear-gradient(90deg,#ff4081,#ff9100);color:#fff;font-family:FEB,system-ui;font-weight:800;font-size:15px;padding:6px 18px;border-radius:20px;box-shadow:0 4px 0 #8a1240;white-space:nowrap}
+/* kingdom clash */
+.g-clash{background:linear-gradient(150deg,#5c6bc0,#283593);--sh:#0d1452;grid-column:1/-1;min-height:120px;flex-direction:row;align-items:center;gap:14px}
+.g-clash .art{margin:0;font-size:60px}
+#kc{background:linear-gradient(180deg,#1a237e,#0d1452)}
+.kcTop{display:flex;justify-content:space-between;align-items:center;padding:0 14px 6px;font-weight:900;font-size:13px;gap:8px}
+.kcTop .chip{background:#ffffff22;color:#fff;border:2px solid #ffffff40}
+#kcCrowns .me{color:#90caf9}#kcCrowns .ai{color:#ff8a80}
+.kcArena{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+.kcArena canvas{border-radius:14px;box-shadow:0 8px 0 #0004;touch-action:none}
+.kcBar{padding:6px 10px calc(10px + env(safe-area-inset-bottom));background:#0d1452}
+#kcElx{position:relative;height:22px;border-radius:12px;background:#311b92;overflow:hidden;margin-bottom:8px;box-shadow:inset 0 2px 4px #0006}
+#kcElx::before{content:"";position:absolute;inset:0;width:var(--v,50%);background:linear-gradient(90deg,#d500f9,#ff4081);border-radius:12px;transition:width .15s linear}
+#kcElx::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 calc(10% - 2px),#0d145288 calc(10% - 2px) 10%)}
+#kcElxN{position:absolute;left:8px;top:0;line-height:22px;font-weight:900;z-index:1;font-size:14px}
+#kcHand{display:grid;grid-template-columns:repeat(4,1fr) 52px;gap:6px}
+.kcCard{border:0;border-radius:14px;background:linear-gradient(180deg,#fff,#e8eaf6);padding:6px 2px 4px;display:flex;flex-direction:column;align-items:center;box-shadow:0 4px 0 #0006;position:relative;min-height:84px;transition:transform .12s}
+.kcCard .e{font-size:30px;line-height:1.1}.kcCard .n{font-size:10.5px;font-weight:900;color:#1a237e;line-height:1.1;text-align:center}
+.kcCard .c{position:absolute;top:-6px;left:-4px;background:#d500f9;color:#fff;font-weight:900;font-size:13px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;border:2px solid #fff}
+.kcCard.sel{transform:translateY(-10px);box-shadow:0 0 0 3px #ffeb3b,0 8px 0 #0006}
+.kcCard.poor{filter:grayscale(.85) brightness(.8)}
+.kcNext{border-radius:12px;background:#ffffff1a;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:24px}
+.kcNext small{font-size:10px;font-weight:900;opacity:.8}
+.kcDeck{display:grid;grid-template-columns:1fr 1fr;gap:6px;max-height:48vh;overflow:auto}
+.kcPick{border:2px solid #e0d6f0;background:#fff;border-radius:14px;padding:6px 8px;text-align:left;display:grid;grid-template-columns:34px 1fr;grid-template-rows:auto auto;column-gap:6px;align-items:center}
+.kcPick .e{grid-row:1/3;font-size:28px}.kcPick b{font-size:13px;color:#311b92}.kcPick small{font-size:10.5px;color:#6d5a8a;line-height:1.2}
+.kcPick.on{border-color:#43a047;background:#e8f5e9;box-shadow:0 0 0 2px #43a04755}.kcPick.lock{opacity:.5}
+#kcMap{background:linear-gradient(180deg,#283593,#4a148c)}
+#kcMapList{flex:1;overflow:auto;display:flex;justify-content:center;overflow-x:hidden}
 </style>
 </head>
 <body>
@@ -523,6 +551,16 @@ background:linear-gradient(135deg,var(--tomato),var(--tomatoD));border:4px solid
     <div class="feHead"><button class="back" id="snMapBack">←</button><h2>🐍 Saap Seedi 🪜</h2><span class="chip">⭐ <span id="snStars">0</span></span></div>
     <div style="padding:0 14px 6px"><button class="btn gold" id="snFree" style="width:100%">🎲 Free Play · 2–4 players</button></div>
     <div id="snMapList" style="flex:1;overflow:auto"></div>
+  </section>
+  <section id="kcMap" class="screen feScreen">
+    <div class="feHead"><button class="back" id="kcMapBack">←</button><h2>⚔️ Kingdom Clash</h2><span class="chip">⭐ <span id="kcStars">0</span></span></div>
+    <div id="kcMapList"></div>
+  </section>
+  <section id="kc" class="screen feScreen">
+    <div class="feHead"><button class="back" id="kcBack">←</button><h2 id="kcTitle" style="font-size:16px"></h2><span class="chip">⏱ <span id="kcTime">3:00</span></span></div>
+    <div class="kcTop"><span class="chip" id="kcEnemy"></span><span class="chip" id="kcCrowns">– vs –</span></div>
+    <div class="kcArena"><canvas id="kcCv"></canvas></div>
+    <div class="kcBar"><div id="kcElx"><span id="kcElxN">5</span></div><div id="kcHand"></div></div>
   </section>
   <section id="mind" class="screen feScreen">
     <div class="feHead"><button class="back" id="mindBack">←</button><h2>🧠 Mind Empire</h2><span class="chip">⭐ <span id="mindStars">0</span></span></div>
@@ -962,7 +1000,7 @@ let toastT;function toast(m){const t=$('toast');t.textContent=m;t.classList.add(
 function itemHTML(id,size,lv){const d=ITEMS[id];return `<div class="it ${d.coin?'coin':''}" style="--s:${size}px;width:${size}px;height:${size}px"><span class="e">${d.e}</span>${d.b?`<span class="bd">${d.b}</span>`:''}${lv&&!d.coin&&d.lv>1?`<span class="lv">${d.lv}</span>`:''}</div>`;}
 function setCoins(){document.querySelectorAll('.coinsTxt').forEach(e=>e.textContent=fmt(P.coins));}
 let curScreen='splash';
-const HEAVY_SCREENS=['hub','home','tycoon','ludo','snake','snakeMap','mindPlay','quizPlay','quiz','mind'];
+const HEAVY_SCREENS=['hub','home','tycoon','ludo','snake','snakeMap','kc','kcMap','mindPlay','quizPlay','quiz','mind'];
 function show(id){
   const prev=curScreen,changed=id!==curScreen;curScreen=id;
   const heavy=changed&&HEAVY_SCREENS.includes(id);
@@ -2727,6 +2765,7 @@ const FE=(function(){
       <div class="gcard g-ludo" data-g="ludo"><span class="tag">2–4P</span><div class="art">🎲</div><h3>Ludo</h3><small>🏆 ${f.ludo.w} wins · vs computer or friends</small></div>
       <div class="gcard g-snake" data-g="snake"><span class="tag">2–4P</span><div class="art">🐍🪜</div><h3>Saap Seedi</h3><small>${(f.snakeSt||[]).filter(x=>x>0).length}/21 stages · 🏆 ${f.snake.w} wins</small></div>
       <div class="gcard g-mind" data-g="mind"><span class="tag">NEW</span><div class="art">🧠</div><h3>Mind Empire</h3><small>Level ${Math.min(mdone+1,MIND_N)} / ${MIND_N} · puzzles & quiz</small></div>
+      <div class="gcard g-clash" data-g="clash"><span class="tag">NEW · 21 BATTLES</span><div class="art">⚔️</div><div><h3>Kingdom Clash</h3><small>${KC.summary()}/21 forts won · build a deck & storm the towers!</small></div></div>
       <div class="gcard g-quiz" data-g="quiz"><span class="tag">41 SUBJECTS</span><div class="art">🎓</div><div><h3>Quiz Empire</h3><small>${(()=>{const q=QZ.summary();return q.cleared?q.cleared+' stages cleared · ':'';})()}Learn something new in every question!</small></div></div>`;
     const tips=['Spot the difference to sharpen your eyes 👀','Roll a 6 to bring a Ludo token out 🎲','Ladders lift you up – snakes slide you down 🐍','Earn coins in every game – spend them in Pizza Rush 🍕'];
     $('hubTip').innerHTML=`<div class="e">👑</div><div><b>Welcome to Fun Empire!</b><small>${tips[rnd(tips.length)]}</small></div>`;}
@@ -2735,7 +2774,8 @@ const FE=(function(){
     else if(g==='ludo')setupBoardGame('ludo');
     else if(g==='snake')SNAKE.openMap();
     else if(g==='mind'){renderMind();show('mind');}
-    else if(g==='quiz'){QZ.renderSubjects();show('quiz');}}
+    else if(g==='quiz'){QZ.renderSubjects();show('quiz');}
+    else if(g==='clash'){KC.openMap();}}
   function goHub(){renderHub();show('hub');}
 
   /* ---------------- setup modal (Ludo / Saap Seedi) ---------------- */
@@ -3206,7 +3246,7 @@ const FE=(function(){
   /* ---------------- back handling ---------------- */
   function back(){
     if($('hub').classList.contains('on'))return'exit';
-    const q=QZ.back();if(q)return q;
+    const q=QZ.back()||KC.back();if(q)return q;
     if($('home').classList.contains('on')){goHub();return'stay';}
     if($('ludo').classList.contains('on')){LUDO.confirmQuit();return'stay';}
     if($('snake').classList.contains('on')){SNAKE.confirmQuit();return'stay';}
@@ -3223,7 +3263,221 @@ const FE=(function(){
   return{init,renderHub,goHub,back,LUDO,SNAKE,_play:playLevel,_mp:()=>MP};
 })();
 
-FE.init();QZ.init();$('homeHub').onclick=()=>FE.goHub();
+/* =====================================================================
+   KINGDOM CLASH – real-time lane battle, 21 stages vs computer
+   Original cards, names and art (drawn in code). Arena is 18 × 32 tiles.
+   ===================================================================== */
+const KC=(function(){
+  const AW=18,AH=32,RIVER=16,BRIDGES=[3.5,14.5];
+  const CARDS={
+    sipahi:{n:'Sipahi',e:'💂',c:3,t:'troop',hp:620,dmg:85,rng:.9,hs:1.1,spd:1.1,tg:'ground',r:.45,d:'Brave sword soldier'},
+    archers:{n:'Teer Twins',e:'🏹',c:3,t:'troop',cnt:2,hp:230,dmg:52,rng:5,hs:1.1,spd:1.1,tg:'all',r:.38,d:'Two archers – hit air & ground'},
+    bhaala:{n:'Bhaala Trio',e:'🔱',c:2,t:'troop',cnt:3,hp:170,dmg:48,rng:1.6,hs:1.0,spd:1.3,tg:'ground',r:.34,d:'Three fast spearmen'},
+    ghud:{n:'Ghudsawar',e:'🏇',c:4,t:'troop',hp:950,dmg:150,rng:1,hs:1.3,spd:1.9,tg:'ground',r:.55,d:'Fast cavalry charge'},
+    agni:{n:'Agni Baan',e:'🔥',c:4,t:'spell',dmg:340,rad:2.5,d:'Fire arrow – blasts an area'},
+    top:{n:'Top Khana',e:'💣',c:3,t:'building',hp:750,dmg:115,rng:5.5,hs:.9,tg:'ground',r:.7,life:30,d:'Cannon – defends, pulls tanks'},
+    haathi:{n:'Gaj Yoddha',e:'🐘',c:5,t:'troop',hp:2500,dmg:170,rng:1,hs:1.5,spd:.75,tg:'buildings',r:.8,d:'War elephant – smashes towers'},
+    vaidya:{n:'Vaidya',e:'🧑‍⚕️',c:4,t:'troop',hp:480,dmg:40,rng:4,hs:1.2,spd:1.0,tg:'all',r:.42,heal:55,d:'Healer – heals friends nearby'},
+    garud:{n:'Garud Rider',e:'🦅',c:4,t:'troop',air:1,hp:620,dmg:95,rng:1.6,hs:1.1,spd:1.4,tg:'all',r:.5,d:'Flying eagle – can\'t be hit by melee'},
+    teerv:{n:'Teer Varsha',e:'🌧️',c:3,t:'spell',dmg:190,rad:3.8,d:'Rain of arrows over a wide area'},
+    pehelwan:{n:'Pehelwan',e:'💪',c:7,t:'troop',hp:3300,dmg:220,rng:1,hs:1.4,spd:.8,tg:'ground',r:.85,d:'Mighty wrestler – huge health'},
+  };
+  const START=['sipahi','archers','bhaala','ghud','agni','top'];
+  const UNLOCK={2:'haathi',4:'vaidya',6:'garud',9:'teerv',12:'pehelwan'};
+  const STAGES=['Border Outpost','Village Gate','Riverside Camp','Bamboo Fort','Sandstone Keep','Mango Orchard Fort','Lotus Lake Fort','Desert Watchtower','Monsoon Ramparts','Elephant Gate',
+    'Hilltop Garh','Spice Route Fort','Copper Citadel','Silver Bastion','Golden Durg','Thunder Fort','Tiger Ridge','Storm Palace','Fire Temple Gate','Diamond Durbar',"Samrat's Citadel"];
+  const ENEMY=['Raja Bheem','Rani Tara','Sardar Veer','Raja Kesar','Rani Meera','Senapati Arjun','Raja Dhruv'];
+  const N=STAGES.length;
+  const st=()=>{const f=P.fe||(P.fe={});if(!f.kc)f.kc={st:[],deck:null};if(!Array.isArray(f.kc.st))f.kc.st=[];return f.kc;};
+  const unlocked=()=>{const u=[...START];const best=st().st.filter(x=>x>0).length+1;for(const s in UNLOCK)if(best>=+s)u.push(UNLOCK[s]);return u;};
+  const cfg=s=>({lv:.72+s*.032,elx:.78+s*.022,think:Math.max(.55,2.3-s*.085),deck:unlockedAt(s+1),dbl:s>=15});
+  function unlockedAt(s){const u=[...START];for(const k in UNLOCK)if(s>=+k)u.push(UNLOCK[k]);return u;}
+
+  let W=null,cv,ctx,scale=1,ox=0,oy=0,raf=0,last=0;
+  /* ---------- setup ---------- */
+  function tower(team,kind,x,y,lv){const king=kind==='king';
+    return{team,b:1,tower:1,kind,x,y,hp:Math.round((king?4200:2600)*lv),max:Math.round((king?4200:2600)*lv),dmg:(king?105:88)*lv,rng:king?7:7.5,hs:king?1:.8,cd:0,tg:'all',r:king?1.5:1.15,active:!king};}
+  function start(stage){const c=cfg(stage),me=st();let deck=(me.deck||[]).filter(k=>unlocked().includes(k));if(deck.length<Math.min(8,unlocked().length))deck=unlocked().slice(0,8);
+    const shuffle=a=>a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(v=>v[1]);
+    W={stage,c,t:180,ot:false,over:false,ents:[],fx:[],proj:[],sel:-1,
+      me:{elx:5,q:shuffle(deck),crowns:0},ai:{elx:5,q:shuffle(c.deck),crowns:0,think:1.5,name:ENEMY[(stage-1)%ENEMY.length]}};
+    for(const[tm,y1,y2,lv]of[[0,26.2,29.3,1],[1,5.8,2.7,c.lv]]){W.ents.push(tower(tm,'princess',3.5,y1,lv),tower(tm,'princess',14.5,y1,lv),tower(tm,'king',9,y2,lv));}
+    $('kcTitle').textContent='⚔️ '+STAGES[stage-1];$('kcEnemy').textContent='👑 '+W.ai.name;
+    show('kc');hand();crowns();requestAnimationFrame(()=>{layout();setTimeout(layout,450);});
+    stageIntroAnim('⚔️ '+STAGES[stage-1],'Stage '+stage+' of '+N+' · vs '+W.ai.name,'Destroy enemy towers to win crowns!',true,()=>{if(W){W.go=true;last=performance.now();}});
+    cancelAnimationFrame(raf);last=performance.now();loop();}
+  function layout(){cv=$('kcCv');const r=$('kc').querySelector('.kcArena').getBoundingClientRect();const dpr=Math.min(2,devicePixelRatio||1);
+    scale=Math.min((r.width-8)/AW,(r.height-8)/AH);const w=AW*scale,h=AH*scale;cv.style.width=w+'px';cv.style.height=h+'px';cv.width=w*dpr;cv.height=h*dpr;ctx=cv.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);}
+  /* ---------- spawning ---------- */
+  function spawn(team,key,x,y){const C=CARDS[key],lv=team?W.c.lv:1;
+    if(C.t==='spell'){castSpell(team,key,x,y,lv);return;}
+    const n=C.cnt||1;for(let i=0;i<n;i++){const a=i/n*Math.PI*2,off=n>1?.55:0;
+      W.ents.push({team,key,e:C.e,b:C.t==='building'?1:0,x:x+Math.cos(a)*off,y:y+Math.sin(a)*off,hp:C.hp*lv,max:C.hp*lv,dmg:C.dmg*lv,rng:C.rng,hs:C.hs,cd:.6,spd:C.spd||0,tg:C.tg,r:C.r,air:!!C.air,heal:C.heal?C.heal*lv:0,life:C.life||0,dep:1,bob:Math.random()*6,tgt:null,tt:0});}
+    W.fx.push({k:'ring',x,y,t:0,col:team?'#ff5252':'#448aff'});try{SFX.pop();}catch(e){}}
+  function castSpell(team,key,x,y,lv){const C=CARDS[key];const king=W.ents.find(e=>e.tower&&e.kind==='king'&&e.team===team)||{x:9,y:team?3:29};
+    W.proj.push({x:king.x,y:king.y,tx:x,ty:y,t:0,dur:key==='agni'?.7:.5,k:key,team,
+      hit:()=>{const waves=key==='teerv'?3:1;for(let w=0;w<waves;w++)setTimeout(()=>{if(!W)return;
+        for(const e of W.ents)if(e.team!==team&&e.hp>0&&Math.hypot(e.x-x,e.y-y)<=C.rad+e.r*.5)hurt(e,C.dmg*lv/waves*(e.tower?.35:1),team);
+        W.fx.push({k:key==='agni'?'boom':'arrows',x,y,t:0,r:C.rad});},w*220);try{SFX.oven();}catch(e){}}});}
+  /* ---------- simulation ---------- */
+  const side=y=>y>RIVER?0:1;
+  function hurt(e,d,by){if(e.hp<=0)return;e.hp-=d;e.hit=.15;
+    if(e.tower&&e.kind==='king')e.active=true;
+    if(e.hp<=0){e.hp=0;if(e.tower){const opp=e.team?W.me:W.ai;opp.crowns+=e.kind==='king'?3-opp.crowns:1;opp.crowns=Math.min(3,opp.crowns);
+        const k=W.ents.find(t=>t.tower&&t.kind==='king'&&t.team===e.team);if(k)k.active=true;W.fx.push({k:'boom',x:e.x,y:e.y,t:0,r:2.2});try{SFX.win();vib(80);}catch(x){}
+        crowns();if(e.kind==='king')end();}
+      else W.fx.push({k:'puff',x:e.x,y:e.y,t:0});}}
+  function canHit(a,t){if(t.hp<=0||t.team===a.team)return false;if(a.tg==='buildings')return!!t.b;if(t.air&&a.tg==='ground')return false;return true;}
+  function pickTarget(u){let best=null,bd=1e9;const sight=u.b?u.rng+u.r:5.5;
+    for(const t of W.ents){if(!canHit(u,t))continue;const d=Math.hypot(t.x-u.x,t.y-u.y)-t.r;
+      if(u.tg==='buildings'&&!u.b){if(d<bd){bd=d;best=t;}continue;}
+      if(d<sight&&d<bd){bd=d;best=t;}}
+    if(!best&&!u.b){for(const t of W.ents){if(!t.b||!canHit(u,t))continue;const sameLane=Math.abs(t.x-u.x)<6||t.kind==='king';const d=Math.hypot(t.x-u.x,t.y-u.y)+(sameLane?0:12);if(d<bd){bd=d;best=t;}}}
+    return best;}
+  function waypoint(u,tx,ty){if(u.air)return[tx,ty];const us=side(u.y),ts=side(ty);
+    if(us!==ts){const bx=BRIDGES.reduce((a,b)=>Math.abs(b-u.x)+Math.abs(b-tx)*.5<Math.abs(a-u.x)+Math.abs(a-tx)*.5?b:a);
+      if(Math.abs(u.x-bx)>.25&&Math.abs(u.y-RIVER)>1.1)return[bx,us===0?17.4:14.6];return[bx,us===0?14.4:17.6];}
+    return[tx,ty];}
+  function step(dt){
+    const dbl=W.t<=60||W.ot?2:1;
+    W.me.elx=Math.min(10,W.me.elx+dt/2.8*dbl);W.ai.elx=Math.min(10,W.ai.elx+dt/2.8*dbl*W.c.elx);
+    W.t-=dt;if(W.t<=0){if(!W.ot&&W.me.crowns===W.ai.crowns){W.ot=true;W.t=60;toast('⏱ Overtime! Next tower wins');}else return end();}
+    if(W.ot&&W.me.crowns!==W.ai.crowns)return end();
+    for(const u of W.ents){if(u.hp<=0)continue;if(u.hit)u.hit=Math.max(0,u.hit-dt);
+      if(u.dep){u.dep=Math.max(0,u.dep-dt*1.6);continue;}
+      if(u.life){u.hp-=u.max/u.life*dt;if(u.hp<=0){u.hp=0;continue;}}
+      if(u.tower&&!u.active)continue;
+      if(u.heal){for(const f of W.ents)if(f.team===u.team&&!f.b&&f.hp>0&&Math.hypot(f.x-u.x,f.y-u.y)<3)f.hp=Math.min(f.max,f.hp+u.heal*dt);if(Math.random()<dt*2)W.fx.push({k:'heal',x:u.x+(Math.random()-.5)*3,y:u.y+(Math.random()-.5)*3,t:0});}
+      u.tt-=dt;if(!u.tgt||u.tgt.hp<=0||u.tt<=0){u.tgt=pickTarget(u);u.tt=.3;}
+      const t=u.tgt;u.cd=Math.max(0,u.cd-dt);u.moving=false;if(!t)continue;
+      const d=Math.hypot(t.x-u.x,t.y-u.y)-t.r-u.r*.5;
+      if(d<=u.rng){if(u.cd<=0){u.cd=u.hs;if(u.rng>2||u.b){W.proj.push({x:u.x,y:u.y,tx:t.x,ty:t.y,t:0,dur:Math.min(.45,d/14+.12),k:u.tower?'tball':u.key==='top'?'ball':'arrow',team:u.team,hit:()=>hurt(t,u.dmg,u.team)});}
+          else{hurt(t,u.dmg,u.team);u.lunge=.15;}}}
+      else if(!u.b){const[wx,wy]=waypoint(u,t.x,t.y);const dx=wx-u.x,dy=wy-u.y,L=Math.hypot(dx,dy)||1;const s=Math.min(L,u.spd*dt);u.x+=dx/L*s;u.y+=dy/L*s;u.moving=true;u.face=dx;}}
+    // separation
+    const mv=W.ents.filter(e=>!e.b&&e.hp>0);
+    for(let i=0;i<mv.length;i++)for(let j=i+1;j<mv.length;j++){const a=mv[i],b=mv[j];if(a.air!==b.air)continue;const dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||.01,m=(a.r+b.r)*.85;
+      if(d<m){const p=(m-d)/2;a.x-=dx/d*p;a.y-=dy/d*p;b.x+=dx/d*p;b.y+=dy/d*p;}}
+    for(const u of mv){u.x=Math.max(.4,Math.min(AW-.4,u.x));u.y=Math.max(.4,Math.min(AH-.4,u.y));
+      if(!u.air&&Math.abs(u.y-RIVER)<1&&!BRIDGES.some(b=>Math.abs(u.x-b)<1.1))u.y=u.y>RIVER?RIVER+1:RIVER-1;}
+    W.ents=W.ents.filter(e=>e.hp>0||e.tower);
+    for(const p of[...W.proj]){p.t+=dt;if(p.t>=p.dur){W.proj.splice(W.proj.indexOf(p),1);p.hit();}}
+    for(const f of[...W.fx]){f.t+=dt;if(f.t>.8)W.fx.splice(W.fx.indexOf(f),1);}
+    aiThink(dt);}
+  /* ---------- computer opponent ---------- */
+  function aiThink(dt){const A=W.ai;A.think-=dt;if(A.think>0)return;A.think=W.c.think*(.7+Math.random()*.6);
+    const hand=A.q.slice(0,4);const can=k=>CARDS[k].c<=A.elx;
+    const threats=W.ents.filter(e=>e.team===0&&!e.b&&e.hp>0&&e.y<19);
+    const play=(k,x,y)=>{A.elx-=CARDS[k].c;A.q.splice(A.q.indexOf(k),1);A.q.push(k);spawn(1,k,x,Math.max(.8,Math.min(CARDS[k].t==='spell'?31:14.5,y)));};
+    // spell on clusters
+    for(const k of hand)if(CARDS[k].t==='spell'&&can(k)){const C=CARDS[k];let bx=null,bn=0;for(const e of W.ents){if(e.team!==0||e.hp<=0||e.tower)continue;const n=W.ents.filter(f=>f.team===0&&!f.tower&&f.hp>0&&Math.hypot(f.x-e.x,f.y-e.y)<C.rad).length;if(n>bn){bn=n;bx=e;}}
+      if(bx&&bn>=3){return play(k,bx.x,bx.y);}}
+    if(threats.length){const th=threats.reduce((a,b)=>a.y<b.y?a:b);const air=th.air,big=th.max>1500;
+      let opts=hand.filter(k=>can(k)&&CARDS[k].t!=='spell'&&(!air||CARDS[k].tg==='all'));
+      if(big)opts.sort((a,b)=>(b==='top'||b==='bhaala')-(a==='top'||a==='bhaala'));else opts.sort((a,b)=>CARDS[a].c-CARDS[b].c);
+      if(opts.length){const k=opts[0];return play(k,th.x+(Math.random()-.5),CARDS[k].t==='building'?Math.min(th.y-3,8):Math.max(2,th.y-2.5));}}
+    if(A.elx>=Math.min(9.2,5+Math.random()*3+(W.stage<4?1:0))){const myT=W.ents.filter(e=>e.tower&&e.team===0&&e.kind==='princess'&&e.hp>0);
+      const lane=myT.length?myT.reduce((a,b)=>a.hp<b.hp?a:b).x:9;const tanks=hand.filter(k=>can(k)&&CARDS[k].t==='troop').sort((a,b)=>CARDS[b].hp*(CARDS[b].cnt||1)-CARDS[a].hp*(CARDS[a].cnt||1));
+      if(tanks.length){const k=Math.random()<.6?tanks[0]:tanks[Math.floor(Math.random()*tanks.length)];return play(k,lane+(Math.random()-.5),CARDS[k].spd<1?3:7);}
+      const any=hand.filter(can).sort((a,b)=>CARDS[a].c-CARDS[b].c)[0];if(any&&A.elx>=9.5){const t=W.ents.filter(e=>e.tower&&e.team===0&&e.hp>0).sort((a,b)=>a.hp-b.hp)[0];
+        return CARDS[any].t==='spell'?play(any,t.x,t.y):play(any,lane,CARDS[any].t==='building'?9:6);}}
+    const lowT=W.ents.find(e=>e.tower&&e.team===0&&e.hp>0&&e.hp<380*W.c.lv);const fb=hand.find(k=>k==='agni'&&can(k));if(lowT&&fb)play(fb,lowT.x,lowT.y);}
+  /* ---------- player input ---------- */
+  function hand(){if(!W)return;const q=W.me.q;
+    $('kcHand').innerHTML=q.slice(0,4).map((k,i)=>{const C=CARDS[k];return `<button class="kcCard ${W.sel===i?'sel':''} ${C.c>W.me.elx?'poor':''}" data-i="${i}"><span class="e">${C.e}</span><span class="n">${C.n}</span><span class="c">${C.c}</span></button>`;}).join('')
+      +`<div class="kcNext"><small>Next</small><span>${CARDS[q[4]]?CARDS[q[4]].e:''}</span></div>`;}
+  function elxUI(){if(!W)return;const v=W.me.elx;$('kcElx').style.setProperty('--v',(v/10*100)+'%');$('kcElxN').textContent=Math.floor(v);
+    const m=Math.floor(W.t/60),s=Math.floor(W.t%60);$('kcTime').textContent=(W.ot?'OT ':'')+m+':'+String(s).padStart(2,'0');
+    $('kcHand').querySelectorAll('.kcCard').forEach(b=>{const k=W.me.q[+b.dataset.i];b.classList.toggle('poor',CARDS[k].c>W.me.elx);});}
+  function crowns(){$('kcCrowns').innerHTML=`<span class="me">${'👑'.repeat(W.me.crowns)||'–'}</span> vs <span class="ai">${'👑'.repeat(W.ai.crowns)||'–'}</span>`;}
+  function tapArena(e){if(!W||!W.go||W.over||W.sel<0)return;const r=cv.getBoundingClientRect();const x=(e.clientX-r.left)/scale,y=(e.clientY-r.top)/scale;
+    const k=W.me.q[W.sel],C=CARDS[k];if(C.c>W.me.elx){toast('Not enough elixir ⚡');return;}
+    if(C.t!=='spell'&&(y<RIVER+1.3)){toast('Place troops on your side of the river');return;}
+    if(C.t!=='spell'&&W.ents.some(t=>t.tower&&Math.hypot(t.x-x,t.y-y)<t.r+.3))return;
+    W.me.elx-=C.c;W.me.q.splice(W.sel,1);W.me.q.push(k);W.sel=-1;spawn(0,k,Math.max(.6,Math.min(AW-.6,x)),C.t==='spell'?y:Math.max(RIVER+1.3,Math.min(AH-.6,y)));hand();}
+  /* ---------- drawing ---------- */
+  function draw(){const x=ctx,s=scale;if(!x)return;x.clearRect(0,0,AW*s,AH*s);
+    for(let i=0;i<AW;i++)for(let j=0;j<AH;j++){x.fillStyle=(i+j)%2?'#7cc95a':'#86d163';x.fillRect(i*s,j*s,s+1,s+1);}
+    if(W&&W.sel>=0){const C=CARDS[W.me.q[W.sel]];x.fillStyle=C.t==='spell'?'#ffffff18':'#ffffff30';x.fillRect(0,(C.t==='spell'?0:RIVER+1.3)*s,AW*s,(C.t==='spell'?AH:AH-RIVER-1.3)*s);
+      if(C.t!=='spell'){x.fillStyle='#ff000022';x.fillRect(0,0,AW*s,(RIVER+1.3)*s);}}
+    // river + bridges
+    x.fillStyle='#3fa9f5';x.fillRect(0,(RIVER-1)*s,AW*s,2*s);x.strokeStyle='#ffffff66';x.lineWidth=2;const ph=performance.now()/600;
+    for(let i=0;i<AW;i+=2){x.beginPath();x.moveTo((i+(ph%2))*s,(RIVER-.3)*s);x.quadraticCurveTo((i+.5+(ph%2))*s,(RIVER-.6)*s,(i+1+(ph%2))*s,(RIVER-.3)*s);x.stroke();}
+    for(const b of BRIDGES){x.fillStyle='#a1887f';x.fillRect((b-1)*s,(RIVER-1.25)*s,2*s,2.5*s);x.fillStyle='#8d6e63';for(let k=0;k<5;k++)x.fillRect((b-1)*s,(RIVER-1.2+k*.5)*s,2*s,.12*s);}
+    if(!W)return;
+    const list=[...W.ents].filter(e=>e.hp>0||e.tower).sort((a,b)=>(a.air-b.air)||(a.y-b.y));
+    for(const e of list){if(e.tower)drawTower(e);else drawUnit(e);}
+    for(const p of W.proj){const k=Math.min(1,p.t/p.dur),px=p.x+(p.tx-p.x)*k,py=p.y+(p.ty-p.y)*k-Math.sin(k*Math.PI)*(p.k==='agni'?3:.8);
+      if(p.k==='agni'){x.font=`${s*1.4}px system-ui`;x.textAlign='center';x.textBaseline='middle';x.fillText('🔥',px*s,py*s);}
+      else if(p.k==='teerv'){x.font=`${s*1.2}px system-ui`;x.textAlign='center';x.fillText('🏹',px*s,py*s);}
+      else{x.fillStyle=p.k==='arrow'?'#5d4037':'#263238';x.beginPath();x.arc(px*s,py*s,s*(p.k==='arrow'?.12:.2),0,7);x.fill();}}
+    for(const f of W.fx){const k=f.t/.8;x.globalAlpha=1-k;
+      if(f.k==='boom'||f.k==='arrows'){x.fillStyle=f.k==='boom'?'#ff9100':'#8d6e63';x.beginPath();x.arc(f.x*s,f.y*s,(f.r||1.5)*s*(.4+k*.6),0,7);x.fill();}
+      else if(f.k==='ring'){x.strokeStyle=f.col;x.lineWidth=3;x.beginPath();x.arc(f.x*s,f.y*s,s*(.4+k*1.4),0,7);x.stroke();}
+      else if(f.k==='heal'){x.fillStyle='#69f0ae';x.font=`${s*.7}px system-ui`;x.textAlign='center';x.fillText('+',f.x*s,(f.y-k)*s);}
+      else if(f.k==='puff'){x.fillStyle='#ffffff';x.beginPath();x.arc(f.x*s,f.y*s,s*(.3+k*.8),0,7);x.fill();}
+      x.globalAlpha=1;}}
+  function bar(e,cx,cy,w){const s=scale;const f=Math.max(0,e.hp/e.max);x2().fillStyle='#0008';ctx.fillRect(cx-w/2,cy,w,s*.22);ctx.fillStyle=e.team?'#ff5252':'#448aff';ctx.fillRect(cx-w/2+1,cy+1,(w-2)*f,s*.22-2);}
+  const x2=()=>ctx;
+  function drawTower(e){const x=ctx,s=scale,cx=e.x*s,cy=e.y*s,w=e.r*2*s;const dead=e.hp<=0;
+    x.fillStyle='#00000033';x.beginPath();x.ellipse(cx,cy+w*.42,w*.55,w*.2,0,0,7);x.fill();
+    if(dead){x.fillStyle='#9e9e9e';x.beginPath();x.arc(cx,cy,w*.4,0,7);x.fill();x.font=`${s*.9}px system-ui`;x.textAlign='center';x.textBaseline='middle';x.fillText('💥',cx,cy);return;}
+    x.fillStyle=e.hit?'#fff':'#bcaaa4';x.fillRect(cx-w/2,cy-w*.35,w,w*.75);
+    x.fillStyle='#8d6e63';for(let i=0;i<4;i++)x.fillRect(cx-w/2+i*w/3.5,cy-w*.5,w/6,w*.18);
+    x.fillStyle=e.team?'#e53935':'#1e88e5';x.fillRect(cx-w/2,cy+w*.1,w,w*.12);
+    x.beginPath();x.moveTo(cx,cy-w*.95);x.lineTo(cx,cy-w*.45);x.strokeStyle='#5d4037';x.lineWidth=2;x.stroke();x.fillStyle=e.team?'#e53935':'#1e88e5';x.beginPath();x.moveTo(cx,cy-w*.95);x.lineTo(cx+w*.32,cy-w*.83);x.lineTo(cx,cy-w*.7);x.fill();
+    x.font=`${s*(e.kind==='king'?1.3:1)}px system-ui`;x.textAlign='center';x.textBaseline='middle';x.fillText(e.kind==='king'?'🤴':'🏰',cx,cy-w*.05);
+    if(e.kind==='king'&&!e.active){x.font=`${s*.6}px system-ui`;x.fillText('💤',cx+w*.45,cy-w*.45);}
+    bar(e,cx,cy+w*.45,w*1.05);x.fillStyle='#fff';x.font=`900 ${s*.38}px system-ui`;x.fillText(Math.ceil(e.hp),cx,cy+w*.45+s*.42);}
+  function drawUnit(u){const x=ctx,s=scale;u.bob+=.016*(u.moving?10:2);const lift=u.air?s*.9:0,b=u.moving?Math.abs(Math.sin(u.bob))*s*.12:0;let cx=u.x*s,cy=u.y*s-lift-b;
+    if(u.lunge){u.lunge-=.016;const t=u.tgt;if(t){cx+=(t.x-u.x)*s*.15;cy+=(t.y-u.y)*s*.15;}}
+    x.fillStyle='#0000002e';x.beginPath();x.ellipse(u.x*s,u.y*s+u.r*s*.6,u.r*s*.9,u.r*s*.35,0,0,7);x.fill();
+    x.globalAlpha=u.dep?.5:1;const R=u.r*s*(u.b?1.1:1);
+    x.fillStyle=u.team?'#ffcdd2':'#bbdefb';x.strokeStyle=u.hit?'#fff':u.team?'#e53935':'#1e88e5';x.lineWidth=Math.max(2,s*.12);
+    x.beginPath();if(u.b)x.rect(cx-R,cy-R,R*2,R*2);else x.arc(cx,cy,R,0,7);x.fill();x.stroke();
+    x.font=`${R*1.35}px system-ui`;x.textAlign='center';x.textBaseline='middle';x.save();if(u.face<0&&!u.team){}x.fillText(u.e,cx,cy+R*.05);x.restore();
+    if(u.dep){x.fillStyle='#fff';x.font=`900 ${s*.4}px system-ui`;x.fillText('⏳',cx,cy-R-s*.3);}
+    x.globalAlpha=1;if(u.hp<u.max)bar(u,cx,cy-R-s*.38,Math.max(s*.9,R*2));}
+  /* ---------- loop / end ---------- */
+  function loop(){cancelAnimationFrame(raf);const f=ts=>{if(!$('kc').classList.contains('on')||!W)return;raf=requestAnimationFrame(f);
+    const dt=Math.min(.05,(ts-last)/1000);last=ts;if(W.go&&!W.over&&!$('modalBg').classList.contains('on'))step(dt);draw();elxUI();};raf=requestAnimationFrame(f);}
+  function end(){if(W.over)return;W.over=true;const s=W.stage,me=st();const won=W.me.crowns>W.ai.crowns;const stars=won?W.me.crowns:0,prev=me.st[s-1]||0;
+    if(stars>prev)me.st[s-1]=stars;const coins=stars?Math.round((prev?.25:1)*(30+s*8+stars*15)):0;if(coins)P.coins+=coins;
+    const newCard=won&&!prev&&UNLOCK[s+1];save();setCoins();try{won?SFX.unlock():SFX.bad();}catch(e){}
+    setTimeout(()=>{openModal(`${won?`<div class="rain">${coinRain(28)}</div>`:''}<h2>${won?'🏆 Victory!':W.me.crowns===W.ai.crowns?'🤝 Draw':'💔 Defeat'}</h2>
+      <p class="center" style="margin:0"><b>${STAGES[s-1]}</b></p><div class="resStars">${[0,1,2].map(k=>`<span class="${k<stars?'on':''}">★</span>`).join('')}</div>
+      <p class="center">👑 You ${W.me.crowns} – ${W.ai.crowns} ${W.ai.name}${coins?`<br><b>+${coins} 🪙</b>`:''}${newCard?`<br>🎴 New card unlocked: <b>${CARDS[newCard].e} ${CARDS[newCard].n}</b>`:''}</p>
+      ${won&&s<N?`<button class="btn gold" style="width:100%" id="kcN">Next Battle ▶</button>`:''}
+      <button class="btn ${won&&s<N?'':'gold'}" style="width:100%;margin-top:8px" id="kcR">🔁 ${won?'Play Again':'Try Again'}</button>
+      <button class="btn" style="width:100%;margin-top:8px;background:#3949ab;box-shadow:0 4px 0 #1a237e" id="kcM">🗺️ All Battles</button>`);
+      if($('kcN'))$('kcN').onclick=()=>{closeModal();prep(s+1);};$('kcR').onclick=()=>{closeModal();prep(s);};$('kcM').onclick=()=>{closeModal();W=null;openMap();};},900);}
+  /* ---------- deck & map ---------- */
+  function prep(s){const u=unlocked(),me=st();let deck=(me.deck||u.slice(0,8)).filter(k=>u.includes(k));while(deck.length<Math.min(8,u.length)){const k=u.find(k=>!deck.includes(k));deck.push(k);}
+    const c=cfg(s);const render=()=>{openModal(`<h2>⚔️ ${STAGES[s-1]}</h2><p class="center" style="margin:2px 0 8px"><small>Stage ${s} of ${N} · vs ${ENEMY[(s-1)%ENEMY.length]} · Enemy power ${Math.round(c.lv*100)}%</small></p>
+      <div class="setupLbl">YOUR DECK (${deck.length}/${Math.min(8,u.length)}) · tap to swap</div>
+      <div class="kcDeck">${Object.keys(CARDS).map(k=>{const C=CARDS[k],has=u.includes(k),on=deck.includes(k);const lockAt=Object.keys(UNLOCK).find(x=>UNLOCK[x]===k);
+        return `<button class="kcPick ${on?'on':''} ${has?'':'lock'}" data-k="${k}"><span class="e">${has?C.e:'🔒'}</span><b>${C.n}</b><small>${has?'⚡'+C.c+' · '+C.d:'Unlocks at stage '+lockAt}</small></button>`;}).join('')}</div>
+      <button class="btn gold" style="width:100%;margin-top:10px;font-size:18px" id="kcGo">⚔️ Battle!</button>`);
+      $('modal').querySelectorAll('.kcPick').forEach(b=>b.onclick=()=>{const k=b.dataset.k;if(!u.includes(k))return toast('🔒 Win more battles to unlock');
+        if(deck.includes(k)){if(deck.length<=Math.min(8,u.length)&&u.length<=8)return toast('All your cards are in the deck');deck=deck.filter(x=>x!==k);}
+        else{if(deck.length>=8)deck.shift();deck.push(k);}render();});
+      $('kcGo').onclick=()=>{if(deck.length<Math.min(8,u.length))return toast('Pick '+Math.min(8,u.length)+' cards');me.deck=deck;save();closeModal();start(s);};};render();}
+  function openMap(){const me=st();const items=[];for(let s=1;s<=N;s++){const d=me.st[s-1]||0,open=s===1||me.st[s-2]>0;
+      items.push({key:s,label:s,name:STAGES[s-1],sub:'Battle '+s+(UNLOCK[s]?' · 🎴 '+CARDS[UNLOCK[s]].n:''),stars:d,boss:s%7===0,state:!open?'lock':d?'done':'cur'});}
+    $('kcStars').textContent=me.st.reduce((a,b)=>a+(b||0),0)+'/'+N*3;
+    stagePath($('kcMapList'),items,'data-s',i=>['🏞️ Frontier Forts · 1–7','🏯 Royal Strongholds · 8–14','🔥 Imperial Citadels · 15–21'][Math.floor(i/7)]||'');show('kcMap');}
+  function quit(){openModal(`<h2>Leave battle?</h2><p class="center">This battle will count as a loss.</p><button class="btn red" style="width:100%" id="kcQ">Leave</button><button class="btn" style="width:100%;margin-top:8px" onclick="closeModal()">Keep fighting</button>`);
+    $('kcQ').onclick=()=>{closeModal();W=null;openMap();};}
+  function back(){if($('kc').classList.contains('on')){quit();return'stay';}if($('kcMap').classList.contains('on')){FE.goHub();return'stay';}return null;}
+  function init(){$('kcHand').addEventListener('pointerdown',e=>{const b=e.target.closest('.kcCard');if(!b||!W)return;const i=+b.dataset.i;W.sel=W.sel===i?-1:i;hand();try{SFX.pop();}catch(x){}});
+    $('kcCv').addEventListener('pointerdown',tapArena);$('kcBack').onclick=quit;$('kcMapBack').onclick=()=>FE.goHub();
+    $('kcMapList').addEventListener('click',e=>{const n=e.target.closest('.pmNode');if(!n)return;if(n.classList.contains('lock'))return toast('🔒 Win the previous battle first');prep(+n.dataset.s);});
+    addEventListener('resize',()=>{if($('kc').classList.contains('on'))layout();});}
+  function summary(){return st().st.filter(x=>x>0).length;}
+  return{init,openMap,back,summary,_w:()=>W,_spawn:spawn,_start:start,_end:end};
+})();
+
+FE.init();QZ.init();KC.init();$('homeHub').onclick=()=>FE.goHub();
 </script>
 <script>
 window.appBack=function(){
