@@ -33,7 +33,7 @@ jobs:
       - name: Set app name and vibration permission
         run: |
           M=android/app/src/main/AndroidManifest.xml
-          sed -i 's/android:label="pizza_empire"/android:label="Pizza Empire"/' $M
+          sed -i 's/android:label="pizza_empire"/android:label="Fun Empire"/' $M
           sed -i 's#<application#<uses-permission android:name="android.permission.VIBRATE"/>\n    <application#' $M
 
       - name: Use the fixed release signing key (so updates install over old versions)

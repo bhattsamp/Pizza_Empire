@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:webview_flutter_android/webview_flutter_android.dart';
 
-/// Pizza Empire – Merge & Cook
+/// Fun Empire – Pizza Rush, Ludo, Saap Seedi, Mind Empire, Quiz Empire
 /// The whole game (100 stages, 3D restaurant, save system) lives in
 /// assets/game/index.html and runs offline inside a full-screen WebView.
 Future<void> main() async {
@@ -19,7 +19,7 @@ class PizzaEmpireApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Pizza Empire',
+      title: 'Fun Empire',
       debugShowCheckedModeBanner: false,
       home: GameScreen(),
     );
