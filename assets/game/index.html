@@ -371,6 +371,8 @@ background:linear-gradient(135deg,var(--tomato),var(--tomatoD));border:4px solid
 .mnode{display:flex;align-items:center;gap:12px;margin:10px 18px;cursor:pointer}
 .mnode.r{flex-direction:row-reverse;text-align:right}
 .mnode .bub{width:70px;height:70px;flex:none;border-radius:50%;display:grid;place-items:center;font-size:30px;background:linear-gradient(145deg,#fff,#e1bee7);box-shadow:0 6px 0 #4a148c,0 10px 16px #0005;position:relative;color:#4a148c;font-weight:900}
+.mnode .info{margin:0;background:none;border:0;border-radius:0;padding:0;display:block;min-height:0;flex:1;min-width:0}
+.mnode .info b{font-size:16px;color:#fff}.mnode .info span{opacity:1}.mnode .info small{display:block}
 .mnode .bub em{position:absolute;bottom:-6px;right:-6px;background:#ffeb3b;color:#4a148c;font-style:normal;font-size:12px;font-weight:900;border-radius:10px;padding:2px 6px;box-shadow:0 2px 0 #0003}
 .mnode.lock .bub{background:#ffffff40;color:#fff;box-shadow:0 6px 0 #0003}
 .mnode.cur .bub{animation:fePulse 1.2s ease-in-out infinite;background:linear-gradient(145deg,#fff59d,#ffb300)}
@@ -435,43 +437,6 @@ background:linear-gradient(135deg,var(--tomato),var(--tomatoD));border:4px solid
 .fact.ok{border-left:8px solid #43a047}.fact.no{border-left:8px solid #e53935}
 .fact b{font-size:15px}.fact p{margin:8px 0 12px;font-size:14.5px;line-height:1.45;font-weight:700;color:#4a3a6a}
 @keyframes factIn{from{opacity:0;transform:translateY(12px)}}
-
-/* ===== Bold FE brand: font, splash, smooth transitions ===== */
-@font-face{font-family:FEB;src:url(data:font/woff2;base64,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) format("woff2");font-weight:800}
-#splash.fe{background:linear-gradient(160deg,#ff4081 0%,#ff6d00 100%)!important}
-#splash.fe .feRays{background:none;inset:0;animation:none}
-#splash.fe .feRays::before,#splash.fe .feRays::after{content:"★";position:absolute;color:#ffffff22;font-size:300px;line-height:1}
-#splash.fe .feRays::before{left:-70px;top:-60px}#splash.fe .feRays::after{right:-60px;bottom:40px;font-size:340px}
-.feMark{position:relative;display:inline-block;font-family:FEB,system-ui;font-weight:800;color:#fff;line-height:.8;-webkit-text-stroke:0;text-shadow:0 0 0 #2a1b5e,4px 0 0 #2a1b5e,-4px 0 0 #2a1b5e,0 4px 0 #2a1b5e,0 -4px 0 #2a1b5e,4px 4px 0 #2a1b5e,-4px 4px 0 #2a1b5e,4px -4px 0 #2a1b5e,-4px -4px 0 #2a1b5e,8px 10px 0 #2a1b5e55}
-.feMark svg{position:absolute;width:.62em;right:-.28em;top:-.42em;transform:rotate(14deg);filter:drop-shadow(0 3px 0 #0003)}
-#splash.fe .feMark{font-size:150px;animation:fePop .8s cubic-bezier(.2,1.5,.4,1) both}
-#splash.fe .feLogo h1{font-family:FEB,system-ui;font-size:44px;transform:none;text-shadow:0 5px 0 #8a1240;margin-top:22px;letter-spacing:2px}
-#splash.fe .feLogo p{color:#fff3e0;font-size:17px}
-#splash.fe #playBtn{background:#fff;color:#d81b60;box-shadow:0 6px 0 #8a1240;font-family:FEB,system-ui}
-@keyframes fePop{0%{transform:scale(.3) rotate(-12deg);opacity:0}100%{transform:scale(1) rotate(0);opacity:1}}
-#hub .hubTop h1,.feHead h2{font-family:FEB,system-ui}
-/* smooth page transitions */
-.screen.enter{animation:scrIn .38s cubic-bezier(.2,.8,.3,1) both}
-@keyframes scrIn{from{opacity:0;transform:translateY(16px) scale(.99)}to{opacity:1;transform:none}}
-.screen.leaving{display:flex;z-index:40;pointer-events:none;animation:scrOut .26s ease forwards}
-.screen.leaving.slow{animation:scrOut .12s .2s ease forwards}
-@keyframes scrOut{to{opacity:0;transform:scale(.985)}}
-#wipe{position:fixed;inset:0;z-index:95;pointer-events:none;display:none;background:linear-gradient(160deg,#ff4081,#ff6d00);flex-direction:column;align-items:center;justify-content:center;gap:22px;clip-path:none}
-#wipe::before,#wipe::after{display:none;content:none}
-#wipe.on{display:flex;animation:feLoad .95s ease forwards}
-#wipe .feMark{font-size:96px;animation:fePop .45s cubic-bezier(.2,1.5,.4,1) both}
-#wipe .bar{width:150px;height:10px;border-radius:6px;background:#ffffff45;overflow:hidden}#wipe .bar i{display:block;height:100%;width:0;background:#fff;border-radius:6px;animation:barFill .55s .08s ease-out forwards}
-@keyframes feLoad{0%{opacity:0}18%{opacity:1}62%{opacity:1}100%{opacity:0}}
-@keyframes barFill{to{width:100%}}
-/* quiz: next button always visible */
-#qpFoot{display:none;padding:10px 14px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(180deg,#1a237e00,#1a237e 30%)}
-#qpFoot.on{display:block;animation:footUp .25s ease}
-#qpFoot .btn{width:100%;font-size:19px;padding:15px}
-#qpFoot .btn.ok{background:#43a047;color:#fff;box-shadow:0 5px 0 #1b5e20}
-@keyframes footUp{from{transform:translateY(30px);opacity:0}}
-.mnode .info{margin:0;background:none;border:0;border-radius:0;padding:0;display:block;min-height:0;flex:1;min-width:0}
-.mnode .info b{font-size:16px;color:#fff}.mnode .info span{opacity:1}.mnode .info small{display:block}
-.stNo{display:block;font-size:12px;font-weight:800;color:#ffeb3b;letter-spacing:.3px}
 /* winding stage path */
 #qmList,#mindList,#snMapList{display:flex;justify-content:center;overflow-x:hidden}
 .pmWrap{position:relative;margin:0 auto;flex:none}
@@ -521,6 +486,28 @@ background:linear-gradient(135deg,var(--tomato),var(--tomatoD));border:4px solid
 .kcPick.on{border-color:#43a047;background:#e8f5e9;box-shadow:0 0 0 2px #43a04755}.kcPick.lock{opacity:.5}
 #kcMap{background:linear-gradient(180deg,#283593,#4a148c)}
 #kcMapList{flex:1;overflow:auto;display:flex;justify-content:center;overflow-x:hidden}
+
+.g-visa{background:linear-gradient(150deg,#29b6f6,#1565c0);--sh:#0b3c7a;grid-column:1/-1;min-height:120px;flex-direction:row;align-items:center;gap:14px}
+.g-visa .art{margin:0;font-size:60px}
+#visa{background:linear-gradient(180deg,#0d47a1,#1976d2 40%,#e3f2fd 40%);}
+#vsList{flex:1;overflow:auto;padding:12px 14px 30px}
+.vsIntro{background:#fff;border-radius:16px;padding:12px 14px;box-shadow:0 4px 0 #0b3c7a33;margin-bottom:10px;color:#0d47a1}
+.vsIntro b{display:block;font:800 18px FEB,system-ui}.vsIntro small{color:#455a64;font-size:12.5px}
+.vsQuiz{width:100%;margin:4px 0 12px}
+.vsGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.vsTile{background:#fff;border:0;border-radius:14px;padding:10px 4px 9px;box-shadow:0 4px 0 #90caf9;display:flex;flex-direction:column;align-items:center;gap:2px;color:#0d47a1;font-family:inherit}
+.vsTile:active{transform:translateY(3px);box-shadow:0 1px 0 #90caf9}
+.vsTile .f{font-size:34px;line-height:1.1}.vsTile b{font:800 13.5px FEB,system-ui}.vsTile small{font-size:10px;color:#607d8b;text-align:center;line-height:1.15}
+.vsTips{margin-top:14px;display:grid;gap:7px}
+.vsTips div{background:#fff8e1;border-radius:12px;padding:8px 10px;font-size:12.5px;color:#5d4037;display:flex;gap:8px;align-items:flex-start}
+.vsBackL{margin-bottom:10px}
+.vsHero{display:flex;gap:12px;align-items:center;background:#fff;border-radius:18px;padding:12px 14px;box-shadow:0 4px 0 #0b3c7a33;color:#0d47a1}
+.vsHero .f{font-size:52px}.vsHero h3{margin:0;font:800 22px FEB,system-ui}.vsHero b{display:block;font-size:14px}.vsHero small{color:#607d8b;font-size:11.5px}
+.vsSec{background:#fff;border-radius:14px;padding:10px 14px;margin-top:10px;color:#263238;font-size:13.5px;line-height:1.45}
+.vsSec h4{margin:0 0 4px;color:#1565c0;font:800 15px FEB,system-ui}.vsSec ol,.vsSec ul{margin:0;padding-left:20px}.vsSec li{margin:3px 0}.vsSec p{margin:0}
+.vsSec.tip{background:#e8f5e9}.vsSec.tip h4{color:#2e7d32}
+.vsLink{display:block;text-align:center;text-decoration:none;margin-top:12px}
+.vsNote{font-size:11px;color:#607d8b;text-align:center;margin:8px 0 0}
 </style>
 </head>
 <body>
@@ -566,9 +553,13 @@ background:linear-gradient(135deg,var(--tomato),var(--tomatoD));border:4px solid
     <div class="feHead"><button class="back" id="mindBack">←</button><h2>🧠 Mind Empire</h2><span class="chip">⭐ <span id="mindStars">0</span></span></div>
     <div id="mindList"></div>
   </section>
+  <section id="visa" class="screen feScreen">
+    <div class="feHead"><button class="back" id="vsBack">←</button><h2>✈️ Study Abroad</h2><span class="chip">🌍 12</span></div>
+    <div id="vsList"></div>
+  </section>
   <section id="quiz" class="screen feScreen">
     <div class="feHead"><button class="back" id="qzBack">←</button><h2>🎓 Quiz Empire</h2><span class="chip">⭐ <span id="qzStars">0</span></span></div>
-    <div class="qzScroll"><div class="qzIntro">📚 41 subjects · 100 stages each · 21 questions per stage. Learn a new fact with every answer!</div><div id="qzGrid"></div></div>
+    <div class="qzScroll"><div class="qzIntro">📚 42 subjects · 100 stages each · 21 questions per stage. Learn a new fact with every answer!</div><div id="qzGrid"></div></div>
   </section>
   <section id="quizMap" class="screen feScreen">
     <div class="feHead"><button class="back" id="qmBack">←</button><h2 id="qmTitle" style="font-size:16px"></h2><span class="chip">🪙 <span class="coinsTxt">0</span></span></div>
@@ -1000,7 +991,7 @@ let toastT;function toast(m){const t=$('toast');t.textContent=m;t.classList.add(
 function itemHTML(id,size,lv){const d=ITEMS[id];return `<div class="it ${d.coin?'coin':''}" style="--s:${size}px;width:${size}px;height:${size}px"><span class="e">${d.e}</span>${d.b?`<span class="bd">${d.b}</span>`:''}${lv&&!d.coin&&d.lv>1?`<span class="lv">${d.lv}</span>`:''}</div>`;}
 function setCoins(){document.querySelectorAll('.coinsTxt').forEach(e=>e.textContent=fmt(P.coins));}
 let curScreen='splash';
-const HEAVY_SCREENS=['hub','home','tycoon','ludo','snake','snakeMap','kc','kcMap','mindPlay','quizPlay','quiz','mind'];
+const HEAVY_SCREENS=['hub','home','tycoon','ludo','snake','snakeMap','kc','kcMap','mindPlay','quizPlay','quiz','mind','visa'];
 function show(id){
   const prev=curScreen,changed=id!==curScreen;curScreen=id;
   const heavy=changed&&HEAVY_SCREENS.includes(id);
@@ -2615,7 +2606,7 @@ const QZ=(function(){
     ["Music & Sound Recognition","🎵","#8e24aa"],["Animal & Wildlife Knowledge","🐯","#f57c00"],["History of Inventions","💡","#f9a825"],["Financial Literacy","💰","#558b2f"],
     ["Marketing & Sales","📣","#d84315"],["Real Estate Knowledge","🏠","#795548"],["Customer Service Challenges","🎧","#0277bd"],["Strategy & Decision Making","♟️","#424242"],
     ["Code Breaking","🔐","#212121"],["Shape & Colour Matching","🟣","#7b1fa2"],["Word Search & Crossword","🔎","#00796b"],["Building & Construction Puzzles","🏗️","#ef8f00"],
-    ["Mythology","🪔","#e65100"]];
+    ["Mythology","🪔","#e65100"],["Student Visas & Study Abroad","✈️","#1565c0"]];
   const N_STAGE=100,N_Q=21,PASS=14;
   const ADJ=['Rookie','Bright','Clever','Swift','Bold','Brave','Mighty','Grand','Royal','Legendary'];
   const NOUN=[['Thinker','Spark','Logician','Puzzler','Strategist','Sage','Mastermind','Wizard','Oracle','Genius'],
@@ -2658,7 +2649,8 @@ const QZ=(function(){
     ['Circle','Square','Triangle','Rainbow','Prism','Hexagon','Spectrum','Mosaic','Kaleidoscope','Colour Master'],
     ['Finder','Seeker','Spotter','Word Hunter','Crossworder','Grid Master','Lexicon','Puzzle Pro','Word Wizard','Crossword King'],
     ['Brick','Mason','Carpenter','Builder','Foreman','Site Engineer','Contractor','Architect','Skyscraper','Master Builder'],
-    ['Seeker','Listener','Storyteller','Pilgrim','Rishi','Sage','Guru','Maharishi','Scholar','Mahaguru']];
+    ['Seeker','Listener','Storyteller','Pilgrim','Rishi','Sage','Guru','Maharishi','Scholar','Mahaguru'],
+    ['Applicant','Planner','Navigator','Passport Pro','Visa Ready','Globetrotter','Campus Scout','Border Ace','World Scholar','Visa Guru']];
   const stageName=(id,l)=>ADJ[Math.floor((l-1)/10)]+' '+NOUN[id-1][(l-1)%10];
   const DATA={};let cur=0,run=null;
   const st=()=>{if(!P.fe)P.fe={};if(!P.fe.quiz)P.fe.quiz={};return P.fe.quiz;};
@@ -2721,7 +2713,7 @@ const QZ=(function(){
       if(n.classList.contains('lock'))return toast(avail(cur).includes(l)?'🔒 Pass the previous stage first':'⏳ This stage is coming soon');play(cur,l);});
     $('qzBack').onclick=()=>FE.goHub();$('qmBack').onclick=()=>{renderSubjects();show('quiz');};$('qpBack').onclick=quitPlay;}
   function summary(){let s=0,d=0;for(let i=1;i<=SUBJ.length;i++){if(avail(i).length)s++;d+=prog(i).filter(x=>x>0).length;}return{subjects:SUBJ.length,ready:s,cleared:d};}
-  return{reg,init,renderSubjects,back,summary,_play:play,_ans:answer};
+  return{reg,init,renderSubjects,back,summary,openSubject,_play:play,_ans:answer};
 })();
 
 /* ---------- winding stage path (shared by Quiz Empire & Mind Empire) ---------- */
@@ -2766,7 +2758,8 @@ const FE=(function(){
       <div class="gcard g-snake" data-g="snake"><span class="tag">2–4P</span><div class="art">🐍🪜</div><h3>Saap Seedi</h3><small>${(f.snakeSt||[]).filter(x=>x>0).length}/21 stages · 🏆 ${f.snake.w} wins</small></div>
       <div class="gcard g-mind" data-g="mind"><span class="tag">NEW</span><div class="art">🧠</div><h3>Mind Empire</h3><small>Level ${Math.min(mdone+1,MIND_N)} / ${MIND_N} · puzzles & quiz</small></div>
       <div class="gcard g-clash" data-g="clash"><span class="tag">NEW · 21 BATTLES</span><div class="art">⚔️</div><div><h3>Kingdom Clash</h3><small>${KC.summary()}/21 forts won · build a deck & storm the towers!</small></div></div>
-      <div class="gcard g-quiz" data-g="quiz"><span class="tag">41 SUBJECTS</span><div class="art">🎓</div><div><h3>Quiz Empire</h3><small>${(()=>{const q=QZ.summary();return q.cleared?q.cleared+' stages cleared · ':'';})()}Learn something new in every question!</small></div></div>`;
+      <div class="gcard g-quiz" data-g="quiz"><span class="tag">42 SUBJECTS</span><div class="art">🎓</div><div><h3>Quiz Empire</h3><small>${(()=>{const q=QZ.summary();return q.cleared?q.cleared+' stages cleared · ':'';})()}Learn something new in every question!</small></div></div>
+      <div class="gcard g-visa" data-g="visa"><span class="tag">NEW · 12 COUNTRIES</span><div class="art">✈️</div><div><h3>Study Abroad Guide</h3><small>Student visa steps, documents & money rules – then take the quiz!</small></div></div>`;
     const tips=['Spot the difference to sharpen your eyes 👀','Roll a 6 to bring a Ludo token out 🎲','Ladders lift you up – snakes slide you down 🐍','Earn coins in every game – spend them in Pizza Rush 🍕'];
     $('hubTip').innerHTML=`<div class="e">👑</div><div><b>Welcome to Fun Empire!</b><small>${tips[rnd(tips.length)]}</small></div>`;}
   function openGame(g){audio();
@@ -2775,7 +2768,8 @@ const FE=(function(){
     else if(g==='snake')SNAKE.openMap();
     else if(g==='mind'){renderMind();show('mind');}
     else if(g==='quiz'){QZ.renderSubjects();show('quiz');}
-    else if(g==='clash'){KC.openMap();}}
+    else if(g==='clash'){KC.openMap();}
+    else if(g==='visa'){VISA.open();show('visa');}}
   function goHub(){renderHub();show('hub');}
 
   /* ---------------- setup modal (Ludo / Saap Seedi) ---------------- */
@@ -3246,7 +3240,7 @@ const FE=(function(){
   /* ---------------- back handling ---------------- */
   function back(){
     if($('hub').classList.contains('on'))return'exit';
-    const q=QZ.back()||KC.back();if(q)return q;
+    const q=VISA.back()||QZ.back()||KC.back();if(q)return q;
     if($('home').classList.contains('on')){goHub();return'stay';}
     if($('ludo').classList.contains('on')){LUDO.confirmQuit();return'stay';}
     if($('snake').classList.contains('on')){SNAKE.confirmQuit();return'stay';}
@@ -3477,7 +3471,109 @@ const KC=(function(){
   return{init,openMap,back,summary,_w:()=>W,_spawn:spawn,_start:start,_end:end};
 })();
 
-FE.init();QZ.init();KC.init();$('homeHub').onclick=()=>FE.goHub();
+/* =====================================================================
+   STUDY ABROAD – student visa guide (facts checked Nov 2026 from official
+   government / university sources) + link to the Student Visa quiz
+   ===================================================================== */
+const VISA=(function(){
+  const CHECKED='November 2026';
+  const C=[
+    {f:'🇺🇸',n:'USA',v:'F-1 Student Visa',auth:'U.S. Department of State + SEVP',url:'https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html',
+     steps:['Get admitted to a SEVP-certified school','Receive your Form I-20 (Certificate of Eligibility)','Pay the SEVIS I-901 fee (US$350) at fmjfee.com','Fill the DS-160 online visa form','Pay the visa (MRV) fee (US$185) and book an interview','Attend the interview at a U.S. embassy or consulate'],
+     docs:['Passport valid at least 6 months beyond your stay','Form I-20 signed by you and the school','DS-160 confirmation page','SEVIS fee and visa fee receipts','Photo','Transcripts and test scores','Bank statements / funding shown on the I-20'],
+     money:'No single national amount – you must show funds for the cost of attendance written on your I-20.',
+     work:'On-campus work allowed; OPT/CPT rules for practical training.',
+     tip:'Your name must match exactly on passport, I-20, DS-160 and SEVIS fee receipt.'},
+    {f:'🇬🇧',n:'United Kingdom',v:'Student visa',auth:'UK Visas and Immigration (UKVI)',url:'https://www.gov.uk/student-visa',
+     steps:['Get an unconditional offer from a licensed student sponsor','Receive your CAS (Confirmation of Acceptance for Studies)','Hold the required money for 28 days in a row','Apply online on GOV.UK – up to 6 months before your course','Pay the visa fee and the Immigration Health Surcharge (IHS)','Give biometrics at a visa centre or via the UK ID Check app'],
+     docs:['Passport','CAS number','Financial evidence (fees + living costs)','English language evidence (usually B2 for degree level)','ATAS certificate if your subject needs it','TB test certificate if your country is listed','Parental consent if under 18'],
+     money:'First-year course fees + living costs: £1,529/month in London or £1,171/month outside London, for up to 9 months. The 28-day period must end within 31 days of applying.',
+     work:'Points system: you need 70 points – CAS 50, money 10, English 10.',
+     tip:'Bank statements must show the full amount for 28 consecutive days – one day below the limit can cause refusal.'},
+    {f:'🇨🇦',n:'Canada',v:'Study permit',auth:'Immigration, Refugees and Citizenship Canada (IRCC)',url:'https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit.html',
+     steps:['Get a letter of acceptance from a Designated Learning Institution (DLI)','Get a Provincial/Territorial Attestation Letter (PAL/TAL) – most students need one','For Quebec: get a CAQ (Quebec Acceptance Certificate) first','Apply online to IRCC with proof of funds','Give biometrics (fingerprints and photo)','If approved, the study permit is issued at the port of entry'],
+     docs:['Passport','Letter of acceptance','PAL/TAL (exempt: master’s & PhD at public DLIs from 1 Jan 2026)','Proof of funds (bank statements, GIC, education loan, scholarship)','Letter of explanation (recommended)','Medical exam if required'],
+     money:'From 1 Sep 2026: CAD 23,448 for one person (outside Quebec) for living costs, plus first-year tuition and travel. Quebec sets its own, higher amount.',
+     work:'Study permits are capped each year by province.',
+     tip:'Officers check where your money came from, not just the balance – keep the funds stable.'},
+    {f:'🇦🇺',n:'Australia',v:'Student visa (subclass 500)',auth:'Department of Home Affairs',url:'https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500',
+     steps:['Accept your offer and pay the deposit','Receive your electronic Confirmation of Enrolment (eCoE)','Buy Overseas Student Health Cover (OSHC)','Apply online through ImmiAccount','Answer the Genuine Student (GS) questions','Do health checks and biometrics if asked'],
+     docs:['Passport','eCoE for a CRICOS-registered course','Genuine Student (GS) answers','Evidence of financial capacity','English test results (if required)','OSHC policy','Character documents'],
+     money:'Living costs AUD 29,710 a year for the main student, plus tuition and travel. Visa charge AUD 2,500 (from 1 July 2026).',
+     work:'Work limit: 48 hours per fortnight during study periods.',
+     tip:'Your OSHC must cover your whole visa period, from arrival.'},
+    {f:'🇩🇪',n:'Germany',v:'National (D) visa for study',auth:'German embassy / Federal Foreign Office',url:'https://www.auswaertiges-amt.de/en/visa-service',
+     steps:['Get your university admission letter (Zulassung)','Open a blocked account (Sperrkonto)','Get health insurance','Book an appointment at the German embassy/consulate','Attend the visa appointment','After arrival: register your address (Anmeldung) and get a residence permit'],
+     docs:['Passport','Admission letter','Blocked account confirmation','Health insurance','Academic certificates (APS certificate for some countries, e.g. India)','CV and motivation letter','Language certificate'],
+     money:'Blocked account: €11,904 per year (2026), released at €992 per month.',
+     work:'Students may work 140 full days or 280 half days a year.',
+     tip:'Many public universities charge little or no tuition, but you must still prove living costs.'},
+    {f:'🇮🇪',n:'Ireland',v:"Long Stay 'D' Study visa",auth:'Irish Immigration Service Delivery',url:'https://www.irishimmigration.ie/coming-to-study-in-ireland/',
+     steps:['Choose a full-time course on the ILEP list','Get your letter of acceptance','Pay your course fees','Apply online through AVATS','Submit documents and biometrics at the visa centre','After arrival, register for Stamp 2 student permission'],
+     docs:['Passport','Letter of acceptance','Proof of fees paid','Proof of funds (€10,000 for courses over 8 months)','Private medical insurance','Signed application letter','Details of any past visa refusals'],
+     money:'Immediate access to €10,000 for the first year (courses longer than 8 months).',
+     work:'20 hours/week in term, 40 hours/week in holidays.',
+     tip:'Courses must be at least 15 hours of daytime study per week.'},
+    {f:'🇳🇿',n:'New Zealand',v:'Fee Paying Student Visa',auth:'Immigration New Zealand (INZ)',url:'https://www.immigration.govt.nz/visas/fee-paying-student-visa/',
+     steps:['Get an offer of place from an approved provider','Apply online with Immigration New Zealand','Pay the fee (offshore from NZD 750) and the tourism levy','Provide medical and police certificates if asked','Apply about 3 months before travel','Visa can be granted for up to 4 years'],
+     docs:['Passport','Offer of place','Proof of tuition payment','Proof of living funds','Funds for onward travel','Medical and travel insurance','Health and character certificates'],
+     money:'NZD 20,000 a year for living costs (or NZD 1,667 a month for courses under a year).',
+     work:'Up to 25 hours a week during study (from 3 November 2025).',
+     tip:'Insurance is compulsory for your whole stay.'},
+    {f:'🇫🇷',n:'France',v:'VLS-TS “étudiant”',auth:'France-Visas + Campus France',url:'https://france-visas.gouv.fr',
+     steps:['Get admission to a French institution','Complete Études en France with Campus France (required in many countries, e.g. India)','Apply on the France-Visas portal','Attend the appointment at the visa centre/consulate','After arrival, validate your VLS-TS online within 3 months'],
+     docs:['Passport','Admission letter','Campus France / Études en France confirmation','Proof of resources','Proof of accommodation','Photo'],
+     money:'At least €877.50 per month (from 1 August 2026, up from €615).',
+     work:'Students may work up to 964 hours a year.',
+     tip:'The VLS-TS works as a residence permit for the first year – but only after you validate it.'},
+    {f:'🇳🇱',n:'Netherlands',v:'Study residence permit (VVR), with MVV entry visa for some nationalities',auth:'IND (Immigration and Naturalisation Service)',url:'https://ind.nl/en/residence-permits/study',
+     steps:['Get admitted to a Dutch university','Send documents and pay the fee/funds to your university','The university applies to the IND for you – students cannot apply themselves','If you need an MVV, collect it at the Dutch embassy','Arrive, give biometrics and collect your residence permit'],
+     docs:['Passport','Proof of sufficient funds','Health insurance','TB test (some nationalities)','Signed antecedents certificate'],
+     money:'IND study norm €1,180 per month (2026; changes every January). Application fee €254 (2026).',
+     work:'You must earn at least 50% of the credits (ECTS) each year to keep the permit.',
+     tip:'Your university is your “sponsor” – keep it informed if you stop studying.'},
+    {f:'🇯🇵',n:'Japan',v:'“Student” (College Student) status',auth:'Immigration Services Agency of Japan',url:'https://www.studyinjapan.go.jp/en/planning/immigration-procedures/',
+     steps:['Get admission to a Japanese school','Your school applies for a Certificate of Eligibility (CoE) for you','Receive the CoE (a copy is accepted)','Apply for the student visa at a Japanese embassy/consulate','Enter Japan and receive your Residence Card at the airport'],
+     docs:['Passport','Certificate of Eligibility','Visa application form','Photo','Proof you can pay all expenses in Japan'],
+     money:'Set by your school and immigration – you must show you can pay all study and living costs.',
+     work:'Part-time work needs “Permission to Engage in Activity Other Than That Permitted”.',
+     tip:'Do not enter Japan on a tourist visa to study – you may be asked to leave and reapply.'},
+    {f:'🇸🇬',n:'Singapore',v:'Student’s Pass',auth:'Immigration & Checkpoints Authority (ICA)',url:'https://www.ica.gov.sg/reside/STP',
+     steps:['Your school registers you in ICA’s SOLAR system','Submit eForm 16 and pay the processing fee','Receive the In-Principle Approval (IPA) letter','Do a medical examination if required','Arrive no more than 1 month before your course','Complete formalities – the Student’s Pass is issued digitally'],
+     docs:['Passport','Photo','Educational certificates','Financial documents (if asked)','Medical report (if required)'],
+     money:'Set by your school – show funds for fees and living costs.',
+     work:'If you need a visa to enter, it is included in your IPA letter.',
+     tip:'The IPA letter is NOT the Student’s Pass – you must complete formalities after arrival.'},
+    {f:'🇰🇷',n:'South Korea',v:'D-2 Student visa (D-4 for language study)',auth:'Korean embassy / Ministry of Justice',url:'https://www.visa.go.kr',
+     steps:['Get admitted to a Korean university','The university issues a Certificate of Admission (CoA)','Apply for the D-2 visa at the Korean embassy/consulate','Arrive in Korea','Register for an Alien Registration Card (ARC)'],
+     docs:['Application form','Passport and photo','Certificate of Admission + university business registration certificate','Verified diploma (apostille)','Bank balance certificate','TB test (some nationalities)'],
+     money:'Bank balance amount is set by your university/embassy (often around US$20,000 for degree students).',
+     work:'D-2 students can work part-time with permission.',
+     tip:'If you leave your studies, the D-2 visa ends and you must leave Korea.'},
+  ];
+  const GEN=[['📄','Always use official government websites – rules and fees change every year.'],['🚫','Never use fake documents or bank statements – it can lead to a ban.'],['🕵️','Only trust registered advisers or agents; never pay someone who “guarantees” a visa.'],['⏰','Apply early – many countries suggest 3 months or more before your course.']];
+  const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  function open(){$('vsList').innerHTML=`<div class="vsIntro"><b>✈️ Student visas made simple</b><small>Facts checked from official sources in ${CHECKED}. Always confirm on the official website before applying.</small></div>
+      <button class="btn gold vsQuiz" id="vsQuizBtn">🎓 Test yourself: Student Visa Quiz</button>
+      <div class="vsGrid">${C.map((c,i)=>`<button class="vsTile" data-i="${i}"><span class="f">${c.f}</span><b>${c.n}</b><small>${esc(c.v)}</small></button>`).join('')}</div>
+      <div class="vsTips">${GEN.map(g=>`<div><span>${g[0]}</span>${g[1]}</div>`).join('')}</div>`;
+    $('vsQuizBtn').onclick=()=>QZ.openSubject(42);show('visa');}
+  function detail(i){const c=C[i];$('vsList').innerHTML=`<button class="btn vsBackL" id="vsBk">← All countries</button>
+      <div class="vsHero"><span class="f">${c.f}</span><div><h3>${c.n}</h3><b>${esc(c.v)}</b><small>Issued by: ${esc(c.auth)}</small></div></div>
+      <div class="vsSec"><h4>🪜 How to apply</h4><ol>${c.steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ol></div>
+      <div class="vsSec"><h4>📂 Documents usually needed</h4><ul>${c.docs.map(s=>`<li>${esc(s)}</li>`).join('')}</ul></div>
+      <div class="vsSec"><h4>💰 Money to show</h4><p>${esc(c.money)}</p></div>
+      <div class="vsSec"><h4>📌 Key rule</h4><p>${esc(c.work)}</p></div>
+      <div class="vsSec tip"><h4>💡 Tip</h4><p>${esc(c.tip)}</p></div>
+      <a class="btn gold vsLink" href="${c.url}" target="_blank" rel="noopener">🌐 Official website</a>
+      <p class="vsNote">Checked ${CHECKED}. Amounts and rules change – always confirm on the official website.</p>`;
+    $('vsBk').onclick=open;$('vsList').scrollTop=0;}
+  function init(){$('vsList').addEventListener('click',e=>{const t=e.target.closest('.vsTile');if(t)detail(+t.dataset.i);});$('vsBack').onclick=()=>FE.goHub();}
+  function back(){if($('visa').classList.contains('on')){if($('vsBk')){open();}else FE.goHub();return'stay';}return null;}
+  return{init,open,back};
+})();
+
+FE.init();QZ.init();KC.init();VISA.init();$('homeHub').onclick=()=>FE.goHub();
 </script>
 <script>
 window.appBack=function(){
