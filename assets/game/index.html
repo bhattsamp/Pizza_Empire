@@ -508,6 +508,33 @@ background:linear-gradient(135deg,var(--tomato),var(--tomatoD));border:4px solid
 .vsSec.tip{background:#e8f5e9}.vsSec.tip h4{color:#2e7d32}
 .vsLink{display:block;text-align:center;text-decoration:none;margin-top:12px}
 .vsNote{font-size:11px;color:#607d8b;text-align:center;margin:8px 0 0}
+
+.vsProg{height:8px;background:#e3f2fd;border-radius:6px;margin:8px 0 4px;overflow:hidden}.vsProg i{display:block;height:100%;background:linear-gradient(90deg,#43a047,#ffb300)}
+.vsTile em{font-style:normal;font-size:10px;color:#1565c0;margin-top:2px;font-weight:700}.vsTile.done{box-shadow:0 4px 0 #66bb6a;background:#f1f8e9}
+#vsDoc{position:fixed;inset:0;z-index:60;background:#0d1b3a;display:flex;flex-direction:column;transform:translateY(100%);transition:transform .32s cubic-bezier(.2,.8,.2,1);visibility:hidden}
+#vsDoc.on{transform:none;visibility:visible}
+.vdBar{display:flex;align-items:center;gap:10px;padding:10px 12px;color:#fff;background:#0d47a1}.vdBar b{flex:1;font:800 16px FEB,system-ui}
+.vdX{width:36px;height:36px;border-radius:50%;border:0;background:#ffffff26;color:#fff;font-size:18px}.vdPct{background:#ffffff26;border-radius:20px;padding:3px 10px;font-size:12px;font-weight:700}
+.vdRead{height:5px;background:#ffffff22}.vdRead i{display:block;height:100%;width:0;background:#ffca28;transition:width .15s}
+.vdBody{flex:1;overflow:auto;padding:14px 12px 20px;-webkit-overflow-scrolling:touch}
+.vdPaper{background:#fffef8;border-radius:6px;padding:18px 18px 22px;box-shadow:0 10px 30px #0008;color:#263238;font-size:14px;line-height:1.55;font-family:Georgia,'Times New Roman',serif}
+.vdHead{display:flex;gap:12px;align-items:center;border-bottom:3px double #1565c0;padding-bottom:10px}.vdHead .f{font-size:46px}
+.vdHead small{font:700 10px system-ui;letter-spacing:.08em;color:#78909c}.vdHead h3{margin:2px 0;font:800 19px FEB,system-ui;color:#0d47a1}.vdHead p{margin:0;font-size:12.5px}
+.vdSrc{font:12px system-ui;background:#e3f2fd;border-radius:8px;padding:6px 9px;margin:10px 0 4px}.vdSrc a{color:#1565c0;font-weight:700;word-break:break-all}
+.vdPaper h4{font:800 15px FEB,system-ui;color:#1565c0;margin:14px 0 4px;border-left:4px solid #ffb300;padding-left:8px}
+.vdPaper ol,.vdPaper ul{margin:0;padding-left:22px}.vdPaper li{margin:3px 0}.vdPaper p{margin:0}
+.vdTip{background:#e8f5e9;border-radius:8px;padding:8px 10px;margin-top:14px;font-size:13.5px}
+.vdOff{display:block;width:100%;margin-top:14px;background:#1565c0;color:#fff}
+.vdNote{font:11px system-ui;color:#78909c;margin-top:10px!important;text-align:center}.vdEnd{text-align:center;color:#b0bec5;font-size:12px;margin-top:10px}
+.vdFoot{padding:10px 12px 14px;background:#0d1b3a;display:flex;flex-direction:column;gap:4px;align-items:center}.vdFoot .btn{width:100%}.vdFoot small{color:#ffe082}
+.vdFoot .btn:disabled{background:#455a64;color:#cfd8dc;box-shadow:none}.vdTwo{flex-direction:row}.vdTwo .btn{flex:1}
+.btn.pulse{animation:vdPulse 1.2s ease-in-out 3}@keyframes vdPulse{50%{transform:scale(1.05)}}
+.vdQ{display:flex;flex-direction:column;gap:9px}.vdQcard{background:#fff;border-radius:16px;padding:14px 16px;color:#1a237e}.vdQcard small{color:#8e24aa;font-weight:800;font-size:11px;letter-spacing:.06em}.vdQcard h3{margin:4px 0 0;font:800 19px FEB,system-ui}
+.vdOpt{display:flex;align-items:center;gap:10px;background:#fff;border:0;border-radius:14px;padding:11px 12px;text-align:left;font:700 15px FEB,system-ui;color:#1a237e;box-shadow:0 4px 0 #0006}
+.vdOpt span{flex:none;width:30px;height:30px;border-radius:50%;background:#ede7f6;display:grid;place-items:center;font-size:13px}
+.vdOpt.ok{background:#c8e6c9}.vdOpt.ok span{background:#43a047;color:#fff}.vdOpt.bad{background:#ffcdd2}.vdOpt.bad span{background:#e53935;color:#fff}
+.vdFact{border-radius:14px;padding:10px 12px;font-size:13.5px}.vdFact.g{background:#e8f5e9;color:#1b5e20}.vdFact.r{background:#fff3e0;color:#bf360c}.vdFact p{margin:4px 0 0;color:#37474f}
+.vdRes{text-align:center;color:#fff;display:flex;flex-direction:column;justify-content:center}.vdBig{font-size:70px}.vdStars{font-size:34px;color:#ffca28}.vdRes h3{font:800 26px FEB,system-ui;margin:8px 0}.vdCoins{font:800 22px FEB,system-ui;color:#ffca28}
 </style>
 </head>
 <body>
@@ -557,6 +584,7 @@ background:linear-gradient(135deg,var(--tomato),var(--tomatoD));border:4px solid
     <div class="feHead"><button class="back" id="vsBack">←</button><h2>✈️ Study Abroad</h2><span class="chip">🌍 12</span></div>
     <div id="vsList"></div>
   </section>
+  <div id="vsDoc"></div>
   <section id="quiz" class="screen feScreen">
     <div class="feHead"><button class="back" id="qzBack">←</button><h2>🎓 Quiz Empire</h2><span class="chip">⭐ <span id="qzStars">0</span></span></div>
     <div class="qzScroll"><div class="qzIntro">📚 42 subjects · 100 stages each · 21 questions per stage. Learn a new fact with every answer!</div><div id="qzGrid"></div></div>
@@ -3471,6 +3499,117 @@ const KC=(function(){
   return{init,openMap,back,summary,_w:()=>W,_spawn:spawn,_start:start,_end:end};
 })();
 
+/* per-country quiz – each question checks something written in that country's guide */
+const VISA_Q={
+'USA':[
+["What is the main US visa for academic study?","F-1",["H-1B","B-2","J-2"],"F-1 is for academic study at a SEVP-certified school."],
+["Which form does the US school give you?","Form I-20",["Form W-2","Form I-94","Form DS-2019"],"The I-20 shows your school, programme and the money you must have."],
+["How much is the SEVIS I-901 fee?","US$350",["US$185","US$50","US$1,000"],"It is paid online at fmjfee.com before the interview."],
+["What is the DS-160?","The online visa application form",["A bank form","An English test","A school exam"],"You print the DS-160 confirmation page for the interview."],
+["How much is the visa (MRV) fee?","US$185",["US$350","US$25","US$500"],"Together with SEVIS, government fees are about US$535."],
+["How long must your passport be valid?","At least 6 months beyond your stay",["1 week","No rule","Only on the travel day"],"Many embassies refuse if the passport expires too soon."],
+["How much money must you show for the USA?","The cost of attendance written on your I-20",["Exactly US$10,000","Nothing","One month's rent"],"The US has no single fixed amount – your I-20 sets it."],
+["Why must your name match on all US documents?","Mismatches can cause delays or refusal",["It changes the fee","It is only for looks","It is not checked"],"Passport, I-20, DS-160 and SEVIS receipt must all match."]],
+'United Kingdom':[
+["What is the first thing a UK university gives you for the visa?","A CAS number",["An I-20","A CoE","A PAL"],"CAS = Confirmation of Acceptance for Studies from a licensed sponsor."],
+["How many points do you need for a UK Student visa?","70",["50","100","35"],"CAS 50 + money 10 + English 10."],
+["How many days in a row must your money be held?","28 days",["7 days","90 days","1 year"],"The 28-day period must end within 31 days of applying."],
+["Monthly living cost needed for London?","£1,529",["£1,171","£800","£2,500"],"Outside London it is £1,171 a month."],
+["Up to how many months of living costs must you show?","9 months",["3 months","12 months","24 months"],"The UK counts maintenance for up to 9 months."],
+["How early can you apply from outside the UK?","Up to 6 months before the course",["2 years before","Only after arriving","1 week before"],"Apply on GOV.UK once you have your CAS."],
+["What extra health payment do you make?","Immigration Health Surcharge (IHS)",["Hospital bond","Medical deposit","OSHC"],"The IHS gives access to the NHS."],
+["Which certificate is needed only for some sensitive subjects?","ATAS",["APS","CAQ","CoE"],"ATAS is for some science and technology courses."]],
+'Canada':[
+["What is the Canadian student document called?","Study permit",["F-1 visa","Student's Pass","Stamp 2"],"It is issued by IRCC."],
+["Your school must be a…","Designated Learning Institution (DLI)",["CRICOS provider","SEVP school","ILEP course"],"Only DLIs can accept international students."],
+["Which letter do most applicants need from the province?","PAL/TAL",["CAS","IPA","CoA"],"Provinces give PALs within Canada's yearly cap."],
+["Who no longer needs a PAL from 1 Jan 2026?","Master's & PhD students at public DLIs",["All students","Diploma students","Nobody"],"This graduate-student exemption started in 2026."],
+["What extra certificate do Quebec students need?","CAQ",["ATAS","APS","SEVIS"],"Quebec selects its own students with the CAQ."],
+["Living-cost money for one person from 1 Sep 2026 (outside Quebec)?","CAD 23,448",["CAD 10,000","CAD 15,000","CAD 50,000"],"This is on top of first-year tuition and travel."],
+["Where is the study permit actually issued?","At the port of entry in Canada",["At the university","By email","At a bank"],"You show your approval letter to the border officer."],
+["What do officers check about your money?","Where it came from, not just the balance",["Only the bank name","Nothing","Only the currency"],"Stable, explained funds are stronger evidence."]],
+'Australia':[
+["Australia's student visa number is…","Subclass 500",["Subclass 485","Subclass 600","Subclass 189"],"485 is the post-study graduate visa."],
+["What enrolment document do you need?","eCoE",["CAS","I-20","CoA"],"Electronic Confirmation of Enrolment from your provider."],
+["What is OSHC?","Overseas Student Health Cover",["A visa fee","A work permit","A bank account"],"It must cover your whole visa period."],
+["Where do you apply online?","ImmiAccount",["SOLAR","AVATS","DS-160"],"ImmiAccount is run by the Department of Home Affairs."],
+["Visa charge from 1 July 2026?","AUD 2,500",["AUD 500","AUD 1,000","AUD 5,000"],"It went up from AUD 2,000."],
+["Yearly living-cost amount for the main student?","AUD 29,710",["AUD 10,000","AUD 50,000","AUD 2,500"],"Plus tuition and travel costs."],
+["Work limit during study periods?","48 hours per fortnight",["10 hours a week","No work","Unlimited"],"That is about 24 hours a week on average."],
+["Which requirement checks you really intend to study?","Genuine Student (GS)",["SEVIS","ATAS","APS"],"You answer GS questions in the application."]],
+'Germany':[
+["What type of visa do students need for Germany?","National (D) visa",["Schengen tourist visa","F-1","Subclass 500"],"A long-stay national visa for study."],
+["What is a Sperrkonto?","A blocked bank account",["A student ID","A train pass","An exam"],"It proves you can pay living costs."],
+["How much goes into the blocked account for one year (2026)?","€11,904",["€5,000","€20,000","€992"],"It is released month by month."],
+["How much can you withdraw each month?","€992",["€500","€11,904","Any amount"],"That limit is why it is called 'blocked'."],
+["Which certificate do Indian students usually need?","APS certificate",["CAS","CAQ","I-20"],"APS checks your academic documents."],
+["What must you do soon after arriving?","Register your address (Anmeldung)",["Buy a car","Take IELTS again","Open a shop"],"You need it before your residence permit."],
+["How much can students work in a year?","140 full days or 280 half days",["30 days","No work","365 days"],"University jobs can follow separate rules."],
+["Why is Germany popular with students?","Many public universities charge little or no tuition",["No visa needed","Only online classes","No living costs"],"You still must prove living costs."]],
+'Ireland':[
+["Ireland's study visa is a…","Long Stay 'D' Study visa",["F-1 visa","Subclass 500","Student's Pass"],"For courses longer than 3 months."],
+["Your course must be on which list?","ILEP",["CRICOS","SEVIS","IND"],"Interim List of Eligible Programmes."],
+["Which online system do you use?","AVATS",["ImmiAccount","SOLAR","DS-160"],"Ireland's online visa application system."],
+["Money needed for a course over 8 months?","€10,000",["€2,000","€25,000","€500"],"You need immediate access to it."],
+["Which insurance must you have?","Private medical insurance",["Car insurance","No insurance","OSHC"],"Ireland asks students to hold private medical cover."],
+["Which stamp do students register for after arrival?","Stamp 2",["Stamp 4","Stamp 0","Stamp 6"],"Stamp 2 is student permission."],
+["Work limits on Stamp 2?","20 hrs/week in term, 40 in holidays",["No work","Unlimited","10 hrs/week always"],"Holiday periods allow full-time work."],
+["Minimum weekly study hours for the course?","15 hours of daytime study",["2 hours","40 hours","No minimum"],"Courses must be full-time."]],
+'New Zealand':[
+["Main visa for fee-paying students?","Fee Paying Student Visa",["Working Holiday","Visitor Visa","Skilled Migrant"],"It can be granted for up to 4 years."],
+["What document do you need from the school?","Offer of place",["CAS","I-20","PAL"],"From an approved education provider."],
+["Living costs needed for one year?","NZD 20,000",["NZD 5,000","NZD 50,000","NZD 1,000"],"NZD 1,667 a month for courses under a year."],
+["Work limit during study (from Nov 2025)?","25 hours a week",["10 hours","40 hours","None"],"It rose from 20 hours."],
+["What must you also show for leaving NZ?","Funds for onward travel",["A car","A job offer","A house"],"Or an outward ticket."],
+["Which insurance rule applies?","Medical and travel insurance for the whole stay",["Only for exams","None","Only the first week"],"Insurance is compulsory."],
+["Who issues the visa?","Immigration New Zealand (INZ)",["IRCC","UKVI","ICA"],"Applications are made online."],
+["How early is it suggested to apply?","About 3 months before travel",["The day before","After arrival","2 years before"],"This leaves time for checks."]],
+'France':[
+["What is the French student visa called?","VLS-TS 'étudiant'",["F-1","Stamp 2","D-2"],"A long-stay visa that works as a residence permit."],
+["Which procedure is done with Campus France?","Études en France",["SEVIS","ImmiAccount","SOLAR"],"Required in many countries, including India."],
+["Which website is used for the visa?","France-Visas",["GOV.UK","fmjfee.com","visa.go.kr"],"france-visas.gouv.fr"],
+["Monthly resources needed from 1 Aug 2026?","€877.50",["€615","€300","€2,000"],"It is now linked to the minimum wage."],
+["What must you do within 3 months of arriving?","Validate your VLS-TS online",["Buy a car","Change university","Nothing"],"Without validation it does not work as a residence permit."],
+["Maximum student work per year?","964 hours",["100 hours","2,000 hours","None"],"About 60% of a full-time year."],
+["Which proof is listed besides money?","Proof of accommodation",["A driving licence","A car loan","A job contract"],"France asks where you will live."],
+["What was the old monthly amount before Aug 2026?","€615",["€877.50","€1,000","€400"],"The rise came with indexing to the SMIC."]],
+'Netherlands':[
+["Who applies for the Dutch study permit?","The university, for the student",["The student alone","The embassy","The bank"],"Students cannot apply themselves."],
+["What is the MVV?","An entry visa for some nationalities",["A student loan","A train pass","An exam"],"Combined with the residence permit (VVR)."],
+["Which agency decides permits?","IND",["DUO","UWV","KLM"],"Immigration and Naturalisation Service."],
+["Monthly study norm for funds (2026)?","€1,180",["€500","€2,500","€992"],"It changes every January."],
+["Application fee in 2026?","€254",["€50","€1,000","Free"],"Usually paid via your university."],
+["Credits you must earn each year?","At least 50% of ECTS",["10%","100%","None"],"Poor progress can end the permit."],
+["Which test may some nationalities need?","TB test",["IELTS only","Driving test","APS"],"It depends on your nationality."],
+["Who is your 'sponsor' in the Netherlands?","Your university",["Your bank","Your landlord","Your parents"],"Tell it if you stop studying."]],
+'Japan':[
+["What does the Japanese school apply for on your behalf?","Certificate of Eligibility (CoE)",["I-20","CAS","IPA"],"Issued by the Immigration Services Agency."],
+["Where do you apply for the visa itself?","Japanese embassy or consulate",["The university","An airline","Online only"],"Bring the CoE (a copy is accepted)."],
+["What card do you get at the airport?","Residence Card",["Green Card","ARC","Stamp 2"],"It shows your status of residence."],
+["What do you need before part-time work?","Permission to Engage in Activity Other Than That Permitted",["Nothing","A car licence","A second visa"],"Working without it risks your status."],
+["What money must you show?","Enough to pay all study and living costs",["Nothing","Exactly ¥1 million","Only tuition"],"Set by your school and immigration."],
+["Can you enter on a tourist visa to study?","No – you may have to leave and reapply",["Yes, always","Only for one year","Only in summer"],"Get the right status from the start."],
+["Who issues the CoE?","Immigration Services Agency of Japan",["The airline","Your bank","UKVI"],"The school applies by proxy."],
+["The Japanese student status is called…","Student (Ryugaku)",["D-2","F-1","VLS-TS"],"College Student status."]],
+'Singapore':[
+["Singapore's student document is the…","Student's Pass",["F-1","Stamp 2","CoE"],"Issued by ICA."],
+["Which online system is used?","SOLAR",["AVATS","ImmiAccount","DS-160"],"You submit eForm 16 there."],
+["Which form do students submit?","eForm 16",["DS-160","I-20","Form 500"],"After the school registers you."],
+["What letter comes first after approval?","In-Principle Approval (IPA)",["CAS","CoE","I-20"],"It is not the pass itself."],
+["Earliest arrival before the course?","1 month before",["2 years","Any time","After it starts"],"Arrive close to your course start."],
+["What if you need a visa to enter?","It is included in the IPA letter",["Apply in the USA","Not allowed","Buy at the airport"],"No separate visa application needed."],
+["How is the Student's Pass issued now?","Digitally, after completing formalities",["Paper only","By post from India","Not issued"],"Formalities are done after arrival."],
+["Which check may be required?","Medical examination",["Driving test","IELTS 9.0","Police interview"],"Only if required in your IPA."]],
+'South Korea':[
+["Korea's degree student visa?","D-2",["D-4","E-9","F-6"],"D-4 is for language training."],
+["What does the university issue?","Certificate of Admission (CoA)",["CAS","I-20","PAL"],"Needed for the D-2 application."],
+["Which card do you register for after arrival?","Alien Registration Card (ARC)",["Residence Card","Green Card","Stamp 2"],"Your Korean ID as a foreign resident."],
+["How should your diploma be verified?","Apostille",["Stamped by a friend","No check","Signed by yourself"],"Proves the document is genuine."],
+["Which financial proof is needed?","Bank balance certificate",["Car papers","Phone bill","Nothing"],"Amount set by the university/embassy."],
+["What happens if you leave your studies?","The D-2 ends and you must leave",["It becomes a work visa","Nothing","It becomes permanent"],"Staying enrolled is required."],
+["Visa for Korean language study?","D-4",["D-2","H-1B","F-1"],"D-4 = language trainee."],
+["Can D-2 students work?","Part-time, with permission",["Never","Full-time freely","Only on weekends without rules"],"Permission is needed first."]]};
+
 /* =====================================================================
    STUDY ABROAD – student visa guide (facts checked Nov 2026 from official
    government / university sources) + link to the Student Visa quiz
@@ -3553,23 +3692,71 @@ const VISA=(function(){
   ];
   const GEN=[['📄','Always use official government websites – rules and fees change every year.'],['🚫','Never use fake documents or bank statements – it can lead to a ban.'],['🕵️','Only trust registered advisers or agents; never pay someone who “guarantees” a visa.'],['⏰','Apply early – many countries suggest 3 months or more before your course.']];
   const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
-  function open(){$('vsList').innerHTML=`<div class="vsIntro"><b>✈️ Student visas made simple</b><small>Facts checked from official sources in ${CHECKED}. Always confirm on the official website before applying.</small></div>
-      <button class="btn gold vsQuiz" id="vsQuizBtn">🎓 Test yourself: Student Visa Quiz</button>
-      <div class="vsGrid">${C.map((c,i)=>`<button class="vsTile" data-i="${i}"><span class="f">${c.f}</span><b>${c.n}</b><small>${esc(c.v)}</small></button>`).join('')}</div>
+  const PASSV=6;
+  const st=()=>{const f=P.fe||(P.fe={});if(!f.visa||typeof f.visa!=='object')f.visa={};return f.visa;};
+  const starsOf=g=>g>=8?3:g>=7?2:g>=PASSV?1:0;
+  function official(url){try{if(window.OfficialSite&&OfficialSite.postMessage){OfficialSite.postMessage(url);return;}}catch(e){}window.open(url,'_blank','noopener');}
+  function open(){const s=st();const done=C.filter(c=>s[c.n]>0).length;
+    $('vsList').innerHTML=`<div class="vsIntro"><b>✈️ Student visas made simple</b><small>Open a country, read the official guide to the end, then pass its quiz to earn ⭐ and 🪙. Facts checked ${CHECKED}.</small><div class="vsProg"><i style="width:${done/C.length*100}%"></i></div><small><b>${done} / ${C.length}</b> country quizzes passed</small></div>
+      <div class="vsGrid">${C.map((c,i)=>{const x=s[c.n]||0;return`<button class="vsTile${x?' done':''}" data-i="${i}"><span class="f">${c.f}</span><b>${c.n}</b><small>${esc(c.v)}</small><em>${x?'⭐'.repeat(x):'📖 Read · 🎓 Quiz'}</em></button>`}).join('')}</div>
+      <button class="btn gold vsQuiz" id="vsQuizBtn">🏆 Big Student Visa Quiz (all countries)</button>
       <div class="vsTips">${GEN.map(g=>`<div><span>${g[0]}</span>${g[1]}</div>`).join('')}</div>`;
-    $('vsQuizBtn').onclick=()=>QZ.openSubject(42);show('visa');}
-  function detail(i){const c=C[i];$('vsList').innerHTML=`<button class="btn vsBackL" id="vsBk">← All countries</button>
-      <div class="vsHero"><span class="f">${c.f}</span><div><h3>${c.n}</h3><b>${esc(c.v)}</b><small>Issued by: ${esc(c.auth)}</small></div></div>
-      <div class="vsSec"><h4>🪜 How to apply</h4><ol>${c.steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ol></div>
-      <div class="vsSec"><h4>📂 Documents usually needed</h4><ul>${c.docs.map(s=>`<li>${esc(s)}</li>`).join('')}</ul></div>
-      <div class="vsSec"><h4>💰 Money to show</h4><p>${esc(c.money)}</p></div>
-      <div class="vsSec"><h4>📌 Key rule</h4><p>${esc(c.work)}</p></div>
-      <div class="vsSec tip"><h4>💡 Tip</h4><p>${esc(c.tip)}</p></div>
-      <a class="btn gold vsLink" href="${c.url}" target="_blank" rel="noopener">🌐 Official website</a>
-      <p class="vsNote">Checked ${CHECKED}. Amounts and rules change – always confirm on the official website.</p>`;
-    $('vsBk').onclick=open;$('vsList').scrollTop=0;}
+    $('vsQuizBtn').onclick=()=>QZ.openSubject(42);}
+  /* ---------- popup document ---------- */
+  let cur=-1,qs=null;
+  function pop(html){const d=$('vsDoc');d.innerHTML=html;d.classList.add('on');}
+  function closePop(){$('vsDoc').classList.remove('on');cur=-1;qs=null;open();}
+  function detail(i){cur=i;qs=null;const c=C[i];const best=st()[c.n]||0;
+    pop(`<div class="vdBar"><button class="vdX" id="vdX">✕</button><b>${c.f} ${c.n} – Official Guide</b><span class="vdPct" id="vdPct">0%</span></div>
+      <div class="vdRead"><i id="vdRead"></i></div>
+      <div class="vdBody" id="vdBody"><div class="vdPaper">
+        <div class="vdHead"><span class="f">${c.f}</span><div><small>STUDENT VISA GUIDE · ${CHECKED.toUpperCase()}</small><h3>${esc(c.v)}</h3><p>Issued by <b>${esc(c.auth)}</b></p></div></div>
+        <div class="vdSrc">📜 Source: <a href="#" id="vdSrc1">${esc(c.url.split('/')[2])}</a></div>
+        <h4>1 · How to apply</h4><ol>${c.steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ol>
+        <h4>2 · Documents usually needed</h4><ul>${c.docs.map(s=>`<li>${esc(s)}</li>`).join('')}</ul>
+        <h4>3 · Money to show</h4><p>${esc(c.money)}</p>
+        <h4>4 · Key rule</h4><p>${esc(c.work)}</p>
+        <div class="vdTip">💡 <b>Tip:</b> ${esc(c.tip)}</div>
+        <button class="btn vdOff" id="vdOff">🌐 Open official website</button>
+        <p class="vdNote">Summary prepared from the official website, ${CHECKED}. Rules and amounts change – always confirm there before applying. This is general knowledge, not immigration advice.</p>
+        <div class="vdEnd">— End of guide —</div>
+      </div></div>
+      <div class="vdFoot"><button class="btn gold" id="vdQuiz" disabled>🔒 Read to the end to unlock the quiz</button>${best?`<small>Best: ${'⭐'.repeat(best)}</small>`:''}</div>`);
+    const body=$('vdBody');let unlocked=best>0;
+    const upd=()=>{const max=body.scrollHeight-body.clientHeight;const p=max<=4?1:Math.min(1,body.scrollTop/max);
+      $('vdRead').style.width=(p*100)+'%';$('vdPct').textContent=Math.round(p*100)+'%';
+      if(p>.97&&!unlocked){unlocked=true;try{SFX.unlock();}catch(e){}toast('🎓 Guide finished – quiz unlocked!');}
+      if(unlocked){const q=$('vdQuiz');if(q&&q.disabled){q.disabled=false;q.textContent=`🎓 Start ${c.n} quiz · ${VISA_Q[c.n].length} questions`;q.classList.add('pulse');}}};
+    body.onscroll=upd;setTimeout(upd,60);
+    $('vdX').onclick=closePop;$('vdOff').onclick=$('vdSrc1').onclick=e=>{e.preventDefault();official(c.url);};
+    $('vdQuiz').onclick=()=>startQuiz(i);}
+  function shuf(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+  function startQuiz(i){const c=C[i];qs={i,list:shuf(VISA_Q[c.n]),k:0,good:0};askQ();}
+  function askQ(){const c=C[qs.i],[q,a,w,fact]=qs.list[qs.k];const opts=shuf([a,...w]);
+    pop(`<div class="vdBar"><button class="vdX" id="vdX">✕</button><b>${c.f} ${c.n} Quiz</b><span class="vdPct">${qs.k+1}/${qs.list.length}</span></div>
+      <div class="vdRead"><i style="width:${qs.k/qs.list.length*100}%"></i></div>
+      <div class="vdBody vdQ"><div class="vdQcard"><small>QUESTION ${qs.k+1} OF ${qs.list.length}</small><h3>${esc(q)}</h3></div>
+      ${opts.map((o,n)=>`<button class="vdOpt" data-o="${n}"><span>${'ABCD'[n]}</span>${esc(o)}</button>`).join('')}
+      <div id="vdFact"></div></div><div class="vdFoot" id="vdQFoot"></div>`);
+    $('vdX').onclick=()=>detail(qs.i);
+    document.querySelectorAll('.vdOpt').forEach(b=>b.onclick=()=>{if(b.parentNode.classList.contains('ans'))return;b.parentNode.classList.add('ans');
+      const ok=opts[+b.dataset.o]===a;if(ok)qs.good++;
+      document.querySelectorAll('.vdOpt').forEach(x=>{if(opts[+x.dataset.o]===a)x.classList.add('ok');});if(!ok)b.classList.add('bad');
+      try{ok?SFX.coin():SFX.bad();}catch(e){}
+      $('vdFact').innerHTML=`<div class="vdFact ${ok?'g':'r'}"><b>${ok?'✅ Correct!':'❌ Correct answer: '+esc(a)}</b><p>💡 ${esc(fact)}</p></div>`;
+      const last=qs.k+1>=qs.list.length;$('vdQFoot').innerHTML=`<button class="btn gold" id="vdNext">${last?'🏁 See result':'Next question ▶'}</button>`;
+      $('vdNext').onclick=()=>{qs.k++;last?result():askQ();};});}
+  function result(){const c=C[qs.i],n=qs.list.length,g=qs.good,stars=starsOf(g),s=st(),prev=s[c.n]||0;
+    let coins=0;if(stars>prev){s[c.n]=stars;}if(stars)coins=prev?5:20+stars*10;if(coins)P.coins+=coins;save();try{setCoins();}catch(e){}
+    try{stars?SFX.unlock():SFX.bad();}catch(e){}
+    pop(`<div class="vdBar"><button class="vdX" id="vdX">✕</button><b>${c.f} ${c.n} Quiz</b><span class="vdPct">Done</span></div>
+      <div class="vdBody vdRes"><div class="vdBig">${stars?'🎉':'📖'}</div><div class="vdStars">${'⭐'.repeat(stars)}${'☆'.repeat(3-stars)}</div>
+      <h3>${g} / ${n} correct</h3><p>${stars?`Great! You know the ${esc(c.v)} process.`:`You need ${PASSV} to pass. Read the guide again and retry!`}</p>${coins?`<p class="vdCoins">+${coins} 🪙</p>`:''}</div>
+      <div class="vdFoot vdTwo"><button class="btn" id="vdAgain">📖 Read guide again</button><button class="btn gold" id="vdRetry">${stars?'🔁 Play again':'🔁 Try again'}</button></div>`);
+    $('vdX').onclick=closePop;$('vdAgain').onclick=()=>detail(qs.i);$('vdRetry').onclick=()=>startQuiz(qs.i);}
   function init(){$('vsList').addEventListener('click',e=>{const t=e.target.closest('.vsTile');if(t)detail(+t.dataset.i);});$('vsBack').onclick=()=>FE.goHub();}
-  function back(){if($('visa').classList.contains('on')){if($('vsBk')){open();}else FE.goHub();return'stay';}return null;}
+  function back(){if($('vsDoc').classList.contains('on')){if(qs)detail(qs.i);else closePop();return'stay';}
+    if($('visa').classList.contains('on')){FE.goHub();return'stay';}return null;}
   return{init,open,back};
 })();
 

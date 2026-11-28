@@ -50,6 +50,15 @@ class _GameScreenState extends State<GameScreen> with WidgetsBindingObserver {
     _controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0xFF2B1A10))
+      // Study Abroad guide: open official visa websites in an in-app popup.
+      ..addJavaScriptChannel('OfficialSite', onMessageReceived: (msg) {
+        final url = msg.message;
+        if (!url.startsWith('https://') || !mounted) return;
+        Navigator.of(context).push(MaterialPageRoute(
+          fullscreenDialog: true,
+          builder: (_) => OfficialSiteScreen(url: url),
+        ));
+      })
       ..setNavigationDelegate(
         NavigationDelegate(
           onPageFinished: (_) {
@@ -202,6 +211,91 @@ class LoadingScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+
+/// Full-screen popup browser for official government visa websites.
+class OfficialSiteScreen extends StatefulWidget {
+  const OfficialSiteScreen({super.key, required this.url});
+  final String url;
+
+  @override
+  State<OfficialSiteScreen> createState() => _OfficialSiteScreenState();
+}
+
+class _OfficialSiteScreenState extends State<OfficialSiteScreen> {
+  late final WebViewController _web;
+  int _progress = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _web = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setNavigationDelegate(NavigationDelegate(
+        onProgress: (p) {
+          if (mounted) setState(() => _progress = p);
+        },
+        // Stay on secure web pages only.
+        onNavigationRequest: (req) => req.url.startsWith('https://')
+            ? NavigationDecision.navigate
+            : NavigationDecision.prevent,
+      ))
+      ..loadRequest(Uri.parse(widget.url));
+  }
+
+  Future<bool> _goBackInPage() async {
+    if (await _web.canGoBack()) {
+      await _web.goBack();
+      return true;
+    }
+    return false;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final host = Uri.parse(widget.url).host;
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) async {
+        if (didPop) return;
+        if (!await _goBackInPage() && context.mounted) {
+          Navigator.of(context).pop();
+        }
+      },
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: const Color(0xFF0D47A1),
+          foregroundColor: Colors.white,
+          leading: IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('Official website',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800)),
+              Text('🔒 $host',
+                  style: const TextStyle(fontSize: 12, color: Colors.white70)),
+            ],
+          ),
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(3),
+            child: _progress < 100
+                ? LinearProgressIndicator(
+                    value: _progress / 100,
+                    minHeight: 3,
+                    backgroundColor: Colors.white24,
+                    color: const Color(0xFFFFCA28))
+                : const SizedBox(height: 3),
+          ),
+        ),
+        body: SafeArea(child: WebViewWidget(controller: _web)),
       ),
     );
   }
